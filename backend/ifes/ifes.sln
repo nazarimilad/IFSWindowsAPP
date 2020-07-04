@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ifes", "ifes\ifes.csproj", "{626BDF10-8DA9-4E0E-961B-E3346B386E91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ifes.lib", "ifes.lib\ifes.lib.csproj", "{BE61BD9D-2C82-44EC-9308-F70A0C1BECA4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{626BDF10-8DA9-4E0E-961B-E3346B386E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{626BDF10-8DA9-4E0E-961B-E3346B386E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{626BDF10-8DA9-4E0E-961B-E3346B386E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{626BDF10-8DA9-4E0E-961B-E3346B386E91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE61BD9D-2C82-44EC-9308-F70A0C1BECA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE61BD9D-2C82-44EC-9308-F70A0C1BECA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE61BD9D-2C82-44EC-9308-F70A0C1BECA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE61BD9D-2C82-44EC-9308-F70A0C1BECA4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
