@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_ifes.1254649527.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="ifes" t="IncludeRecursive">
+        <e p="Controllers" t="Include">
+          <e p="WeatherForecastController.cs" t="Include" />
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="WeatherForecast.cs" t="Include" />
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="ifes.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="ifes.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="ifes.lib" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="domain" t="Include">
+          <e p="Airport.cs" t="Include" />
+          <e p="ApplicationUser.cs" t="Include" />
+          <e p="CabinCrew.cs" t="Include" />
+          <e p="Catalog.cs" t="Include" />
+          <e p="CatalogItem.cs" t="Include" />
+          <e p="FlightInfo.cs" t="Include" />
+          <e p="Order.cs" t="Include" />
+          <e p="Passenger.cs" t="Include" />
+          <e p="Plane.cs" t="Include" />
+          <e p="Seat.cs" t="Include" />
+          <e p="Video.cs" t="Include" />
+        </e>
+        <e p="enum" t="Include">
+          <e p="BeverageType.cs" t="Include" />
+          <e p="FlightClass.cs" t="Include" />
+          <e p="FoodType.cs" t="Include" />
+          <e p="OrderStatus.cs" t="Include" />
+          <e p="PaymentOption.cs" t="Include" />
+        </e>
+        <e p="ifes.lib.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="ifes.lib.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="ifes.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
