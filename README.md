@@ -1,5 +1,11 @@
 # Native Apps II In-flight system project
 
+## Klassendiagram
+
+![klassendiagram](docs/klassendiagram.png)
+
+[Link naar draw.io bestand](https://drive.google.com/file/d/1vP131m-CmmDpCKtScZqnLEjhiIs_tPDR/view?usp=sharing)
+
 ## Functionaliteiten
 
 ### Rol passagiers
