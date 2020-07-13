@@ -7,29 +7,37 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.Padding>50</Grid.Padding>
-        <TextBlock Text="To manage this flight, please enter your credentials" Grid.Column="0" Grid.Row="0" FontSize="50" TextWrapping="Wrap"></TextBlock>
-        <StackPanel Grid.Column="0" Grid.Row="1" Spacing="20">
-            <StackPanel Spacing="10">
-                <TextBlock Text="Email Address" FontSize="30" FontWeight="Bold"></TextBlock>
-                <TextBox  InputScope="EmailSmtpAddress"  FontSize="50"  Width="400" HorizontalAlignment="Left"></TextBox>
+
+        <Button x:Name="BackButton" Click="OnBackClick" Grid.Row="0" Style="{StaticResource NavigationBackButtonNormalStyle}"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.Padding>50</Grid.Padding>
+            <TextBlock Text="To manage this flight, please enter your credentials" Grid.Column="0" Grid.Row="0" FontSize="50" TextWrapping="Wrap"></TextBlock>
+            <StackPanel Grid.Column="0" Grid.Row="1" Spacing="20">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Email Address" FontSize="20" FontWeight="Bold"></TextBlock>
+                    <TextBox  InputScope="EmailSmtpAddress"  FontSize="30"  Width="400" HorizontalAlignment="Left" MaxLength="254"></TextBox>
+                </StackPanel>
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Password" FontSize="20" FontWeight="Bold"></TextBlock>
+                    <PasswordBox x:Name="passwordBox" FontSize="30" Width="400" HorizontalAlignment="Left" MaxLength="128"></PasswordBox>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Spacing="10">
-                <TextBlock Text="Password" FontSize="30" FontWeight="Bold"></TextBlock>
-                <TextBox  InputScope="Password"  FontSize="50" Width="400" HorizontalAlignment="Left"></TextBox>
-            </StackPanel>
-        </StackPanel>
-        <Button Content="Login" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" FontSize="50" Padding="20" VerticalAlignment="Bottom"></Button>
+            <Button Content="Login" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" FontSize="30" Padding="20" VerticalAlignment="Bottom"></Button>
+        </Grid>
     </Grid>
+   
 </Page>

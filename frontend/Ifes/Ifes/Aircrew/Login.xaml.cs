@@ -25,6 +25,43 @@ namespace Ifes.Aircrew
         public Login()
         {
             this.InitializeComponent();
+            KeyboardAccelerator GoBack = new KeyboardAccelerator();
+            GoBack.Key = Windows.System.VirtualKey.GoBack;
+            GoBack.Invoked += BackInvoked;
+            KeyboardAccelerator AltLeft = new KeyboardAccelerator();
+            AltLeft.Key = Windows.System.VirtualKey.Left;
+            AltLeft.Invoked += BackInvoked;
+            this.KeyboardAccelerators.Add(GoBack);
+            this.KeyboardAccelerators.Add(AltLeft);
+            // ALT routes here
+            AltLeft.Modifiers = Windows.System.VirtualKeyModifiers.Menu;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            BackButton.IsEnabled = this.Frame.CanGoBack;
+        }
+
+        private void OnBackClick(object sender, RoutedEventArgs e)
+        {
+            OnBackRequested();
+        }
+
+        // Handles system-level BackRequested events and page-level back button Click events
+        private bool OnBackRequested()
+        {
+            if (this.Frame.CanGoBack)
+            {
+                this.Frame.GoBack();
+                return true;
+            }
+            return false;
+        }
+
+        private void BackInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+        {
+            OnBackRequested();
+            args.Handled = true;
         }
     }
 }

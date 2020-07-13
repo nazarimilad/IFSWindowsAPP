@@ -26,5 +26,15 @@ namespace Ifes
         {
             this.InitializeComponent();
         }
+
+        private void BtnAircrew(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Aircrew.Login), null);
+        }
+
+        private void BtnPassenger(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Passenger.Login), null);
+        }
     }
 }
