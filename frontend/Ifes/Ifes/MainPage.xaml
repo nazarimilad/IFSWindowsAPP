@@ -17,8 +17,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel></StackPanel>
-        <TextBlock Text="Welcome aboard!" Grid.Column="1" Grid.Row="0" FontSize="80" HorizontalAlignment="Center" Margin="0 30 0 0"></TextBlock>
+        <Grid.Padding>50</Grid.Padding>
+        <TextBlock Text="Welcome aboard!" Grid.Column="1" Grid.Row="0" FontSize="80" HorizontalAlignment="Center"></TextBlock>
         <TextBlock Text="Please choose your role:" Grid.Column="1" Grid.Row="1" FontSize="40" HorizontalAlignment="Center"></TextBlock>
         <Grid Grid.Column="0" Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -28,8 +28,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button Content="Aircrew" FontSize="50" Padding="30" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center"></Button>
-            <Button Content="Passenger" FontSize="50" Padding="30" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"></Button>
+            <Button Content="Aircrew" FontSize="50" Padding="20" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center"></Button>
+            <Button Content="Passenger" FontSize="50" Padding="20" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"></Button>
         </Grid>
     </Grid>
 </Page>
