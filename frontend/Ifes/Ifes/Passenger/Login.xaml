@@ -15,12 +15,16 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.Padding>50</Grid.Padding>
         <TextBlock Text="To enjoy your flight to the fullest, please enter your reservation number" Grid.Column="0" Grid.Row="0" FontSize="50" TextWrapping="Wrap"></TextBlock>
-        <TextBox InputScope="AlphanumericHalfWidth" Grid.Column="0" Grid.Row="1" Height="60" Width="400" HorizontalAlignment="Left"></TextBox>
-        <Button Content="Login" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" FontSize="40" Padding="20" VerticalAlignment="Bottom"></Button>
+        <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Spacing="10">
+            <TextBlock Text="Reservation Number" FontSize="30" FontWeight="Bold"></TextBlock>
+            <TextBox  InputScope="AlphanumericHalfWidth"  FontSize="50" PlaceholderText="RH893BN" Width="400" HorizontalAlignment="Left"></TextBox>
+        </StackPanel>
+        
+        <Button Content="Login" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" FontSize="50" Padding="20" VerticalAlignment="Bottom"></Button>
     </Grid>
 </Page>
