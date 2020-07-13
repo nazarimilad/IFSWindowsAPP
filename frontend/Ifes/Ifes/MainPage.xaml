@@ -9,6 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-
+        <TextBlock Text="Welcome aboard!" HorizontalTextAlignment="Center" FontSize="80" Margin="0 170 0 0"></TextBlock>
+        <TextBlock Text="Please choose your role:" HorizontalTextAlignment="Center" FontSize="40"></TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="0 220 0 0" HorizontalAlignment="Center" Spacing="430">
+            <Button Content="Aircrew" FontSize="50" Padding="30"></Button>
+            <Button Content="Passenger" FontSize="50" Padding="30"></Button>
+        </StackPanel>
     </StackPanel>
 </Page>
