@@ -13,28 +13,18 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Ifes
+namespace Ifes.Passenger
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class Dashboard : Page
     {
-        public MainPage()
+        public Dashboard()
         {
             this.InitializeComponent();
-        }
-
-        private void OnClickBtnAircrew(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Aircrew.Login), null);
-        }
-
-        private void OnClickBtnPassenger(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Passenger.Login), null);
         }
     }
 }

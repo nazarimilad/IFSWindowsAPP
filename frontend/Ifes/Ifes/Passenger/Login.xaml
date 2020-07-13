@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Grid>
+    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -17,21 +17,22 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.Padding>50</Grid.Padding>
-            <TextBlock Text="To enjoy your flight to the fullest, please enter your reservation number" Grid.Column="0" Grid.Row="0" FontSize="50" TextWrapping="Wrap"></TextBlock>
-            <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Spacing="10">
-                <TextBlock Text="Reservation Number" FontSize="20" FontWeight="Bold"></TextBlock>
-                <TextBox  InputScope="AlphanumericHalfWidth"  FontSize="30" PlaceholderText="RH893BN" Width="400" HorizontalAlignment="Left" MaxLength="20"></TextBox>
+            <TextBlock Text="To enjoy your flight to the fullest, please enter your reservation number" Grid.Column="0" Grid.Row="0" 
+                       Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="Wrap"
+                       HorizontalAlignment="Center"></TextBlock>
+            <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Reservation Number" FontWeight="Bold"></TextBlock>
+                    <TextBox  InputScope="AlphanumericHalfWidth" PlaceholderText="RH893BN" Width="400" HorizontalAlignment="Left" MaxLength="20"></TextBox>
+                </StackPanel>
+                <Button Content="Login" HorizontalAlignment="Right" Click="OnClickBtnLogin"></Button>
             </StackPanel>
-
-            <Button Content="Login" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" FontSize="30" Padding="20" VerticalAlignment="Bottom"></Button>
         </Grid>
     </Grid>
     

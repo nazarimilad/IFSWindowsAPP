@@ -63,5 +63,10 @@ namespace Ifes.Passenger
             OnBackRequested();
             args.Handled = true;
         }
+
+        private void OnClickBtnLogin(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Passenger.Dashboard), null);
+        }
     }
 }
