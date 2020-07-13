@@ -12,7 +12,7 @@
         <TextBlock Text="To enjoy your flight to the fullest," FontSize="50" Margin="40 50 0 0"></TextBlock>
         <TextBlock Text="please enter your reservation number" FontSize="50" Margin="40 0 0 0"></TextBlock>
         <TextBox InputScope="AlphanumericHalfWidth" Margin="40 120 0 0" Height="60" Width="400" HorizontalAlignment="Left"></TextBox>
-        <Button Content="Login" HorizontalAlignment="Right" Margin="0 350 50 0" FontSize="40" Padding="20"></Button>
-        
+        <Button Content="Login" HorizontalAlignment="Right" Margin="0 350 50 0" FontSize="40" Padding="20" VerticalAlignment="Bottom"></Button>
+
     </StackPanel>
 </Page>

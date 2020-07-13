@@ -8,12 +8,28 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-        <TextBlock Text="Welcome aboard!" HorizontalTextAlignment="Center" FontSize="80" Margin="0 170 0 0"></TextBlock>
-        <TextBlock Text="Please choose your role:" HorizontalTextAlignment="Center" FontSize="40"></TextBlock>
-        <StackPanel Orientation="Horizontal" Margin="0 220 0 0" HorizontalAlignment="Center" Spacing="430">
-            <Button Content="Aircrew" FontSize="50" Padding="30"></Button>
-            <Button Content="Passenger" FontSize="50" Padding="30"></Button>
-        </StackPanel>
-    </StackPanel>
+    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel></StackPanel>
+        <TextBlock Text="Welcome aboard!" Grid.Column="1" Grid.Row="0" FontSize="80" HorizontalAlignment="Center" Margin="0 30 0 0"></TextBlock>
+        <TextBlock Text="Please choose your role:" Grid.Column="1" Grid.Row="1" FontSize="40" HorizontalAlignment="Center"></TextBlock>
+        <Grid Grid.Column="0" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Content="Aircrew" FontSize="50" Padding="30" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center"></Button>
+            <Button Content="Passenger" FontSize="50" Padding="30" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"></Button>
+        </Grid>
+    </Grid>
 </Page>
