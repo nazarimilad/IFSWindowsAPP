@@ -11,11 +11,31 @@
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
         <NavigationView x:Name="NavView" ItemInvoked="NavViewItemInvoked" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False">
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Flight Information" x:Name="FlightInformation"/>
-                <NavigationViewItem Content="Food and snacks" x:Name="FoodSnacks" />
-                <NavigationViewItem Content="Multimedia" x:Name="Multimedia" />
-                <NavigationViewItem Content="Weather" x:Name="Weather" />
-                <NavigationViewItem Content="Chat" x:Name="Chat" />
+                <NavigationViewItem Content="Flight Information" x:Name="FlightInformation">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE946;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Food and snacks" x:Name="FoodSnacks">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xED56;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Multimedia" x:Name="Multimedia">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA69;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Weather" x:Name="Weather">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE753;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Chat" x:Name="Chat">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F2;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.PaneFooter>
                 <StackPanel Orientation="Horizontal" >
