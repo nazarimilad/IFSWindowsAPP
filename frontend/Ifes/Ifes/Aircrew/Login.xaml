@@ -35,7 +35,7 @@
                     <TextBlock Text="Password" FontWeight="Bold"></TextBlock>
                     <PasswordBox x:Name="passwordBox" Width="400" HorizontalAlignment="Left" MaxLength="128"></PasswordBox>
                 </StackPanel>
-                <Button Content="Login" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right"></Button>
+                <Button Content="Login" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Click="OnBtnLogin"></Button>
             </StackPanel>
             
         </Grid>

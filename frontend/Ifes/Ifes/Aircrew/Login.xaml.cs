@@ -58,5 +58,10 @@ namespace Ifes.Aircrew
             OnBackRequested();
             args.Handled = true;
         }
+
+        private void OnBtnLogin(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Aircrew.Dashboard), null);
+        }
     }
 }
