@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,6 +25,7 @@ namespace Ifes.Passenger
             this.InitializeComponent();
             ContentFrame.Navigate(typeof(Passenger.FlightInformation));
             NavView.SelectedItem = NavView.MenuItems.ElementAt(0);
+            this.SendSeatBeltNotification();
         }
 
         private void NavViewItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -42,6 +46,18 @@ namespace Ifes.Passenger
         private void OnClickLogOut(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Passenger.Login), null);
+        }
+
+        private async void SendSeatBeltNotification()
+        {
+            ContentDialog seatBeltDialog = new ContentDialog()
+            {
+                Title = "Dear passenger",
+                Content = "Make sure to fasten your seat belt.",
+                PrimaryButtonText = "Ok",
+            };
+            await Task.Delay(5000);
+            await seatBeltDialog.ShowAsync();
         }
     }
 }
