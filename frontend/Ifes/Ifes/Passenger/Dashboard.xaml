@@ -9,14 +9,24 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-        <NavigationView PaneDisplayMode="Top">
+        <NavigationView x:Name="NavView" ItemInvoked="NavViewItemInvoked" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False">
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="FlightInformation" x:Name="FlightInformation" />
+                <NavigationViewItem Content="Flight Information" x:Name="FlightInformation"/>
                 <NavigationViewItem Content="Food and snacks" x:Name="FoodSnacks" />
                 <NavigationViewItem Content="Multimedia" x:Name="Multimedia" />
                 <NavigationViewItem Content="Weather" x:Name="Weather" />
                 <NavigationViewItem Content="Chat" x:Name="Chat" />
             </NavigationView.MenuItems>
+            <NavigationView.PaneFooter>
+                <StackPanel Orientation="Horizontal" >
+                    <NavigationViewItem Content="Log out" Padding="0 0 10 0" Tapped="OnClickLogOut">
+                        <NavigationViewItem.Icon>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE748;"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                </StackPanel>
+            </NavigationView.PaneFooter>
+            <Frame x:Name="ContentFrame" IsTabStop="True"/>
         </NavigationView>
     </Grid>
 </Page>

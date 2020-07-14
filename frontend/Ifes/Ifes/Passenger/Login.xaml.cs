@@ -52,7 +52,7 @@ namespace Ifes.Passenger
         {
             if (this.Frame.CanGoBack)
             {
-                this.Frame.GoBack();
+                this.Frame.Navigate(typeof(MainPage), null);
                 return true;
             }
             return false;
