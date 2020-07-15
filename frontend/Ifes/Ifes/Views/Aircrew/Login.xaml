@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="Ifes.Passenger.Login"
+    x:Class="Ifes.Aircrew.Login"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Ifes.Passenger"
+    xmlns:local="using:Ifes.Aircrew"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -23,17 +23,22 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.Padding>50</Grid.Padding>
-            <TextBlock Text="To enjoy your flight to the fullest, please enter your reservation number" Grid.Column="0" Grid.Row="0" 
-                       Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="Wrap"
+            <TextBlock Text="To manage this flight, please enter your credentials" 
+                       Grid.Column="0" Grid.Row="0" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="Wrap" 
                        HorizontalAlignment="Center"></TextBlock>
-            <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
+            <StackPanel Grid.Column="0" Grid.Row="1" Spacing="20" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Spacing="10">
-                    <TextBlock Text="Reservation Number" FontWeight="Bold"></TextBlock>
-                    <TextBox  InputScope="AlphanumericHalfWidth" PlaceholderText="RH893BN" Width="400" HorizontalAlignment="Left" MaxLength="20"></TextBox>
+                    <TextBlock Text="Email Address *" FontWeight="Bold"></TextBlock>
+                    <TextBox x:Name="TextBoxEmail" TextChanged="OnChangeTextEmail" InputScope="EmailSmtpAddress" Width="400" HorizontalAlignment="Left" MaxLength="254" PlaceholderText="email@example.com"></TextBox>
                 </StackPanel>
-                <Button Content="Login" HorizontalAlignment="Right" Click="OnClickBtnLogin"></Button>
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Password *" FontWeight="Bold"></TextBlock>
+                    <PasswordBox x:Name="PasswordBoxPassword" Width="400" HorizontalAlignment="Left" MaxLength="128"></PasswordBox>
+                </StackPanel>
+                <Button x:Name="BtnLogin" Content="Login" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Click="OnBtnLogin" IsEnabled="False"></Button>
             </StackPanel>
+            
         </Grid>
     </Grid>
-    
+   
 </Page>

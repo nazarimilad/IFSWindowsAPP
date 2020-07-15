@@ -116,16 +116,17 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Aircrew\Dashboard.xaml.cs">
+    <Compile Include="Services\Aircrew\LoginService.cs" />
+    <Compile Include="Views\Aircrew\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Aircrew\Login.xaml.cs">
+    <Compile Include="Views\Aircrew\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Aircrew\Messages.xaml.cs">
+    <Compile Include="Views\Aircrew\Messages.xaml.cs">
       <DependentUpon>Messages.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Aircrew\PassengersManagment.xaml.cs">
+    <Compile Include="Views\Aircrew\PassengersManagment.xaml.cs">
       <DependentUpon>PassengersManagment.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -134,28 +135,29 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Passenger\Chat.xaml.cs">
+    <Compile Include="Views\Passenger\Chat.xaml.cs">
       <DependentUpon>Chat.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Passenger\Dashboard.xaml.cs">
+    <Compile Include="Views\Passenger\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Passenger\FlightInformation.xaml.cs">
+    <Compile Include="Views\Passenger\FlightInformation.xaml.cs">
       <DependentUpon>FlightInformation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Passenger\FoodSnacks.xaml.cs">
+    <Compile Include="Views\Passenger\FoodSnacks.xaml.cs">
       <DependentUpon>FoodSnacks.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Passenger\Login.xaml.cs">
+    <Compile Include="Views\Passenger\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Passenger\Multimedia.xaml.cs">
+    <Compile Include="Views\Passenger\Multimedia.xaml.cs">
       <DependentUpon>Multimedia.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Passenger\Weather.xaml.cs">
+    <Compile Include="Views\Passenger\Weather.xaml.cs">
       <DependentUpon>Weather.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Aircrew\LoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -165,32 +167,32 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
-    <Content Include="Assets\SplashScreen.scale-200.png" />
-    <Content Include="Assets\Square150x150Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Views\Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Views\Assets\SplashScreen.scale-200.png" />
+    <Content Include="Views\Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Views\Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Views\Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Views\Assets\StoreLogo.png" />
+    <Content Include="Views\Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Aircrew\Dashboard.xaml">
+    <Page Include="Views\Aircrew\Dashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Aircrew\Login.xaml">
+    <Page Include="Views\Aircrew\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Aircrew\Messages.xaml">
+    <Page Include="Views\Aircrew\Messages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Aircrew\PassengersManagment.xaml">
+    <Page Include="Views\Aircrew\PassengersManagment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,31 +200,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Passenger\Chat.xaml">
+    <Page Include="Views\Passenger\Chat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Passenger\Dashboard.xaml">
+    <Page Include="Views\Passenger\Dashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Passenger\FlightInformation.xaml">
+    <Page Include="Views\Passenger\FlightInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Passenger\FoodSnacks.xaml">
+    <Page Include="Views\Passenger\FoodSnacks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Passenger\Login.xaml">
+    <Page Include="Views\Passenger\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Passenger\Multimedia.xaml">
+    <Page Include="Views\Passenger\Multimedia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Passenger\Weather.xaml">
+    <Page Include="Views\Passenger\Weather.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,7 +234,10 @@
       <Version>6.2.8</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Services\Passengers\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
