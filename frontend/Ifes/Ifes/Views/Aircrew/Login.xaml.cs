@@ -1,9 +1,11 @@
 ﻿using Ifes.ViewModels.Aircrew;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
@@ -65,14 +67,52 @@ namespace Ifes.Aircrew
             args.Handled = true;
         }
 
+        private string GetEmail()
+        {
+            return TextBoxEmail.Text;
+        }
+
+        private string GetPassword()
+        {
+            return PasswordBoxPassword.Password.ToString();
+        }
+
         private void OnBtnLogin(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Aircrew.Dashboard), null);
+            LoginUser();
+        }
+
+        private void OnKeyUp(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter && BtnLogin.IsEnabled)
+            {
+                LoginUser();
+            }
+        }
+
+        private void LoginUser()
+        {
+            try
+            {
+                TextBlockError.Text = "";
+                this._viewModel.LogIn(GetEmail(), GetPassword());
+                this.Frame.Navigate(typeof(Aircrew.Dashboard), null);
+            }
+            catch (Exception ex)
+            {
+                TextBlockError.Text = ex.InnerException.Message;
+                TextBoxEmail.Focus(FocusState.Keyboard);
+            }
         }
 
         private void OnChangeTextEmail(object sender, TextChangedEventArgs e)
         {
-            ValidateLoginForm(TextBoxEmail.Text, PasswordBoxPassword.Password.ToString());
+            ValidateLoginForm(GetEmail(), GetPassword());
+        }
+
+        private void OnChangeTextPassword(object sender, RoutedEventArgs e)
+        {
+            ValidateLoginForm(GetEmail(), GetPassword());
         }
 
         private void ValidateLoginForm(string email, string password)
@@ -90,5 +130,7 @@ namespace Ifes.Aircrew
                 BtnLogin.IsEnabled = false;
             }
         }
+
+        
     }
 }

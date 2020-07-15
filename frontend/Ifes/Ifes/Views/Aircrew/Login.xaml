@@ -29,12 +29,13 @@
             <StackPanel Grid.Column="0" Grid.Row="1" Spacing="20" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Spacing="10">
                     <TextBlock Text="Email Address *" FontWeight="Bold"></TextBlock>
-                    <TextBox x:Name="TextBoxEmail" TextChanged="OnChangeTextEmail" InputScope="EmailSmtpAddress" Width="400" HorizontalAlignment="Left" MaxLength="254" PlaceholderText="email@example.com"></TextBox>
+                    <TextBox x:Name="TextBoxEmail" TextChanged="OnChangeTextEmail" KeyUp="OnKeyUp" InputScope="EmailSmtpAddress" Width="400" HorizontalAlignment="Left" MaxLength="254" PlaceholderText="email@example.com"></TextBox>
                 </StackPanel>
                 <StackPanel Spacing="10">
                     <TextBlock Text="Password *" FontWeight="Bold"></TextBlock>
-                    <PasswordBox x:Name="PasswordBoxPassword" Width="400" HorizontalAlignment="Left" MaxLength="128"></PasswordBox>
+                    <PasswordBox x:Name="PasswordBoxPassword" PasswordChanged="OnChangeTextPassword" KeyUp="OnKeyUp" Width="400" HorizontalAlignment="Left" MaxLength="128"></PasswordBox>
                 </StackPanel>
+                <TextBlock x:Name="TextBlockError" Foreground="Red"></TextBlock>
                 <Button x:Name="BtnLogin" Content="Login" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Click="OnBtnLogin" IsEnabled="False"></Button>
             </StackPanel>
             

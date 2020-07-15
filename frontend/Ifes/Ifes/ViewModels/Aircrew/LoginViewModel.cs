@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Ifes.Services.Aircrew;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ namespace Ifes.ViewModels.Aircrew
     {
         private string _email;
         private string _password;
+        private const int MIN_LENGTH_PASSWORD = 6;
 
         public string Email
         {
@@ -33,6 +36,10 @@ namespace Ifes.ViewModels.Aircrew
             get { return _password; }
             set
             {
+                if (!IsValidPassword(value))
+                {
+                    throw new Exception("Password is not valid.");
+                }
                 if (value != _password)
                 {
                     _password = value;
@@ -47,7 +54,7 @@ namespace Ifes.ViewModels.Aircrew
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        bool IsValidEmail(string email)
+        public bool IsValidEmail(string email)
         {
             try
             {
@@ -57,6 +64,22 @@ namespace Ifes.ViewModels.Aircrew
             catch
             {
                 return false;
+            }
+        }
+
+        public bool IsValidPassword(string password)
+        {
+            return password.Length >= MIN_LENGTH_PASSWORD;
+        }
+
+        public void LogIn(string email, string password)
+        {
+            try
+            {
+                bool isLoggedIn = LoginService.Instance.LogIn(email, password).Result;
+            }
+            catch (Exception) {
+                throw;
             }
         }
     }
