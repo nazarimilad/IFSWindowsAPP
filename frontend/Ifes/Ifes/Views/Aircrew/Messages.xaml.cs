@@ -21,5 +21,15 @@ namespace Ifes.Aircrew
         {
             this.InitializeComponent();
         }
+
+        private void OnBtnSend(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private string GetMessage()
+        {
+            return TextBoxMessage.Text;
+        }
     }
 }
