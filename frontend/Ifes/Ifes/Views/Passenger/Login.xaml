@@ -29,9 +29,10 @@
             <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
                 <StackPanel Spacing="10">
                     <TextBlock Text="Reservation Number *" FontWeight="Bold"></TextBlock>
-                    <TextBox  InputScope="AlphanumericHalfWidth" PlaceholderText="RH893BN" Width="400" HorizontalAlignment="Left" MaxLength="20"></TextBox>
+                    <TextBox x:Name="TextBoxReservationNumber" TextChanged="OnTextChanged" KeyUp="OnKeyUp" InputScope="AlphanumericHalfWidth" PlaceholderText="RH893BN" Width="400" HorizontalAlignment="Left" MaxLength="20"></TextBox>
                 </StackPanel>
-                <Button Content="Login" HorizontalAlignment="Right" Click="OnClickBtnLogin" IsEnabled="True"></Button>
+                <TextBlock x:Name="TextBlockError" Foreground="Red"></TextBlock>
+                <Button x:Name="BtnLogin" Content="Login" HorizontalAlignment="Right" Click="OnClickBtnLogin" IsEnabled="False"></Button>
             </StackPanel>
         </Grid>
     </Grid>

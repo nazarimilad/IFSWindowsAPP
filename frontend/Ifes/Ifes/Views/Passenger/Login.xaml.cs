@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Ifes.ViewModels.Passenger;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -17,6 +19,8 @@ namespace Ifes.Passenger
 {
     public sealed partial class Login : Page
     {
+        private LoginViewModel _viewModel;
+
         public Login()
         {
             this.InitializeComponent();
@@ -30,6 +34,8 @@ namespace Ifes.Passenger
             this.KeyboardAccelerators.Add(AltLeft);
             // ALT routes here
             AltLeft.Modifiers = Windows.System.VirtualKeyModifiers.Menu;
+
+            this._viewModel = new LoginViewModel();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -61,7 +67,55 @@ namespace Ifes.Passenger
 
         private void OnClickBtnLogin(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Passenger.Dashboard), null);
+            LoginUser();
+        }
+
+        private void OnKeyUp(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter && BtnLogin.IsEnabled)
+            {
+                LoginUser();
+            }
+        }
+
+        private string GetReservationNumber()
+        {
+            return TextBoxReservationNumber.Text;
+        }
+
+        private void OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            ValidateLoginForm(GetReservationNumber());
+        }
+
+        private void ValidateLoginForm(string reservationNumber)
+        {
+            try
+            {
+                this._viewModel.ReservationNumber = reservationNumber;
+                TextBoxReservationNumber.BorderBrush = new SolidColorBrush(Colors.White);
+                BtnLogin.IsEnabled = true;
+            }
+            catch (Exception)
+            {
+                TextBoxReservationNumber.BorderBrush = new SolidColorBrush(Colors.Red);
+                BtnLogin.IsEnabled = false;
+            }
+        }
+
+        private void LoginUser()
+        {
+            try
+            {
+                TextBlockError.Text = "";
+                this._viewModel.LogIn(GetReservationNumber());
+                this.Frame.Navigate(typeof(Passenger.Dashboard), null);
+            }
+            catch (Exception ex)
+            {
+                TextBlockError.Text = ex.InnerException.Message;
+                TextBoxReservationNumber.Focus(FocusState.Keyboard);
+            }
         }
     }
 }

@@ -117,6 +117,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Services\Aircrew\AuthenticationService.cs" />
+    <Compile Include="Services\Passengers\AuthenticationService.cs" />
+    <Compile Include="ViewModels\Passenger\LoginViewModel.cs" />
     <Compile Include="Views\Aircrew\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
@@ -236,7 +238,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Services\Passengers\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
