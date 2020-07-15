@@ -76,7 +76,7 @@ namespace Ifes.ViewModels.Aircrew
         {
             try
             {
-                bool isLoggedIn = LoginService.Instance.LogIn(email, password).Result;
+                bool isLoggedIn = AuthenticationService.Instance.LogIn(email, password).Result;
             }
             catch (Exception) {
                 throw;

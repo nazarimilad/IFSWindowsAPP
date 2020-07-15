@@ -9,6 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-        <TextBlock Text="Page for messages"></TextBlock>
+        
     </Grid>
 </Page>
