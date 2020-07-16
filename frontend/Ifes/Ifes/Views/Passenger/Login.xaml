@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -29,7 +29,7 @@
             <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
                 <StackPanel Spacing="10">
                     <TextBlock Text="Reservation Number *" FontWeight="Bold"></TextBlock>
-                    <TextBox x:Name="TextBoxReservationNumber" TextChanged="OnTextChanged" KeyUp="OnKeyUp" InputScope="AlphanumericHalfWidth" PlaceholderText="RH893BN" Width="400" HorizontalAlignment="Left" MaxLength="20"></TextBox>
+                    <TextBox x:Name="TextBoxReservationNumber" TextChanged="OnTextChanged" KeyUp="OnKeyUp" InputScope="AlphanumericHalfWidth" PlaceholderText="RH893BN" Width="400" HorizontalAlignment="Left" MaxLength="20" Background="{ThemeResource SystemControlAltHighAcrylicElementBrush}"></TextBox>
                 </StackPanel>
                 <TextBlock x:Name="TextBlockError" Foreground="Red"></TextBlock>
                 <Button x:Name="BtnLogin" HorizontalAlignment="Right" Click="OnClickBtnLogin" IsEnabled="False">

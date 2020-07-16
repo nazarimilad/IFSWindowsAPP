@@ -51,6 +51,7 @@ namespace Ifes.Views.Passenger
                 Content = "Are you sure you want to log out?",
                 PrimaryButtonText = "Yes",
                 CloseButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Close
             };
             ContentDialogResult result = await confirmationDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)

@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -22,7 +22,7 @@
         <Grid.RowSpacing>20</Grid.RowSpacing>
         <Grid.Padding>30</Grid.Padding>
         <TextBlock Text="Flight Information" Grid.Column="0" Grid.Row="0" Style="{StaticResource SubheaderTextBlockStyle}"></TextBlock>
-        <Grid Grid.Column="0" Grid.Row="1" Margin="0 30 0 0" Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}" >
+        <Grid Grid.Column="0" Grid.Row="1" Margin="0 30 0 0" Background="{ThemeResource SystemControlAltHighAcrylicElementBrush }" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -46,7 +46,7 @@
             <TextBlock Text="Destination" Grid.Column="0" Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" />
             <TextBlock x:Name="TextBoxDestination" Text="Destination Value" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" />
         </Grid>
-        <Grid Grid.Column="1" Grid.Row="1" Margin="0 30 0 0" Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+        <Grid Grid.Column="1" Grid.Row="1" Margin="0 30 0 0" Background="{ThemeResource SystemControlAltHighAcrylicElementBrush }">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />

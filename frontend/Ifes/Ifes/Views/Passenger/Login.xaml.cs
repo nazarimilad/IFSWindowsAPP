@@ -93,7 +93,7 @@ namespace Ifes.Views.Passenger
             try
             {
                 this._viewModel.ReservationNumber = reservationNumber;
-                TextBoxReservationNumber.BorderBrush = new SolidColorBrush(Colors.White);
+                TextBoxReservationNumber.BorderBrush = new SolidColorBrush((Windows.UI.Color) Resources["SystemAccentColor"]);
                 BtnLogin.IsEnabled = true;
             }
             catch (ArgumentException)

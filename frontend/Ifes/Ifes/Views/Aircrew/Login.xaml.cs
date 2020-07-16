@@ -120,7 +120,7 @@ namespace Ifes.Views.Aircrew
             try
             {
                 this._viewModel.Email = email;
-                TextBoxEmail.BorderBrush = new SolidColorBrush(Colors.White);
+                TextBoxEmail.BorderBrush = new SolidColorBrush((Windows.UI.Color)Resources["SystemAccentColor"]);
                 this._viewModel.Password = password;
                 BtnLogin.IsEnabled = true;
             }
