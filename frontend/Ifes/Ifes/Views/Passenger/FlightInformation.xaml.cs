@@ -21,11 +21,6 @@ namespace Ifes.Passenger
         {
             this.InitializeComponent();
         }
-
-        
-
-        
-
         
     }
 }

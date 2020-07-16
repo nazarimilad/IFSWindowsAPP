@@ -9,6 +9,66 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-        <TextBlock Text="Page for flight Information"></TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnSpacing>90</Grid.ColumnSpacing>
+        <Grid.RowSpacing>20</Grid.RowSpacing>
+        <Grid.Padding>30</Grid.Padding>
+        <TextBlock Text="Flight Information" Grid.Column="0" Grid.Row="0" Style="{StaticResource SubheaderTextBlockStyle}"></TextBlock>
+        <Grid Grid.Column="0" Grid.Row="1" Margin="0 30 0 0" Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnSpacing>100</Grid.ColumnSpacing>
+            <Grid.RowSpacing>20</Grid.RowSpacing>
+            <Grid.Padding>20</Grid.Padding>
+            <TextBlock Text="Your journey" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TitleTextBlockStyle}" />
+            <Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Opacity="0.5"/>
+            <TextBlock Text="ETA" Grid.Column="0" Grid.Row="2" Style="{ThemeResource BaseTextBlockStyle}" />
+            <TextBlock x:Name="TextBoxEta" Text="ETA Value" Grid.Column="1" Grid.Row="2" Style="{ThemeResource BodyTextBlockStyle}" />
+            <TextBlock Text="Origin" Grid.Column="0" Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" />
+            <TextBlock x:Name="TextBoxOrigin" Text="Origin Value" Grid.Column="1" Grid.Row="3" Style="{ThemeResource BodyTextBlockStyle}" />
+            <TextBlock Text="Destination" Grid.Column="0" Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" />
+            <TextBlock x:Name="TextBoxDestination" Text="Destination Value" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" Margin="0 30 0 0" Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnSpacing>100</Grid.ColumnSpacing>
+            <Grid.RowSpacing>20</Grid.RowSpacing>
+            <Grid.Padding>20</Grid.Padding>
+            <TextBlock Text="Airplane" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TitleTextBlockStyle}" />
+            <Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Opacity="0.5"/>
+            <TextBlock Text="Speed" Grid.Column="0" Grid.Row="2" Style="{ThemeResource BaseTextBlockStyle}" />
+            <TextBlock x:Name="TextBoxSpeed" Text="Speed Value" Grid.Column="1" Grid.Row="2" Style="{ThemeResource BodyTextBlockStyle}" />
+            <TextBlock Text="Altitude" Grid.Column="0" Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" />
+            <TextBlock x:Name="TextBoxAltitude" Text="Altitude Value" Grid.Column="1" Grid.Row="3" Style="{ThemeResource BodyTextBlockStyle}" />
+            <TextBlock Text="Temperature" Grid.Column="0" Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" />
+            <TextBlock x:Name="TextBoxTemperature" Text="Temperature Value" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" />
+        </Grid>
     </Grid>
 </Page>
