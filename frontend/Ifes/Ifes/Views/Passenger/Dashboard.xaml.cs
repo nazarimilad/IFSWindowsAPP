@@ -45,6 +45,7 @@ namespace Ifes.Views.Passenger
 
         private void OnClickLogOut(object sender, TappedRoutedEventArgs e)
         {
+            // TODO: let viewmodel of logged user call LogOut() method of AuthenticationService
             this.Frame.Navigate(typeof(Views.Passenger.Login), null);
         }
 

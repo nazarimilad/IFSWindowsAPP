@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using Ifes.Services.Passengers;
+using Ifes.Services;
 
 namespace Ifes.ViewModels.Passenger
 {
@@ -40,6 +40,11 @@ namespace Ifes.ViewModels.Passenger
             {
                 throw;
             }
+        }
+
+        public void LogOut()
+        {
+            AuthenticationService.Instance.LogOut();
         }
     }
 }

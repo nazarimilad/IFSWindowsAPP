@@ -38,6 +38,7 @@ namespace Ifes.Views.Aircrew
 
         private void OnClickLogOut(object sender, TappedRoutedEventArgs e)
         {
+            // TODO: let viewmodel of logged user call LogOut() method of AuthenticationService
             this.Frame.Navigate(typeof(Views.Aircrew.Login), null);
         }
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ifes.Services.Aircrew
+namespace Ifes.Services
 {
     public sealed class AuthenticationService
     {
@@ -31,6 +31,21 @@ namespace Ifes.Services.Aircrew
                 return true;
             }
             throw new ArgumentException("Invalid email or password.");
+        }
+
+        public async Task<bool> LogIn(string reservationNumber)
+        {
+            if (reservationNumber == "ABC123")
+            {
+                _jwtToken = "3lidj9092Nlijqdfcidj092NN09883H2qlijdqz";
+                return true;
+            }
+            throw new ArgumentException("Invalid reservation number.");
+        }
+
+        public void LogOut()
+        {
+            _jwtToken = "";
         }
     }
 }

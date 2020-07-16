@@ -1,4 +1,4 @@
-﻿using Ifes.Services.Aircrew;
+﻿using Ifes.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,6 +81,11 @@ namespace Ifes.ViewModels.Aircrew
             catch (Exception) {
                 throw;
             }
+        }
+
+        public void LogOut()
+        {
+            AuthenticationService.Instance.LogOut();
         }
     }
 }

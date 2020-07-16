@@ -116,8 +116,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Services\Aircrew\AuthenticationService.cs" />
-    <Compile Include="Services\Passengers\AuthenticationService.cs" />
+    <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="ViewModels\Passenger\LoginViewModel.cs" />
     <Compile Include="Views\Aircrew\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
