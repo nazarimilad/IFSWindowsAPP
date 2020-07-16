@@ -32,7 +32,13 @@
                     <TextBox x:Name="TextBoxReservationNumber" TextChanged="OnTextChanged" KeyUp="OnKeyUp" InputScope="AlphanumericHalfWidth" PlaceholderText="RH893BN" Width="400" HorizontalAlignment="Left" MaxLength="20"></TextBox>
                 </StackPanel>
                 <TextBlock x:Name="TextBlockError" Foreground="Red"></TextBlock>
-                <Button x:Name="BtnLogin" Content="Login" HorizontalAlignment="Right" Click="OnClickBtnLogin" IsEnabled="False"></Button>
+                <Button x:Name="BtnLogin" HorizontalAlignment="Right" Click="OnClickBtnLogin" IsEnabled="False">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Login"/>
+                        <Border BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Stretch" Opacity="0.5"/>
+                        <FontIcon Glyph="&#xE9AC;"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </Grid>
     </Grid>

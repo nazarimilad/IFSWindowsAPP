@@ -32,9 +32,9 @@
         </StackPanel>
         <Button x:Name="BtnSendMessage" Click="OnBtnSend" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" IsEnabled="False">
             <StackPanel Orientation="Horizontal" Spacing="10">
-                <FontIcon Glyph="&#xE724;"/>
-                <Border BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Stretch" Opacity="0.5"/>
                 <TextBlock Text="Send"/>
+                <Border BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Stretch" Opacity="0.5"/>
+                <FontIcon Glyph="&#xE724;"/>
             </StackPanel>
         </Button>
     </Grid>
