@@ -13,7 +13,7 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Messages" x:Name="Messages">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE724;"/>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE789;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem Content="Passengers" x:Name="Passengers">
