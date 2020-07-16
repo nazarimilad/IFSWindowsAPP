@@ -143,8 +143,8 @@
     <Compile Include="Views\Passenger\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Passenger\FlightInformation.xaml.cs">
-      <DependentUpon>FlightInformation.xaml</DependentUpon>
+    <Compile Include="Views\Passenger\FlightInfo.xaml.cs">
+      <DependentUpon>FlightInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Passenger\FoodSnacks.xaml.cs">
       <DependentUpon>FoodSnacks.xaml</DependentUpon>
@@ -152,8 +152,8 @@
     <Compile Include="Views\Passenger\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Passenger\Multimedia.xaml.cs">
-      <DependentUpon>Multimedia.xaml</DependentUpon>
+    <Compile Include="Views\Passenger\Media.xaml.cs">
+      <DependentUpon>Media.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Passenger\Orders.xaml.cs">
       <DependentUpon>Orders.xaml</DependentUpon>
@@ -213,7 +213,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Passenger\FlightInformation.xaml">
+    <Page Include="Views\Passenger\FlightInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,7 +225,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Passenger\Multimedia.xaml">
+    <Page Include="Views\Passenger\Media.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

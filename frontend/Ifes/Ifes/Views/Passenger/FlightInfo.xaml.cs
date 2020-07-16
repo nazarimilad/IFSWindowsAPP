@@ -15,11 +15,12 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Ifes.Views.Passenger
 {
-    public sealed partial class Multimedia : Page
+    public sealed partial class FlightInfo : Page
     {
-        public Multimedia()
+        public FlightInfo()
         {
             this.InitializeComponent();
         }
+        
     }
 }
