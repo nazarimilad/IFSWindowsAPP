@@ -25,7 +25,7 @@ namespace Ifes.Services
 
         public async Task<bool> LogIn(string email, string password)
         {
-            if (email == "admin@test.com" && password == "admintest")
+            if (email.ToLower() == "admin@test.com" && password == "admintest")
             {
                 _jwtToken = "3lidj9092Nlijqdzlidj092NN09883H2qlijdqz";
                 return true;
@@ -35,7 +35,7 @@ namespace Ifes.Services
 
         public async Task<bool> LogIn(string reservationNumber)
         {
-            if (reservationNumber == "ABC123")
+            if (reservationNumber.ToLower() == "abc123")
             {
                 _jwtToken = "3lidj9092Nlijqdfcidj092NN09883H2qlijdqz";
                 return true;

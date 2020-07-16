@@ -22,7 +22,7 @@ namespace Ifes.ViewModels.Aircrew
             {
                 if (!IsValidEmail(value))
                 {
-                    throw new Exception("E-mail is not valid.");
+                    throw new ArgumentException("E-mail is not valid.", "email");
                 }
                 else if (value != _email)
                 {
@@ -38,7 +38,7 @@ namespace Ifes.ViewModels.Aircrew
             {
                 if (!IsValidPassword(value))
                 {
-                    throw new Exception("Password is not valid.");
+                    throw new ArgumentException("Password is not valid.");
                 }
                 if (value != _password)
                 {

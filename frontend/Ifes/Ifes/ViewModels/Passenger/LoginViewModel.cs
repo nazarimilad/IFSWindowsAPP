@@ -19,7 +19,7 @@ namespace Ifes.ViewModels.Passenger
             {
                 if (!IsValidReservationNumber(value))
                 {
-                    throw new Exception("Reservation number is not valid.");
+                    throw new ArgumentException("Reservation number is not valid.", "reservationNumber");
                 }
                 _reservationNumber = value;
             }

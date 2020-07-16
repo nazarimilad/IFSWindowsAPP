@@ -96,7 +96,7 @@ namespace Ifes.Views.Passenger
                 TextBoxReservationNumber.BorderBrush = new SolidColorBrush(Colors.White);
                 BtnLogin.IsEnabled = true;
             }
-            catch (Exception)
+            catch (ArgumentException)
             {
                 TextBoxReservationNumber.BorderBrush = new SolidColorBrush(Colors.Red);
                 BtnLogin.IsEnabled = false;

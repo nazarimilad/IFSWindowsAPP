@@ -120,13 +120,16 @@ namespace Ifes.Views.Aircrew
             try
             {
                 this._viewModel.Email = email;
-                this._viewModel.Password = password;
                 TextBoxEmail.BorderBrush = new SolidColorBrush(Colors.White);
+                this._viewModel.Password = password;
                 BtnLogin.IsEnabled = true;
             }
-            catch (Exception)
+            catch (ArgumentException ex)
             {
-                TextBoxEmail.BorderBrush = new SolidColorBrush(Colors.Red);
+                if (ex.ParamName == "email")
+                {
+                    TextBoxEmail.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
                 BtnLogin.IsEnabled = false;
             }
         }
