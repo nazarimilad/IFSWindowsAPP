@@ -43,10 +43,21 @@ namespace Ifes.Views.Passenger
             }
         }
 
-        private void OnClickLogOut(object sender, TappedRoutedEventArgs e)
-        {
-            // TODO: let viewmodel of logged user call LogOut() method of AuthenticationService
-            this.Frame.Navigate(typeof(Views.Passenger.Login), null);
+        private async void OnClickLogOut(object sender, TappedRoutedEventArgs e)
+        {            
+            ContentDialog confirmationDialog = new ContentDialog()
+            {
+                Title = "Log out",
+                Content = "Are you sure you want to log out?",
+                PrimaryButtonText = "Yes",
+                CloseButtonText = "Cancel",
+            };
+            ContentDialogResult result = await confirmationDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                // TODO: let viewmodel of logged user call LogOut() method of AuthenticationService
+                this.Frame.Navigate(typeof(Views.Passenger.Login), null);
+            }   
         }
 
         private void OnClickMyOrders(object sender, TappedRoutedEventArgs e)
