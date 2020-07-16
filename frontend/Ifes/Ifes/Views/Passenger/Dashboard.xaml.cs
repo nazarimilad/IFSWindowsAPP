@@ -23,7 +23,7 @@ namespace Ifes.Views.Passenger
         public Dashboard()
         {
             this.InitializeComponent();
-            ContentFrame.Navigate(typeof(Passenger.FlightInformation));
+            ContentFrame.Navigate(typeof(Passenger.FlightInfo));
             NavView.SelectedItem = NavView.MenuItems.ElementAt(0);
             this.SendSeatBeltNotification();
         }
@@ -32,9 +32,9 @@ namespace Ifes.Views.Passenger
         {
             var label = args.InvokedItem as string;
             var pageType =
-                label == "Flight Info" ? typeof(Views.Passenger.FlightInformation) :
+                label == "Flight Info" ? typeof(Views.Passenger.FlightInfo) :
                 label == "Food & snacks" ? typeof(Views.Passenger.FoodSnacks) :
-                label == "Media" ? typeof(Views.Passenger.Multimedia):
+                label == "Media" ? typeof(Views.Passenger.Media):
                 label == "Weather" ? typeof(Views.Passenger.Weather):
                 label == "Chat" ? typeof(Views.Passenger.Chat): null;
             if (pageType != null && pageType != ContentFrame.CurrentSourcePageType)
