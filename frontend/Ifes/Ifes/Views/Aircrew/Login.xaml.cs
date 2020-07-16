@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Ifes.Aircrew
+namespace Ifes.Views.Aircrew
 {
     public sealed partial class Login : Page
     {

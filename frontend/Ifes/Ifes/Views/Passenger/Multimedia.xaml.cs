@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Ifes.Passenger
+namespace Ifes.Views.Passenger
 {
     public sealed partial class Multimedia : Page
     {

@@ -155,6 +155,9 @@
     <Compile Include="Views\Passenger\Multimedia.xaml.cs">
       <DependentUpon>Multimedia.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Passenger\Orders.xaml.cs">
+      <DependentUpon>Orders.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Passenger\Weather.xaml.cs">
       <DependentUpon>Weather.xaml</DependentUpon>
     </Compile>
@@ -226,6 +229,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Passenger\Orders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Passenger\Weather.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -238,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Passenger\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Ifes.Passenger
+namespace Ifes.Views.Passenger
 {
     public sealed partial class Dashboard : Page
     {
@@ -32,11 +32,11 @@ namespace Ifes.Passenger
         {
             var label = args.InvokedItem as string;
             var pageType =
-                label == "Flight Information" ? typeof(Passenger.FlightInformation) :
-                label == "Food and snacks" ? typeof(Passenger.FoodSnacks) :
-                label == "Multimedia" ? typeof(Passenger.Multimedia):
-                label == "Weather" ? typeof(Passenger.Weather):
-                label == "Chat" ? typeof(Passenger.Chat): null;
+                label == "Flight Info" ? typeof(Views.Passenger.FlightInformation) :
+                label == "Food & snacks" ? typeof(Views.Passenger.FoodSnacks) :
+                label == "Media" ? typeof(Views.Passenger.Multimedia):
+                label == "Weather" ? typeof(Views.Passenger.Weather):
+                label == "Chat" ? typeof(Views.Passenger.Chat): null;
             if (pageType != null && pageType != ContentFrame.CurrentSourcePageType)
             {
                 ContentFrame.Navigate(pageType);
@@ -45,7 +45,12 @@ namespace Ifes.Passenger
 
         private void OnClickLogOut(object sender, TappedRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Passenger.Login), null);
+            this.Frame.Navigate(typeof(Views.Passenger.Login), null);
+        }
+
+        private void OnClickMyOrders(object sender, TappedRoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(Views.Passenger.Orders));
         }
 
         private async void SendSeatBeltNotification()
@@ -59,5 +64,7 @@ namespace Ifes.Passenger
             await Task.Delay(5000);
             await seatBeltDialog.ShowAsync();
         }
+
+        
     }
 }

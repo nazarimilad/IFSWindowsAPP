@@ -13,14 +13,14 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Ifes.Aircrew
+namespace Ifes.Views.Aircrew
 {
     public sealed partial class Dashboard : Page
     {
         public Dashboard()
         {
             this.InitializeComponent();
-            ContentFrame.Navigate(typeof(Aircrew.Messages));
+            ContentFrame.Navigate(typeof(Views.Aircrew.Messages));
             NavView.SelectedItem = NavView.MenuItems.ElementAt(0);
         }
 
@@ -28,8 +28,8 @@ namespace Ifes.Aircrew
         {
             var label = args.InvokedItem as string;
             var pageType =
-                label == "Messages" ? typeof(Aircrew.Messages) :
-                label == "Passengers" ? typeof(Aircrew.PassengersManagment) : null;
+                label == "Messages" ? typeof(Views.Aircrew.Messages) :
+                label == "Passengers" ? typeof(Views.Aircrew.PassengersManagment) : null;
             if (pageType != null && pageType != ContentFrame.CurrentSourcePageType)
             {
                 ContentFrame.Navigate(pageType);
@@ -38,7 +38,7 @@ namespace Ifes.Aircrew
 
         private void OnClickLogOut(object sender, TappedRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Aircrew.Login), null);
+            this.Frame.Navigate(typeof(Views.Aircrew.Login), null);
         }
     }
 }

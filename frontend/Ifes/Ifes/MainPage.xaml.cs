@@ -24,12 +24,12 @@ namespace Ifes
 
         private void OnClickBtnAircrew(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Aircrew.Login), null);
+            this.Frame.Navigate(typeof(Views.Aircrew.Login), null);
         }
 
         private void OnClickBtnPassenger(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Passenger.Login), null);
+            this.Frame.Navigate(typeof(Views.Passenger.Login), null);
         }
     }
 }

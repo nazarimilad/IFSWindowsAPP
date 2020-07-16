@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="Ifes.Passenger.Dashboard"
+    x:Class="Ifes.Views.Passenger.Dashboard"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Ifes.Passenger"
+    xmlns:local="using:Ifes.Views.Passenger"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -11,17 +11,17 @@
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
         <NavigationView x:Name="NavView" ItemInvoked="NavViewItemInvoked" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False">
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Flight Information" x:Name="FlightInformation">
+                <NavigationViewItem Content="Flight Info" x:Name="FlightInformation">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE946;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Food and snacks" x:Name="FoodSnacks">
+                <NavigationViewItem Content="Food &amp; snacks" x:Name="FoodSnacks">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xED56;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Multimedia" x:Name="Multimedia">
+                <NavigationViewItem Content="Media" x:Name="Multimedia">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA69;"/>
                     </NavigationViewItem.Icon>
@@ -39,6 +39,11 @@
             </NavigationView.MenuItems>
             <NavigationView.PaneFooter>
                 <StackPanel Orientation="Horizontal" >
+                    <NavigationViewItem Content="My orders" Padding="0 0 10 0" Tapped="OnClickMyOrders">
+                        <NavigationViewItem.Icon>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEF40;"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
                     <NavigationViewItem Content="Log out" Padding="0 0 10 0" Tapped="OnClickLogOut">
                         <NavigationViewItem.Icon>
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE748;"/>
