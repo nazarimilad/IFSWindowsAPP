@@ -12,15 +12,16 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid.ColumnSpacing>90</Grid.ColumnSpacing>
+        <Grid.ColumnSpacing>20</Grid.ColumnSpacing>
         <Grid.RowSpacing>20</Grid.RowSpacing>
-        <Grid.Padding>30</Grid.Padding>
+        <Grid.Padding>20</Grid.Padding>
         <TextBlock Text="Flight Information" Grid.Column="0" Grid.Row="0" Style="{StaticResource SubheaderTextBlockStyle}"></TextBlock>
         <Grid Grid.Column="0" Grid.Row="1" Margin="0 30 0 0" Background="{ThemeResource SystemControlAltHighAcrylicElementBrush }" >
             <Grid.ColumnDefinitions>
@@ -44,7 +45,7 @@
             <TextBlock Text="Origin" Grid.Column="0" Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" />
             <TextBlock x:Name="TextBoxOrigin" Text="Origin Value" Grid.Column="1" Grid.Row="3" Style="{ThemeResource BodyTextBlockStyle}" />
             <TextBlock Text="Destination" Grid.Column="0" Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" />
-            <TextBlock x:Name="TextBoxDestination" Text="Destination Value" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" />
+            <TextBlock x:Name="TextBoxDestination" Text="Dest Value" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" />
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1" Margin="0 30 0 0" Background="{ThemeResource SystemControlAltHighAcrylicElementBrush }">
             <Grid.ColumnDefinitions>
@@ -68,7 +69,31 @@
             <TextBlock Text="Altitude" Grid.Column="0" Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" />
             <TextBlock x:Name="TextBoxAltitude" Text="Altitude Value" Grid.Column="1" Grid.Row="3" Style="{ThemeResource BodyTextBlockStyle}" />
             <TextBlock Text="Temperature" Grid.Column="0" Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" />
-            <TextBlock x:Name="TextBoxTemperature" Text="Temperature Value" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" />
+            <TextBlock x:Name="TextBoxTemperatureAirplane" Text="Temp Value" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="1" Margin="0 30 0 0" Background="{ThemeResource SystemControlAltHighAcrylicElementBrush }">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnSpacing>100</Grid.ColumnSpacing>
+            <Grid.RowSpacing>20</Grid.RowSpacing>
+            <Grid.Padding>20</Grid.Padding>
+            <TextBlock Text="Weather in Dest Value" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TitleTextBlockStyle}" />
+            <Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Opacity="0.5"/>
+            <TextBlock Text="Temperature" Grid.Column="0" Grid.Row="2" Style="{ThemeResource BaseTextBlockStyle}" />
+            <TextBlock x:Name="TextBoxTemperatureDestination" Text="Temp Value" Grid.Column="1" Grid.Row="2" Style="{ThemeResource BodyTextBlockStyle}" />
+            <TextBlock Text="Precipitation" Grid.Column="0" Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" />
+            <TextBlock x:Name="TextBoxPrecipitation" Text="Prec Value" Grid.Column="1" Grid.Row="3" Style="{ThemeResource BodyTextBlockStyle}" />
+            <TextBlock Text="Wind" Grid.Column="0" Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" />
+            <TextBlock x:Name="TextBoxWind" Text="Wind Value" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" />
         </Grid>
     </Grid>
 </Page>

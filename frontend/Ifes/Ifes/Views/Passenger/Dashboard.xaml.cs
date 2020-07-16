@@ -35,7 +35,6 @@ namespace Ifes.Views.Passenger
                 label == "Flight Info" ? typeof(Views.Passenger.FlightInfo) :
                 label == "Food & snacks" ? typeof(Views.Passenger.FoodSnacks) :
                 label == "Media" ? typeof(Views.Passenger.Media):
-                label == "Weather" ? typeof(Views.Passenger.Weather):
                 label == "Chat" ? typeof(Views.Passenger.Chat): null;
             if (pageType != null && pageType != ContentFrame.CurrentSourcePageType)
             {
