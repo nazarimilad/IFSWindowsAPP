@@ -1,4 +1,4 @@
-﻿using Ifes.ViewModels.Aircrew;
+﻿using Ifes.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,7 +21,7 @@ namespace Ifes.Views.Aircrew
 {
     public sealed partial class Login : Page
     {
-        private LoginViewModel _viewModel;
+        private LoginFlightAttendant _viewModel;
 
         public Login()
         {
@@ -37,7 +37,7 @@ namespace Ifes.Views.Aircrew
             // ALT routes here
             AltLeft.Modifiers = Windows.System.VirtualKeyModifiers.Menu;
 
-            this._viewModel = new LoginViewModel();
+            this._viewModel = new LoginFlightAttendant();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ifes.ViewModels.Aircrew
+namespace Ifes.ViewModels
 {
-    class LoginViewModel : INotifyPropertyChanged
+    class LoginFlightAttendant : INotifyPropertyChanged
     {
         private string _email;
         private string _password;
@@ -47,6 +47,7 @@ namespace Ifes.ViewModels.Aircrew
                 }
             }
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged(String propertyName)

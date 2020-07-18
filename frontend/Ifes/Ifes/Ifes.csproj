@@ -116,10 +116,29 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ViewModels\AirPlaneInfo.cs" />
+    <Compile Include="ViewModels\FlightInfo.cs" />
+    <Compile Include="ViewModels\LiveFlightInfo.cs" />
+    <Compile Include="ViewModels\Media.cs" />
+    <Compile Include="ViewModels\MediaType.cs" />
+    <Compile Include="ViewModels\Seat.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\FlightInfoService.cs" />
     <Compile Include="Services\PassengersService.cs" />
-    <Compile Include="ViewModels\Passenger\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Beverage.cs" />
+    <Compile Include="ViewModels\BeverageType.cs" />
+    <Compile Include="ViewModels\Catalog.cs" />
+    <Compile Include="ViewModels\CatalogItem.cs" />
+    <Compile Include="ViewModels\FlightAttendant.cs" />
+    <Compile Include="ViewModels\FlightClass.cs" />
+    <Compile Include="ViewModels\Food.cs" />
+    <Compile Include="ViewModels\FoodType.cs" />
+    <Compile Include="ViewModels\Order.cs" />
+    <Compile Include="ViewModels\OrderStatus.cs" />
+    <Compile Include="ViewModels\Passenger.cs" />
+    <Compile Include="ViewModels\LoginPassenger.cs" />
+    <Compile Include="ViewModels\PaymentOption.cs" />
+    <Compile Include="ViewModels\Weather.cs" />
     <Compile Include="Views\Aircrew\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
@@ -150,6 +169,9 @@
     <Compile Include="Views\Passenger\FoodSnacks.xaml.cs">
       <DependentUpon>FoodSnacks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Passenger\FoodSnacksContent.xaml.cs">
+      <DependentUpon>FoodSnacksContent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Passenger\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -160,7 +182,7 @@
       <DependentUpon>Orders.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\Aircrew\LoginViewModel.cs" />
+    <Compile Include="ViewModels\LoginFlightAttendant.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -219,6 +241,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Passenger\FoodSnacksContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Passenger\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -233,13 +259,17 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore">
+      <Version>2.2.0</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.8</Version>
+      <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>6.1.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Ifes.Services;
 
-namespace Ifes.ViewModels.Passenger
+namespace Ifes.ViewModels
 {
-    class LoginViewModel
+    class LoginPassenger
     {
         private Regex _regex = new Regex("^[a-zA-Z0-9]{4,20}$");
         private string _reservationNumber;

@@ -16,7 +16,7 @@
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE946;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Food &amp; snacks" x:Name="FoodSnacks">
+                <NavigationViewItem Content="Food &amp; Snacks" x:Name="FoodSnacks">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xED56;"/>
                     </NavigationViewItem.Icon>

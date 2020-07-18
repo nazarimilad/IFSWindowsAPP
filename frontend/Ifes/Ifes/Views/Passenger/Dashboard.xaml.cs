@@ -33,7 +33,7 @@ namespace Ifes.Views.Passenger
             var label = args.InvokedItem as string;
             var pageType =
                 label == "Flight Info" ? typeof(Views.Passenger.FlightInfo) :
-                label == "Food & snacks" ? typeof(Views.Passenger.FoodSnacks) :
+                label == "Food & Snacks" ? typeof(Views.Passenger.FoodSnacks) :
                 label == "Media" ? typeof(Views.Passenger.Media):
                 label == "Chat" ? typeof(Views.Passenger.Chat): null;
             if (pageType != null && pageType != ContentFrame.CurrentSourcePageType)

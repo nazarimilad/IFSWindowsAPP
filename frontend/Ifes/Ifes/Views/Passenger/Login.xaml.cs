@@ -1,4 +1,4 @@
-﻿using Ifes.ViewModels.Passenger;
+﻿using Ifes.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +19,7 @@ namespace Ifes.Views.Passenger
 {
     public sealed partial class Login : Page
     {
-        private LoginViewModel _viewModel;
+        private LoginPassenger _viewModel;
 
         public Login()
         {
@@ -35,7 +35,7 @@ namespace Ifes.Views.Passenger
             // ALT routes here
             AltLeft.Modifiers = Windows.System.VirtualKeyModifiers.Menu;
 
-            this._viewModel = new LoginViewModel();
+            this._viewModel = new LoginPassenger();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
