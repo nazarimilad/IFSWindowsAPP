@@ -10,7 +10,8 @@ namespace Ifes.ViewModels
     {
         public BeverageType BeverageType { get; private set; }
 
-        public Beverage(string id, string name, double price, double discount, PaymentOption paymentOption, BeverageType beverateType) : base(id, name, price, discount, paymentOption)
+        public Beverage(string name, string description, double price, double discount, PaymentOption paymentOption, BeverageType beverateType) : 
+            base(name, description, price, discount, paymentOption)
         {
             BeverageType = beverateType;
         }

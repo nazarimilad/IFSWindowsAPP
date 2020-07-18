@@ -12,12 +12,7 @@ namespace Ifes.Services
         
         public static AuthenticationService Instance { get { return lazy.Value; } }
 
-        private string _jwtToken = "";
-        public string JwtToken
-        {
-            get { return _jwtToken; }
-            private set { }
-        }
+        public string JwtToken { get; private set; } = "";
 
         private AuthenticationService()
         {
@@ -27,7 +22,7 @@ namespace Ifes.Services
         {
             if (email.ToLower() == "admin@test.com" && password == "admintest")
             {
-                _jwtToken = "3lidj9092Nlijqdzlidj092NN09883H2qlijdqz";
+                JwtToken = "3lidj9092Nlijqdzlidj092NN09883H2qlijdqz";
                 return true;
             }
             throw new ArgumentException("Invalid email or password.");
@@ -37,7 +32,7 @@ namespace Ifes.Services
         {
             if (reservationNumber.ToLower() == "abc123")
             {
-                _jwtToken = "3lidj9092Nlijqdfcidj092NN09883H2qlijdqz";
+                JwtToken = "3lidj9092Nlijqdfcidj092NN09883H2qlijdqz";
                 return true;
             }
             throw new ArgumentException("Invalid reservation number.");
@@ -45,7 +40,7 @@ namespace Ifes.Services
 
         public void LogOut()
         {
-            _jwtToken = "";
+            JwtToken = "";
         }
     }
 }

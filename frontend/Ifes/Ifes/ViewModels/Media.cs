@@ -12,7 +12,8 @@ namespace Ifes.ViewModels
         public int Duration { get; private set; }
         public string ObjectStorageId { get; private set; }
 
-        public Media(string id, string name, double price, double discount, PaymentOption paymentOption, MediaType mediaType, int duration, string objectStorageId) : base(id, name, price, discount, paymentOption)
+        public Media(string name, string description, double price, double discount, PaymentOption paymentOption, MediaType mediaType, int duration, string objectStorageId) :
+            base(name, description, price, discount, paymentOption)
         {
             MediaType = mediaType;
             Duration = duration;

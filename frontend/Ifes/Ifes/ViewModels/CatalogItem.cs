@@ -8,8 +8,8 @@ namespace Ifes.ViewModels
 {
     public abstract class CatalogItem
     {
-        public string Id { get; private set; }
         public string Name { get; private set; }
+        public string Description { get; private set; }
         public double Price { get; private set; }
         public double PriceDiscounted
         {
@@ -18,10 +18,10 @@ namespace Ifes.ViewModels
         public double Discount { get; private set; }
         public PaymentOption PaymentOption { get; private set; }
 
-        public CatalogItem(string id, string name, double price, double discount, PaymentOption paymentOption)
+        public CatalogItem(string name, string description, double price, double discount, PaymentOption paymentOption)
         {
-            Id = id;
             Name = name;
+            Description = description;
             Price = price;
             Discount = discount;
             PaymentOption = paymentOption;

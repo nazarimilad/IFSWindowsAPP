@@ -14,6 +14,7 @@ namespace Ifes.Services
 
         private PassengersService()
         {
+
         }
     }
 }
