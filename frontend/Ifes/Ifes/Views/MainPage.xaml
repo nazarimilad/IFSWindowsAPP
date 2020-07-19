@@ -28,8 +28,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button Content="Aircrew" FontSize="50" Padding="20" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Click="OnClickBtnAircrew" Background="{ThemeResource SystemControlAcrylicWindowBrush    }"></Button>
-            <Button Content="Passenger" FontSize="50" Padding="20" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Click="OnClickBtnPassenger" Background="{ThemeResource SystemControlAcrylicWindowBrush }"></Button>
+            <Button Content="Aircrew" FontSize="40" Padding="20" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Click="OnClickBtnAircrew" Background="{ThemeResource SystemAccentColor}" Foreground="White"></Button>
+            <Button Content="Passenger" FontSize="40" Padding="20" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Click="OnClickBtnPassenger" Background="{ThemeResource SystemAccentColor }" Foreground="White"></Button>
         </Grid>
     </Grid>
 </Page>
