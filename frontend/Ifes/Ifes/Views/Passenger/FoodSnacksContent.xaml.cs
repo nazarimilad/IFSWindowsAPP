@@ -23,8 +23,7 @@ namespace Ifes.Views.Passenger
     /// </summary>
     public sealed partial class FoodSnacksContent : Page
     {
-        public string Title { get; set; }
-        public IEnumerable<CatalogItem> Items { get; set; }
+        public MealsBeverages MealsBeverages { get; set; }
 
         public FoodSnacksContent()
         {
@@ -34,9 +33,18 @@ namespace Ifes.Views.Passenger
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            MealsBeveragesPayload pagePayload = (MealsBeveragesPayload) e.Parameter;
-            Title = pagePayload.Title;
-            Items = pagePayload.Items;
+            MealsBeverages = (MealsBeverages) e.Parameter;
+        }
+
+        private void OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            MealsBeverages.CurrentItem = (CatalogItem) e.ClickedItem;
+            BtnOrder.IsEnabled = true;
+        }
+
+        private void OnBtnOrderClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

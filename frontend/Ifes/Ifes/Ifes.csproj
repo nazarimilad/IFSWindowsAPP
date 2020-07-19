@@ -123,6 +123,7 @@
     <Compile Include="ViewModels\AirPlaneInfo.cs" />
     <Compile Include="ViewModels\FlightInfo.cs" />
     <Compile Include="ViewModels\LiveFlightData.cs" />
+    <Compile Include="ViewModels\MealsBeverages.cs" />
     <Compile Include="ViewModels\Media.cs" />
     <Compile Include="ViewModels\MediaType.cs" />
     <Compile Include="ViewModels\Seat.cs" />

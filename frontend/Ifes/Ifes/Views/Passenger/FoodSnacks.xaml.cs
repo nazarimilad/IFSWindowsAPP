@@ -23,7 +23,7 @@ namespace Ifes.Views.Passenger
         {
             this.InitializeComponent();
             NavigationViewControl.SelectedItem = NavigationViewControl.MenuItems.ElementAt(0);
-            ContentFrame.Navigate(typeof(Views.Passenger.FoodSnacksContent), new MealsBeveragesPayload { Title = "Meals", Items = CatalogService.Instance.Beverages });
+            ContentFrame.Navigate(typeof(Views.Passenger.FoodSnacksContent), new MealsBeverages("Meals", CatalogService.Instance.Meals));
         }
 
         private void NavViewItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -39,7 +39,7 @@ namespace Ifes.Views.Passenger
             {
                 items = CatalogService.Instance.Beverages;
             }
-            ContentFrame.Navigate(typeof(Views.Passenger.FoodSnacksContent), new MealsBeveragesPayload { Title = title, Items = items });
+            ContentFrame.Navigate(typeof(Views.Passenger.FoodSnacksContent), new MealsBeverages(title, items));
         }
     }
 }
