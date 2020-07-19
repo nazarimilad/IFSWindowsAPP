@@ -13,7 +13,7 @@ namespace Ifes.ViewModels
         public int Temperature { get; private set; }
         // probability of precipitation
         public double Precipitation { get; private set; }
-        public double WindSpeed { get; private set; }
+        public int WindSpeed { get; private set; }
 
         public Weather(string location, DateTime dateTime, int temperature, double precipitation, double windSpeed)
         {
@@ -21,7 +21,7 @@ namespace Ifes.ViewModels
             DateTime = dateTime;
             Temperature = temperature;
             Precipitation = precipitation*100;
-            WindSpeed = windSpeed*3.6;
+            WindSpeed = (int) (windSpeed * 3.6);
         }
     }
 }

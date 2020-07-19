@@ -14,13 +14,14 @@ namespace Ifes.Services
         public static FlightInfoService Instance { get { return lazy.Value; } }
 
         public AirPlaneInfo AirPlaneInfo { get; private set; }
-        public FlightInfo FlightInfo { get; private set; }
-        public LiveFlightData LiveFlightData { get { return GetLiveFlightData().Result; } }
+        public FlightInfo FlightInfo { get; set; }
+        public LiveFlightData LiveFlightData { get; set; }
 
         private FlightInfoService()
         {
             AirPlaneInfo = GetAirPlaneInfo().Result;
             FlightInfo = GetFlightInfo().Result;
+            LiveFlightData = GetLiveFlightData().Result;
         }
 
         private async Task<AirPlaneInfo> GetAirPlaneInfo()
@@ -42,13 +43,13 @@ namespace Ifes.Services
             int speed = rnd.Next(250, 254);
             int altitude = rnd.Next(11540, 11580);
             int temperature = rnd.Next(-50, -40);
-            int distanceToDestination = Instance.FlightInfo.FlightDistance;
-            if(Instance.FlightInfo.DistanceToDestination != 0)
-            {
-                int distanceTraveled = speed * 5;
-                Instance.FlightInfo.FlightDistance = Instance.FlightInfo.DistanceToDestination - distanceToDestination;
-            }
-            return new LiveFlightData(speed, altitude, temperature);
+            int distanceToDestination = FlightInfo.FlightDistance;
+            int distanceTraveled = speed * 5;
+            FlightInfo.FlightDistance -= distanceTraveled;
+            int etaTimeSeconds = (int) Math.Floor((double) FlightInfo.FlightDistance / 250);
+            TimeSpan etaTime = TimeSpan.FromSeconds(etaTimeSeconds);
+            string etaTimeFormatted = etaTime.ToString(@"hh\:mm\:ss");
+            return new LiveFlightData(speed, altitude, temperature, etaTimeFormatted);
         }
     }
 }

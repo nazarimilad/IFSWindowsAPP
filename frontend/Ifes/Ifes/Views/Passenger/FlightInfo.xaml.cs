@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -45,7 +47,26 @@ namespace Ifes.Views.Passenger
         public FlightInfo()
         {
             this.InitializeComponent();
+            StartUpdatingLiveFlightDataAsync();
         }
-        
+
+        private async Task StartUpdatingLiveFlightDataAsync()
+        {
+            // TODO: make http request and deserialise JSON result into corresponding view model
+            await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+             {
+                 while (true)
+                 {
+                     Random rnd = new Random();
+                     LiveFlightData newLiveFlightdata = FlightInfoService.Instance.GetLiveFlightData().Result;
+                     LiveFlightData.Speed = newLiveFlightdata.Speed;
+                     LiveFlightData.Altitude = newLiveFlightdata.Altitude;
+                     LiveFlightData.Temperature = newLiveFlightdata.Temperature;
+                     LiveFlightData.EtaTime = newLiveFlightdata.EtaTime;
+                     await Task.Delay(5000); // <- await with cancellation
+                }
+             });
+        }
+
     }
 }

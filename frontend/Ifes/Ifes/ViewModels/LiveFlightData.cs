@@ -1,34 +1,81 @@
 ﻿using Ifes.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Ifes.ViewModels
 {
-    public class LiveFlightData
+    public class LiveFlightData : INotifyPropertyChanged
     {
-        public int Speed { get; private set; }
-        public int Altitude { get; private set; }
-        public int Temperature { get; private set; }
+        public int _speed;
+        public int Speed
+        {
+            get { return _speed; }
+            set
+            {
+                if (value != _speed)
+                {
+                    _speed = value;
+                    NotifyPropertyChanged("Speed");
+                }
+            }
+        }
+        private int _altitude;
+        public int Altitude
+        {
+            get { return _altitude; }
+            set
+            {
+                if (value != _altitude)
+                {
+                    _altitude = value;
+                    NotifyPropertyChanged("Altitude");
+                }
+            }
+        }
+        private int _temperature;
+        public int Temperature
+        {
+            get { return _temperature; }
+            set
+            {
+                if (value != _temperature)
+                {
+                    _temperature = value;
+                    NotifyPropertyChanged("Temperature");
+                }
+            }
+        }
+        private string _etaTime;
         public string EtaTime
         {
-            get
+            get { return _etaTime; }
+            set
             {
-                int speed = new Random().Next(250, 254);
-                int timeSeconds = (int) Math.Floor((double) FlightInfoService.Instance.FlightInfo.FlightDistance / speed);
-                TimeSpan time = TimeSpan.FromSeconds(timeSeconds);
-                string timeFormatted = time.ToString(@"hh\:mm\:ss\:fff");
-                return timeFormatted;
+                if (value != _etaTime)
+                {
+                    _etaTime = value;
+                    NotifyPropertyChanged("EtaTime");
+                }
             }
         }
 
-        public LiveFlightData(int speed, int altitude, int temperature)
+        public LiveFlightData(int speed, int altitude, int temperature, string etaTime)
         {
-            Speed = (int) (speed * 3.6);
+            Speed = speed;
             Altitude = altitude;
             Temperature = temperature;
+            EtaTime = etaTime;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
