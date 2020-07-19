@@ -39,14 +39,14 @@
             <Grid.ColumnSpacing>100</Grid.ColumnSpacing>
             <Grid.RowSpacing>20</Grid.RowSpacing>
             <Grid.Padding>20</Grid.Padding>
-            <TextBlock Text="Your journey" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TitleTextBlockStyle}" />
-            <Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Opacity="0.5"/>
-            <TextBlock Text="ETA" Grid.Column="0" Grid.Row="2" Style="{ThemeResource BaseTextBlockStyle}" />
-            <TextBlock x:Name="TextBoxEta" Text="{x:Bind LiveFlightData.EtaTime, Mode=OneWay, TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="2" Style="{ThemeResource BodyTextBlockStyle}" />
-            <TextBlock Text="Origin" Grid.Column="0" Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" />
-            <TextBlock x:Name="TextBoxOrigine" Text="{x:Bind FlightInfoValue.Origine, TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="3" Style="{ThemeResource BodyTextBlockStyle}" />
-            <TextBlock Text="Destination" Grid.Column="0" Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" />
-            <TextBlock x:Name="TextBoxDestination" Text="{x:Bind FlightInfoValue.Destination, TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" />
+            <TextBlock Text="Your journey" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TitleTextBlockStyle}" Foreground="White"/>
+            <Border Grid.Row="1" BorderThickness="1" BorderBrush="White" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Opacity="0.5"/>
+            <TextBlock Text="ETA" Grid.Column="0" Grid.Row="2" Style="{ThemeResource BaseTextBlockStyle}" Foreground="White"/>
+            <TextBlock x:Name="TextBoxEta" Text="{x:Bind LiveFlightData.EtaTime, Mode=OneWay, TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="2" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
+            <TextBlock Text="Origin" Grid.Column="0" Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" Foreground="White"/>
+            <TextBlock x:Name="TextBoxOrigine" Text="{x:Bind FlightInfoValue.Origine, TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="3" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
+            <TextBlock Text="Destination" Grid.Column="0" Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" Foreground="White"/>
+            <TextBlock x:Name="TextBoxDestination" Text="{x:Bind FlightInfoValue.Destination, TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1" Margin="0 30 0 0" Background="{ThemeResource SystemAccentColor }">
             <Grid.ColumnDefinitions>
@@ -63,14 +63,14 @@
             <Grid.ColumnSpacing>100</Grid.ColumnSpacing>
             <Grid.RowSpacing>20</Grid.RowSpacing>
             <Grid.Padding>20</Grid.Padding>
-            <TextBlock Text="Airplane" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TitleTextBlockStyle}" />
-            <Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Opacity="0.5"/>
-            <TextBlock Text="Speed" Grid.Column="0" Grid.Row="2" Style="{ThemeResource BaseTextBlockStyle}" />
-            <TextBlock x:Name="TextBoxSpeed" Text="{x:Bind sys:String.Format('{0} km/h', LiveFlightData.Speed), Mode=OneWay, TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="2" Style="{ThemeResource BodyTextBlockStyle}" />
-            <TextBlock Text="Altitude" Grid.Column="0" Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" />
-            <TextBlock x:Name="TextBoxAltitude" Text="{x:Bind sys:String.Format('{0} m', LiveFlightData.Altitude), Mode=OneWay, TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="3" Style="{ThemeResource BodyTextBlockStyle}" />
-            <TextBlock Text="Temperature" Grid.Column="0" Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" />
-            <TextBlock x:Name="TextBoxTemperatureAirplane" Text="{x:Bind sys:String.Format('{0} °C', LiveFlightData.Temperature), Mode=OneWay, TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" />
+            <TextBlock Text="Airplane" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TitleTextBlockStyle}" Foreground="White"/>
+            <Border Grid.Row="1" BorderThickness="1" BorderBrush="White" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Opacity="0.5"/>
+            <TextBlock Text="Speed" Grid.Column="0" Grid.Row="2" Style="{ThemeResource BaseTextBlockStyle}" Foreground="White"/>
+            <TextBlock x:Name="TextBoxSpeed" Text="{x:Bind sys:String.Format('{0} km/h', LiveFlightData.Speed), Mode=OneWay, TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="2" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
+            <TextBlock Text="Altitude" Grid.Column="0" Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" Foreground="White"/>
+            <TextBlock x:Name="TextBoxAltitude" Text="{x:Bind sys:String.Format('{0} m', LiveFlightData.Altitude), Mode=OneWay, TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="3" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
+            <TextBlock Text="Temperature" Grid.Column="0" Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" Foreground="White"/>
+            <TextBlock x:Name="TextBoxTemperatureAirplane" Text="{x:Bind sys:String.Format('{0} °C', LiveFlightData.Temperature), Mode=OneWay, TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
         </Grid>
         <Grid Grid.Column="2" Grid.Row="1" Margin="0 30 0 0" Background="{ThemeResource SystemAccentColor }">
             <Grid.ColumnDefinitions>
@@ -87,14 +87,14 @@
             <Grid.ColumnSpacing>100</Grid.ColumnSpacing>
             <Grid.RowSpacing>20</Grid.RowSpacing>
             <Grid.Padding>20</Grid.Padding>
-            <TextBlock Text="{x:Bind sys:String.Format('Weather in {0}', FlightInfoValue.Destination)}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TitleTextBlockStyle}" />
-            <Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Opacity="0.5"/>
-            <TextBlock Text="Temperature" Grid.Column="0" Grid.Row="2" Style="{ThemeResource BaseTextBlockStyle}" />
-            <TextBlock x:Name="TextBoxTemperatureDestination" Text="{x:Bind sys:String.Format('{0} °C', Weather.Temperature), TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="2" Style="{ThemeResource BodyTextBlockStyle}" />
-            <TextBlock Text="Precipitation" Grid.Column="0" Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" />
-            <TextBlock x:Name="TextBoxPrecipitation" Text="{x:Bind sys:String.Format('{0} %', Weather.Precipitation), TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="3" Style="{ThemeResource BodyTextBlockStyle}" />
-            <TextBlock Text="Wind" Grid.Column="0" Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" />
-            <TextBlock x:Name="TextBoxWind" Text="{x:Bind sys:String.Format('{0} km/h', Weather.WindSpeed), TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" />
+            <TextBlock Text="{x:Bind sys:String.Format('Weather in {0}', FlightInfoValue.Destination)}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TitleTextBlockStyle}" Foreground="White"/>
+            <Border Grid.Row="1" BorderThickness="1" BorderBrush="White" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Opacity="0.5"/>
+            <TextBlock Text="Temperature" Grid.Column="0" Grid.Row="2" Style="{ThemeResource BaseTextBlockStyle}" Foreground="White"/>
+            <TextBlock x:Name="TextBoxTemperatureDestination" Text="{x:Bind sys:String.Format('{0} °C', Weather.Temperature), TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="2" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
+            <TextBlock Text="Precipitation" Grid.Column="0" Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" Foreground="White"/>
+            <TextBlock x:Name="TextBoxPrecipitation" Text="{x:Bind sys:String.Format('{0} %', Weather.Precipitation), TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="3" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
+            <TextBlock Text="Wind" Grid.Column="0" Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" Foreground="White"/>
+            <TextBlock x:Name="TextBoxWind" Text="{x:Bind sys:String.Format('{0} km/h', Weather.WindSpeed), TargetNullValue='N/A'}" Grid.Column="1" Grid.Row="4" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
         </Grid>
     </Grid>
 </Page>
