@@ -36,11 +36,11 @@
                     <PasswordBox x:Name="PasswordBoxPassword" PasswordChanged="OnChangeTextPassword" KeyUp="OnKeyUp" Width="400" HorizontalAlignment="Left" MaxLength="128" Background="{ThemeResource SystemControlAltHighAcrylicElementBrush}"></PasswordBox>
                 </StackPanel>
                 <TextBlock x:Name="TextBlockError" Foreground="Red"></TextBlock>
-                <Button x:Name="BtnLogin" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Click="OnBtnLogin" IsEnabled="False">
+                <Button x:Name="BtnLogin" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Click="OnBtnLogin" IsEnabled="False" Background="{ThemeResource SystemAccentColor}">
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="Login"/>
-                        <Border BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Stretch" Opacity="0.5"/>
-                        <FontIcon Glyph="&#xE9AC;"/>
+                        <TextBlock Text="Login" Foreground="White"/>
+                        <Border BorderThickness="1" BorderBrush="White" VerticalAlignment="Stretch" Opacity="0.5"/>
+                        <FontIcon Glyph="&#xE9AC;" Foreground="White"/>
                     </StackPanel>
                 </Button>
             </StackPanel>

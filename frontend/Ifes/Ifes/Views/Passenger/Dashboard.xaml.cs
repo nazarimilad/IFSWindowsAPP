@@ -72,6 +72,7 @@ namespace Ifes.Views.Passenger
                 Title = "Dear passenger",
                 Content = "Make sure to fasten your seat belt.",
                 PrimaryButtonText = "Ok",
+                DefaultButton = ContentDialogButton.Primary
             };
             await Task.Delay(5000);
             await seatBeltDialog.ShowAsync();
