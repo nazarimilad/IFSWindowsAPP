@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Ifes.Services;
+using Ifes.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,6 +23,23 @@ namespace Ifes.Views.Passenger
         {
             this.InitializeComponent();
             NavigationViewControl.SelectedItem = NavigationViewControl.MenuItems.ElementAt(0);
+            ContentFrame.Navigate(typeof(Views.Passenger.FoodSnacksContent), new MealsBeveragesPayload { Title = "Meals", Items = CatalogService.Instance.Beverages });
+        }
+
+        private void NavViewItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            var label = args.InvokedItem as string;
+            string title = label;
+            IEnumerable<CatalogItem> items = null;
+            if (label == "Meals")
+            {
+                items = CatalogService.Instance.Meals;
+            }
+            else if (label == "Beverages")
+            {
+                items = CatalogService.Instance.Beverages;
+            }
+            ContentFrame.Navigate(typeof(Views.Passenger.FoodSnacksContent), new MealsBeveragesPayload { Title = title, Items = items });
         }
     }
 }

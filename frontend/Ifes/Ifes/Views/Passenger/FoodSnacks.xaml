@@ -9,12 +9,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <NavigationView x:Name="NavigationViewControl" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" IsBackEnabled="False">
+        <NavigationView x:Name="NavigationViewControl" ItemInvoked="NavViewItemInvoked" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" IsBackEnabled="False">
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Food" x:Name="Food" />
-                <NavigationViewItem Content="Snacks" x:Name="Snacks" />
-                <NavigationViewItem Content="Drinks" x:Name="Drinks" />
+                <NavigationViewItem Content="Meals" x:Name="Meals" />
+                <NavigationViewItem Content="Beverages" x:Name="Beverages" />
             </NavigationView.MenuItems>
+            <Frame x:Name="ContentFrame" IsTabStop="True"/>
         </NavigationView>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>

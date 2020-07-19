@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ifes.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,20 @@ namespace Ifes.Views.Passenger
     /// </summary>
     public sealed partial class FoodSnacksContent : Page
     {
+        public string Title { get; set; }
+        public IEnumerable<CatalogItem> Items { get; set; }
+
         public FoodSnacksContent()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            MealsBeveragesPayload pagePayload = (MealsBeveragesPayload) e.Parameter;
+            Title = pagePayload.Title;
+            Items = pagePayload.Items;
         }
     }
 }

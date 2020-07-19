@@ -22,7 +22,8 @@
         <Grid.ColumnSpacing>20</Grid.ColumnSpacing>
         <Grid.RowSpacing>20</Grid.RowSpacing>
         <Grid.Padding>20</Grid.Padding>
-        <TextBlock Text="Food" Grid.Column="0" Grid.Row="0" Style="{StaticResource SubheaderTextBlockStyle}"></TextBlock>
+        <TextBlock Text="{x:Bind Title}" Grid.Column="0" Grid.Row="0" Style="{StaticResource SubheaderTextBlockStyle}"></TextBlock>
+        <!--
         <controls:MasterDetailsView Grid.Column="0" Grid.Row="1"
           ItemsSource="{Binding Items}"
           ItemTemplate="{StaticResource ListTemplate}"
@@ -30,7 +31,8 @@
           NoSelectionContentTemplate="{StaticResource NoSelectionContentTemplate}"
           CompactModeThresholdWidth="720">
         </controls:MasterDetailsView>
-
+        -->
+        <ListView ItemsSource="{x:Bind Items}" Grid.Column="0" Grid.Row="1"></ListView>
         <Grid Grid.Column="2" Grid.Row="1" Margin="0 30 0 0" Background="{ThemeResource SystemControlAltHighAcrylicElementBrush }">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

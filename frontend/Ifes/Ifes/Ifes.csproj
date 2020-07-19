@@ -179,6 +179,7 @@
     <Compile Include="Views\Passenger\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Passenger\MealsBeveragesPayload.cs" />
     <Compile Include="Views\Passenger\Media.xaml.cs">
       <DependentUpon>Media.xaml</DependentUpon>
     </Compile>
