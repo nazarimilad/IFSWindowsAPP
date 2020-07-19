@@ -10,14 +10,16 @@ namespace Ifes.ViewModels
     {
         public string Origine { get; private set; }
         public string Destination { get; private set; }
-        // flight time in seconds
-        public int FlightTime { get; private set; }
+        // flight distance in meters
+        public int FlightDistance { get; set; }
+        public int DistanceToDestination { get; private set; }
 
-        public FlightInfo(string origine, string destination, int flightTime)
+        public FlightInfo(string origine, string destination, int flightDistance)
         {
             Origine = origine;
             Destination = destination;
-            FlightTime = flightTime;
+            FlightDistance = flightDistance;
+            DistanceToDestination = flightDistance;
         }
     }
 }

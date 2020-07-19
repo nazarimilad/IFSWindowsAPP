@@ -32,16 +32,22 @@ namespace Ifes.Services
         private async Task<FlightInfo> GetFlightInfo()
         {
             // TODO: make http request and deserialise JSON result into corresponding view model
-            return new FlightInfo("Brussels", "New York", 30300);
+            return new FlightInfo("Brussels", "New York", 5880_000);
         }
 
         public async Task<LiveFlightData> GetLiveFlightData()
         {
             // TODO: make http request and deserialise JSON result into corresponding view model
             Random rnd = new Random();
-            int speed = rnd.Next(250, 258);
+            int speed = rnd.Next(250, 254);
             int altitude = rnd.Next(11540, 11580);
-            int temperature = rnd.Next(-40, -50);
+            int temperature = rnd.Next(-50, -40);
+            int distanceToDestination = Instance.FlightInfo.FlightDistance;
+            if(Instance.FlightInfo.DistanceToDestination != 0)
+            {
+                int distanceTraveled = speed * 5;
+                Instance.FlightInfo.FlightDistance = Instance.FlightInfo.DistanceToDestination - distanceToDestination;
+            }
             return new LiveFlightData(speed, altitude, temperature);
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ifes.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,17 @@ namespace Ifes.Services
 
         public static WeatherService Instance { get { return lazy.Value; } }
 
+        public Weather Weather { get; private set; }
+
         private WeatherService()
         {
+            Weather = GetWeather().Result;
+        }
+
+        private async Task<Weather> GetWeather()
+        {
+            // TODO: make http request and deserialise JSON result into corresponding view model
+            return new Weather(FlightInfoService.Instance.FlightInfo.Destination, DateTime.Now, 25, 0.12, 3.8);
         }
     }
 }

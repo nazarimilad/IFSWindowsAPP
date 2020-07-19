@@ -20,8 +20,8 @@ namespace Ifes.ViewModels
             Location = location;
             DateTime = dateTime;
             Temperature = temperature;
-            Precipitation = precipitation;
-            WindSpeed = windSpeed;
+            Precipitation = precipitation*100;
+            WindSpeed = windSpeed*3.6;
         }
     }
 }
