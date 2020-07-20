@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ifes.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,9 +21,13 @@ namespace Ifes.Views.Passenger
 {
     public sealed partial class Dashboard : Page
     {
+        public Messaging Messaging; 
+
         public Dashboard()
         {
             this.InitializeComponent();
+            Messaging = new Messaging();
+            ChatNotification.DataContext = Messaging;
             ContentFrame.Navigate(typeof(Passenger.FlightInfo));
             NavView.SelectedItem = NavView.MenuItems.ElementAt(0);
             this.SendSeatBeltNotification();
@@ -33,7 +38,7 @@ namespace Ifes.Views.Passenger
             var label = args.InvokedItem as string;
             var pageType =
                 label == "Flight Info" ? typeof(Views.Passenger.FlightInfo) :
-                label == "Food & Snacks" ? typeof(Views.Passenger.MealsBeveragesView) :
+                label == "Meals & Beverages" ? typeof(Views.Passenger.MealsBeveragesView) :
                 label == "Media" ? typeof(Views.Passenger.Media):
                 label == "Chat" ? typeof(Views.Passenger.Chat): null;
             if (pageType != null && pageType != ContentFrame.CurrentSourcePageType)
@@ -76,8 +81,21 @@ namespace Ifes.Views.Passenger
             };
             await Task.Delay(5000);
             await seatBeltDialog.ShowAsync();
+            await Task.Delay(3000);
+            object inAppNotificationWithButtonsTemplate = null;
+            bool? isTemplatePresent = Resources.TryGetValue("InAppNotificationWithButtonsTemplate", out inAppNotificationWithButtonsTemplate);
+
+            if (isTemplatePresent == true && inAppNotificationWithButtonsTemplate is DataTemplate template)
+            {
+                Messaging.ReceivedMessage = "Lisa: Hey, I'm behind you! Can you see me?";
+                ChatNotification.Show(template, 10_000);
+            }
         }
 
-        
+        private void OnClickBtnReply(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(Views.Passenger.Chat));
+            NavView.SelectedItem = NavView.MenuItems.ElementAt(3);
+        }
     }
 }

@@ -5,8 +5,57 @@
     xmlns:local="using:Ifes.Views.Passenger"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    x:Name="CurrentPage">
+
+    <Page.Resources>
+        <DataTemplate x:Key="InAppNotificationWithButtonsTemplate">
+            <UserControl>
+                <Grid>
+                    <Grid x:Name="RootGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" MinWidth="40" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock x:Name="TextBlockNotificationMessage"
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               Text="{Binding ReceivedMessage}"
+                               VerticalAlignment="Center"
+                               TextWrapping="WrapWholeWords"
+                               TextTrimming="WordEllipsis"
+                               Margin="0,0,24,0" />
+
+                        <StackPanel x:Name="ButtonsStackPanel"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,0,-18,0"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+
+                            <Button x:Name="BtnReply" 
+                                Background="{ThemeResource SystemAccentColor}"
+                                Click="OnClickBtnReply"
+                                Foreground="White"
+                                Margin="0"
+                                FontSize="16"
+                                Content="Reply"
+                                Height="40"
+                                Width="120"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </UserControl>
+        </DataTemplate>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
         <NavigationView x:Name="NavView" ItemInvoked="NavViewItemInvoked" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False">
@@ -16,7 +65,7 @@
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE946;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Food &amp; Snacks" x:Name="FoodSnacks">
+                <NavigationViewItem Content="Meals &amp; Beverages" x:Name="MealsBeverages">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xED56;"/>
                     </NavigationViewItem.Icon>
@@ -48,6 +97,10 @@
                 </StackPanel>
             </NavigationView.PaneFooter>
             <Frame x:Name="ContentFrame" IsTabStop="True"/>
+            
+
         </NavigationView>
+        <controls:InAppNotification x:Name="ChatNotification" DataContext="Messaging">
+        </controls:InAppNotification>
     </Grid>
 </Page>

@@ -126,6 +126,7 @@
     <Compile Include="ViewModels\MealsBeverages.cs" />
     <Compile Include="ViewModels\Media.cs" />
     <Compile Include="ViewModels\MediaType.cs" />
+    <Compile Include="ViewModels\Messaging.cs" />
     <Compile Include="ViewModels\Seat.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\FlightInfoService.cs" />
