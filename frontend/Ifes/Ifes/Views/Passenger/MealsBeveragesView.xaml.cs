@@ -17,13 +17,13 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Ifes.Views.Passenger
 {
-    public sealed partial class FoodSnacks : Page
+    public sealed partial class MealsBeveragesView : Page
     {
-        public FoodSnacks()
+        public MealsBeveragesView()
         {
             this.InitializeComponent();
             NavigationViewControl.SelectedItem = NavigationViewControl.MenuItems.ElementAt(0);
-            ContentFrame.Navigate(typeof(Views.Passenger.FoodSnacksContent), new MealsBeverages("Meals", CatalogService.Instance.Meals));
+            ContentFrame.Navigate(typeof(Views.Passenger.MealsBeveragesContentView), new MealsBeverages("Meals", CatalogService.Instance.Meals));
         }
 
         private void NavViewItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -39,7 +39,7 @@ namespace Ifes.Views.Passenger
             {
                 items = CatalogService.Instance.Beverages;
             }
-            ContentFrame.Navigate(typeof(Views.Passenger.FoodSnacksContent), new MealsBeverages(title, items));
+            ContentFrame.Navigate(typeof(Views.Passenger.MealsBeveragesContentView), new MealsBeverages(title, items));
         }
     }
 }

@@ -171,11 +171,11 @@
     <Compile Include="Views\Passenger\FlightInfo.xaml.cs">
       <DependentUpon>FlightInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Passenger\FoodSnacks.xaml.cs">
-      <DependentUpon>FoodSnacks.xaml</DependentUpon>
+    <Compile Include="Views\Passenger\MealsBeveragesView.xaml.cs">
+      <DependentUpon>MealsBeveragesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Passenger\FoodSnacksContent.xaml.cs">
-      <DependentUpon>FoodSnacksContent.xaml</DependentUpon>
+    <Compile Include="Views\Passenger\MealsBeveragesContentView.xaml.cs">
+      <DependentUpon>MealsBeveragesContentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Passenger\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -243,11 +243,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Passenger\FoodSnacks.xaml">
+    <Page Include="Views\Passenger\MealsBeveragesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Passenger\FoodSnacksContent.xaml">
+    <Page Include="Views\Passenger\MealsBeveragesContentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

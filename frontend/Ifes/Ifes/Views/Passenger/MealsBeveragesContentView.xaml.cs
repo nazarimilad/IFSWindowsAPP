@@ -18,14 +18,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Ifes.Views.Passenger
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class FoodSnacksContent : Page
+    public sealed partial class MealsBeveragesContentView : Page
     {
         public MealsBeverages MealsBeverages { get; set; }
 
-        public FoodSnacksContent()
+        public MealsBeveragesContentView()
         {
             this.InitializeComponent();
             TextBlockDescription.Text = "Please select an item for more details.";
