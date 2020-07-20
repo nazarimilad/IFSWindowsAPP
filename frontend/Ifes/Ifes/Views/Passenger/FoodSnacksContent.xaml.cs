@@ -28,6 +28,7 @@ namespace Ifes.Views.Passenger
         public FoodSnacksContent()
         {
             this.InitializeComponent();
+            TextBlockDescription.Text = "Please select an item for more details.";
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
