@@ -1,4 +1,4 @@
-namespace ifes.lib.domain {
+namespace ifes.lib.domain.Catalogs {
     public abstract class MultiMedia : CatalogItem {
         public int FileSize { get; set; }
         public string FileExtension { get; set; }

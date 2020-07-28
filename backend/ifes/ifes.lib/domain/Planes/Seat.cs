@@ -1,7 +1,8 @@
 using System;
+using ifes.lib.domain.Users;
 using ifes.lib.Enum;
 
-namespace ifes.lib.domain {
+namespace ifes.lib.domain.Planes {
     public class Seat {
         public Guid Id { get; set; }
         public char Col { get; set; }

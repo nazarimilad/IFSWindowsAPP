@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ifes.lib.domain.Catalogs;
+using ifes.lib.domain.Users;
 using ifes.lib.Enum;
 
-namespace ifes.lib.domain {
+namespace ifes.lib.domain.Planes {
     public class Plane {
         public Guid Id { get; set; }
         public string TailNumber { get; set; }

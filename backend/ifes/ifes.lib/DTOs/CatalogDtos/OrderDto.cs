@@ -1,8 +1,10 @@
+﻿using ifes.lib.Enum;
 using System;
-using ifes.lib.Enum;
+using System.Collections.Generic;
+using System.Text;
 
-namespace ifes.lib.domain {
-    public class Order {
+namespace ifes.lib.DTOs.CatalogDtos {
+    public class OrderDto {
         public Guid Id { get; set; }
         public DateTime Created { get; set; }
         public OrderStatus Status { get; set; }
