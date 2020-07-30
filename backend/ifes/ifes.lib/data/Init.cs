@@ -91,7 +91,12 @@ namespace ifes.lib.data {
             }
 
             plane.Catalog.Items.AddRange((InitMovies.GetVideos()));
-           // plane.Catalog.Items.Add(new);
+
+            plane.Catalog.Items.AddRange((AudioInit.GetAudio()));
+            plane.Catalog.Items.AddRange((FoodInit.getFoods()));
+            plane.Catalog.Items.AddRange((InitBeverage.GetBeverages()));
+        //    plane.Catalog.Items.Add(new);
+
         }
     }
 }
