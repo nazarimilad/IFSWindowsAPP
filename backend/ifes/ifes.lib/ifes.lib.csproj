@@ -8,9 +8,6 @@
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0-preview.6.20312.15" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\ifes\ifes.csproj" />
-    </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Models\" />

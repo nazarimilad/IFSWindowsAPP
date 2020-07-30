@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_ifes.1254649527.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_ifes.-1901289353.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="ifes" t="IncludeRecursive">
         <e p="Controllers" t="Include">
+          <e p="AudioController.cs" t="Include" />
+          <e p="BeverageController.cs" t="Include" />
+          <e p="CabinCrewController.cs" t="Include" />
+          <e p="CatalogController.cs" t="Include" />
+          <e p="FoodController.cs" t="Include" />
+          <e p="OrderController.cs" t="Include" />
+          <e p="PassengerController.cs" t="Include" />
+          <e p="SeatController.cs" t="Include" />
+          <e p="VideoController.cs" t="Include" />
           <e p="WeatherForecastController.cs" t="Include" />
         </e>
         <e p="Program.cs" t="Include" />
@@ -27,19 +36,62 @@
         </e>
       </e>
       <e p="ifes.lib" t="IncludeRecursive">
+        <e p="DTOs" t="Include">
+          <e p="CatalogDtos" t="Include">
+            <e p="AudioDto.cs" t="Include" />
+            <e p="BeverageDto.cs" t="Include" />
+            <e p="CatalogDto.cs" t="Include" />
+            <e p="CatalogItemDto.cs" t="Include" />
+            <e p="FoodDto.cs" t="Include" />
+            <e p="MultimediaDto.cs" t="Include" />
+            <e p="OrderDto.cs" t="Include" />
+            <e p="VideoDto.cs" t="Include" />
+          </e>
+          <e p="PlaneDtos" t="Include">
+            <e p="AirportDto.cs" t="Include" />
+            <e p="FlightInfoDto.cs" t="Include" />
+            <e p="PlaneDto.cs" t="Include" />
+            <e p="SeatDto.cs" t="Include" />
+          </e>
+          <e p="UsersDtos" t="Include">
+            <e p="ApplicationUserDto.cs" t="Include" />
+            <e p="CabinCrewDto.cs" t="Include" />
+            <e p="PassengerDto.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Models" t="Include" />
+        <e p="Repositories" t="Include">
+          <e p="IRepository.cs" t="Include" />
+          <e p="Repository.cs" t="Include" />
+        </e>
         <e p="bin" t="ExcludeRecursive" />
+        <e p="data" t="Include">
+          <e p="ApplicationDbContext.cs" t="Include" />
+          <e p="Init.cs" t="Include" />
+          <e p="InitMovies.cs" t="Include" />
+        </e>
         <e p="domain" t="Include">
-          <e p="Airport.cs" t="Include" />
-          <e p="ApplicationUser.cs" t="Include" />
-          <e p="CabinCrew.cs" t="Include" />
-          <e p="Catalog.cs" t="Include" />
-          <e p="CatalogItem.cs" t="Include" />
-          <e p="FlightInfo.cs" t="Include" />
-          <e p="Order.cs" t="Include" />
-          <e p="Passenger.cs" t="Include" />
-          <e p="Plane.cs" t="Include" />
-          <e p="Seat.cs" t="Include" />
-          <e p="Video.cs" t="Include" />
+          <e p="Catalogs" t="Include">
+            <e p="Audio.cs" t="Include" />
+            <e p="Beverage.cs" t="Include" />
+            <e p="Catalog.cs" t="Include" />
+            <e p="CatalogItem.cs" t="Include" />
+            <e p="Food.cs" t="Include" />
+            <e p="MultiMedia.cs" t="Include" />
+            <e p="Order.cs" t="Include" />
+            <e p="Video.cs" t="Include" />
+          </e>
+          <e p="Planes" t="Include">
+            <e p="Airport.cs" t="Include" />
+            <e p="FlightInfo.cs" t="Include" />
+            <e p="Plane.cs" t="Include" />
+            <e p="Seat.cs" t="Include" />
+          </e>
+          <e p="Users" t="Include">
+            <e p="ApplicationUser.cs" t="Include" />
+            <e p="CabinCrew.cs" t="Include" />
+            <e p="Passenger.cs" t="Include" />
+          </e>
         </e>
         <e p="enum" t="Include">
           <e p="BeverageType.cs" t="Include" />

@@ -11,5 +11,11 @@ namespace ifes.lib.domain.Planes {
 
         public Passenger Passenger { get; set; }
 
+        public Seat(char col, int row, FlightClass flightClass) {
+            Col = col;
+            Row = row;
+            FlightClass = flightClass;
+        }
+        
     }
 }
