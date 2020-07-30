@@ -6,10 +6,10 @@ namespace ifes.lib.domain.Catalogs {
         public Guid Id { get; set; }
         public List<CatalogItem> Items { get; set; }
 
-        
 
 
 
-       
+
+
     }
 }

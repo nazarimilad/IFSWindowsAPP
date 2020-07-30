@@ -18,13 +18,6 @@ namespace ifes.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/Food/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         // POST: api/Food
         [HttpPost]
         public void Post([FromBody] string value)

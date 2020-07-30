@@ -15,5 +15,8 @@ namespace ifes.lib.domain.Planes {
             ExpectedDeparture = expectedDeparture;
             ExpectedArrival = expectedArrival;
         }
+        public FlightInfo() {
+
+        }
     }
 }
