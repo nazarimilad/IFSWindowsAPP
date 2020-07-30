@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ifes.lib.Mappers;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,9 @@ namespace ifes.lib {
    public static class RegisterApplication {
         public static void RegisterApp(this IServiceCollection services) {
              services.AddAutoMapper(Assembly.GetAssembly(typeof(RegisterApplication)));
+
+            services.AddScoped<FoodMapper>();
+
 
 
         }
