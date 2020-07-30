@@ -68,6 +68,7 @@
         <e p="data" t="Include">
           <e p="ApplicationDbContext.cs" t="Include" />
           <e p="AudioInit.cs" t="Include" />
+          <e p="FoodInit.cs" t="Include" />
           <e p="Init.cs" t="Include" />
           <e p="InitBeverage.cs" t="Include" />
           <e p="InitMovies.cs" t="Include" />
