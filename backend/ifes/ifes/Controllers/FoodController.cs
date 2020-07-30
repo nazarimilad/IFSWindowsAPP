@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ifes.lib.domain.Catalogs;
+using ifes.lib.Mappers;
 using ifes.lib.Models.Catalogs.FoodAndBeverage;
 using ifes.lib.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -15,9 +16,11 @@ namespace ifes.Controllers
     public class FoodController : ControllerBase
     {
         private readonly IRepository<Food> _foodrepo;
+        private readonly FoodMapper _foodMapper;
 
-        public FoodController(IRepository<Food> foodRepo) {
+        public FoodController(IRepository<Food> foodRepo, FoodMapper foodMapper) {
             _foodrepo = foodRepo;
+            _foodMapper = foodMapper;
 
         }
         // GET: api/Food
@@ -25,7 +28,8 @@ namespace ifes.Controllers
         public IActionResult Get()
         {
             var allFoods =  _foodrepo.GetList(x => x.Id != null);
-            return Ok(allFoods);
+            var allFoodsDtos = _foodMapper.MapFoodsDto(allFoods);
+            return Ok(allFoodsDtos);
         }
 
         // POST: api/Food
@@ -35,7 +39,8 @@ namespace ifes.Controllers
             Food food = new Food(model);
             _foodrepo.Add(food);
             if( _foodrepo.SaveChanges() == 0) throw new ApplicationException("failed to create food");
-            return Ok(food);
+            var foodDto = _foodMapper.MapFoodDto(food);
+            return Ok(foodDto);
 
         }
 
