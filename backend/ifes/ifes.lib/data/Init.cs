@@ -91,6 +91,7 @@ namespace ifes.lib.data {
             }
 
             plane.Catalog.Items.AddRange((InitMovies.GetVideos()));
+            plane.Catalog.Items.AddRange((AudioInit.GetAudio()));
         //    plane.Catalog.Items.Add(new);
         }
     }
