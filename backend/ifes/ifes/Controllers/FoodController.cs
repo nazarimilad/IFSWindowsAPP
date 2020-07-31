@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ifes.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class FoodController : ControllerBase
     {
@@ -30,6 +30,13 @@ namespace ifes.Controllers
             var allFoods =  _foodrepo.GetList(x => x.Id != null);
             var allFoodsDtos = _foodMapper.MapFoodsDto(allFoods);
             return Ok(allFoodsDtos);
+        }
+
+        [HttpGet]
+        public IActionResult GetById([FromQuery]Guid id) {
+            var food = _foodrepo.Get(x => x.Id == id);
+            var foodDto = _foodMapper.MapFoodDto(food);
+            return Ok(foodDto);
         }
 
         // POST: api/Food

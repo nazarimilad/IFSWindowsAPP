@@ -12,6 +12,7 @@ namespace ifes.lib {
              services.AddAutoMapper(Assembly.GetAssembly(typeof(RegisterApplication)));
 
             services.AddScoped<FoodMapper>();
+            services.AddScoped<BeverageMapper>();
 
 
 
