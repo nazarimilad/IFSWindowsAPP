@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ifes.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class PassengerController : ControllerBase
     {
