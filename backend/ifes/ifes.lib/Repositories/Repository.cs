@@ -30,15 +30,15 @@ namespace ifes.lib.Repositories {
             ModelDbSets.AddRange(entities);
         }
 
-        public async Task<T> GetAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate) {
-            return await ModelDbSets.Where(predicate).FirstOrDefaultAsync();
+        public T Get(System.Linq.Expressions.Expression<Func<T, bool>> predicate) {
+            return  ModelDbSets.Where(predicate).FirstOrDefault();
 
         }
 
-        public async Task<IEnumerable<T>> GetListAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate) {
+        public  IEnumerable<T> GetList(System.Linq.Expressions.Expression<Func<T, bool>> predicate) {
 
             var test = ModelDbSets.Where(predicate);
-            return await test.ToListAsync();
+            return  test.ToList();
 
         }
 
@@ -60,8 +60,8 @@ namespace ifes.lib.Repositories {
             }
         }
 
-        public async Task<int> SaveChangesAsync() {
-            return await _dbContext.SaveChangesAsync();
+        public int SaveChanges() {
+            return  _dbContext.SaveChanges();
         }
 
         public void Update(T entity) {

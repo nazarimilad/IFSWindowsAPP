@@ -2,28 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ifes.lib.domain.Catalogs;
+using ifes.lib.Mappers;
+using ifes.lib.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ifes.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class AudioController : ControllerBase
     {
+        private readonly IRepository<Audio> _audiorepo;
+        private readonly AudioMapper _audioMapper;
+
+        public AudioController(IRepository<Audio> audioRepo, AudioMapper audioMapper) {
+            _audiorepo = audioRepo;
+            _audioMapper = audioMapper;
+
+        }
         // GET: api/Audio
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
+        public IActionResult Get() {
+            var allAudios = _audiorepo.GetList(x => x.Id != null);
+            var allAudiosDtos = _audioMapper.MapAudiosDto(allAudios);
+            return Ok(allAudiosDtos);
         }
 
-        // GET: api/Audio/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
+        [HttpGet]
+        public IActionResult GetById([FromQuery] Guid id) {
+            var audio = _audiorepo.Get(x => x.Id == id);
+            var audioDto = _audioMapper.MapAudioDto(audio);
+            return Ok(audioDto);
         }
+
 
         // POST: api/Audio
         [HttpPost]

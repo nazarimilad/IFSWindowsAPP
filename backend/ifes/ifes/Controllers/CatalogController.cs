@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ifes.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class CatalogController : ControllerBase
     {
@@ -18,12 +18,7 @@ namespace ifes.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/Catalog/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+     
 
         // POST: api/Catalog
         [HttpPost]
