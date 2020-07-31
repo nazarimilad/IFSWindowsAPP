@@ -19,6 +19,7 @@ namespace ifes.lib.data {
         public DbSet<Food> Food { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<Video> Video { get; set; }
+        public DbSet<Audio> Audio { get; set; }
 
         //plane stuff
         public DbSet<Airport> Airport { get; set; }

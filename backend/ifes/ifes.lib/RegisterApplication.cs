@@ -13,6 +13,8 @@ namespace ifes.lib {
 
             services.AddScoped<FoodMapper>();
             services.AddScoped<BeverageMapper>();
+            services.AddScoped<VideoMapper>();
+            services.AddScoped<AudioMapper>();
 
 
 
