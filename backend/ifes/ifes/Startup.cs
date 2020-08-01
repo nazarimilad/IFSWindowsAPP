@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using ifes.lib;
 using ifes.lib.data;
+using ifes.lib.domain.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
@@ -27,11 +29,15 @@ namespace ifes {
         public void ConfigureServices(IServiceCollection services) {
             services.AddDbContext<ApplicationDbContext>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("IfesConnectionLocal")));
-            services.AddControllers();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
+            services.AddControllers();
             services.RegisterApp();
             services.AddRepositories();
             services.AddSwaggerDocumentation();
+         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -28,6 +28,7 @@ namespace ifes.lib.data {
         public DbSet<Seat> Seat { get; set; }
 
         //users
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public  DbSet<CabinCrew> CabinCrew { get; set; }
         public  DbSet<Passenger> Passenger { get; set; }
 

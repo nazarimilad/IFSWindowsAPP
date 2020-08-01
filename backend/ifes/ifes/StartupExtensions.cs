@@ -5,9 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Swashbuckle.AspNetCore.Swagger;
+using System.Text;
+using ifes.lib.domain.Users;
+
 
 namespace ifes {
     public static class StartupExtensions {
@@ -20,6 +20,8 @@ namespace ifes {
             services.AddScoped(typeof(IRepository<Audio>), typeof(Repository<Audio>));
             services.AddScoped(typeof(IRepository<Video>), typeof(Repository<Video>));
             services.AddScoped(typeof(IRepository<Order>), typeof(Repository<Order>));
+            services.AddScoped(typeof(IRepository<CabinCrew>), typeof(Repository<CabinCrew>));
+            services.AddScoped(typeof(IRepository<Passenger>), typeof(Repository<Passenger>));
 
 
 
@@ -67,6 +69,11 @@ namespace ifes {
                 c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
             });
         }
+
+        }
     }
-}
+
+
+
+
 
