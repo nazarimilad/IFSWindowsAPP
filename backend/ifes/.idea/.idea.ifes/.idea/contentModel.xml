@@ -22,6 +22,7 @@
           <e p="launchSettings.json" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
+        <e p="StartupExtensions.cs" t="Include" />
         <e p="WeatherForecast.cs" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
@@ -59,7 +60,32 @@
             <e p="PassengerDto.cs" t="Include" />
           </e>
         </e>
-        <e p="Models" t="Include" />
+        <e p="Mappers" t="Include">
+          <e p="AudioMapper.cs" t="Include" />
+          <e p="BeverageMapper.cs" t="Include" />
+          <e p="FoodMapper.cs" t="Include" />
+          <e p="VideoMapper.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20200730211832_yeet.Designer.cs" t="Include" />
+          <e p="20200730211832_yeet.cs" t="Include" />
+          <e p="20200731104112_Audio.Designer.cs" t="Include" />
+          <e p="20200731104112_Audio.cs" t="Include" />
+          <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="Catalogs" t="Include">
+            <e p="CatalogItemModel.cs" t="Include" />
+            <e p="FoodAndBeverage" t="Include">
+              <e p="AddBeverageModel.cs" t="Include" />
+              <e p="AddFoodModel.cs" t="Include" />
+            </e>
+            <e p="MultiMedia" t="Include" />
+          </e>
+          <e p="PLanes" t="Include" />
+          <e p="Users" t="Include" />
+        </e>
+        <e p="RegisterApplication.cs" t="Include" />
         <e p="Repositories" t="Include">
           <e p="IRepository.cs" t="Include" />
           <e p="Repository.cs" t="Include" />
