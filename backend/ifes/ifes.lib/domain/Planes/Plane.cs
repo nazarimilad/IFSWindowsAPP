@@ -10,16 +10,16 @@ namespace ifes.lib.domain.Planes {
         public Guid Id { get; set; }
         public string TailNumber { get; set; }
         public string Type { get; set; }
-        public IEnumerable<Seat> Seats { get; set; }
+        public List<Seat> Seats { get; set; }
         public IEnumerable<Order> Orders { get; set; }
         public IEnumerable<CabinCrew> CabinCrew { get; set; }
 
-        public  Catalog Catalog { get; set; }
+        public Catalog Catalog { get; set; }
 
         public Plane() { }
 
-        public Plane(FlightInfo flightInfo , Catalog catalog) {
-            Orders = new List<Order>(); 
+        public Plane(FlightInfo flightInfo, Catalog catalog) {
+            Orders = new List<Order>();
         }
         public void SwitchUserSeats(Passenger firstUser, Passenger secondUser) {
             var seat1 = FindSeatOfPassenger(firstUser);
@@ -38,11 +38,11 @@ namespace ifes.lib.domain.Planes {
         }
 
         public void AssingPassengerToSeat(Passenger passenger, char column, int row) {
-           var seat = Seats.FirstOrDefault(p => p.Col == column && p.Row == row);
-           if (seat == null) {
-               throw  new ArgumentException("seat not found");
-           }
-           seat.Passenger = passenger;
+            var seat = Seats.FirstOrDefault(p => p.Col == column && p.Row == row);
+            if (seat == null) {
+                throw new ArgumentException("seat not found");
+            }
+            seat.Passenger = passenger;
         }
 
         public void PutCrewManToWork(CabinCrew cabinCrew) {
@@ -51,10 +51,15 @@ namespace ifes.lib.domain.Planes {
             }
             CabinCrew.Append(cabinCrew);
         }
-        
-        
+
+
         public IEnumerable<Order> GetOrdersInProgress() => GetOrdersOfStatus(OrderStatus.InProgress);
         private Seat FindSeatOfPassenger(Passenger user) => Seats.FirstOrDefault(p => p.Passenger.Id == user.Id);
-        private IEnumerable<Order> GetOrdersOfStatus(OrderStatus status) => Orders.Where(p => p.Status == status);
+        private IEnumerable<Order> GetOrdersOfStatus(OrderStatus status) {
+            List<Order> orders = new List<Order>();
+            Seats.ForEach(x => orders.AddRange(x.Passenger.Orders.Where(y => y.Status == status)));
+            return orders;
+
+        }
     }
 }

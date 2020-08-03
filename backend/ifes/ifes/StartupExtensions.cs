@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ifes.lib.domain.Users;
-
+using ifes.lib.domain.Planes;
 
 namespace ifes {
     public static class StartupExtensions {
@@ -15,13 +15,18 @@ namespace ifes {
 
             //catalog
             services.AddScoped(typeof(IRepository<Catalog>), typeof(Repository<Catalog>));
+            services.AddScoped(typeof(IRepository<CatalogItem>), typeof(Repository<CatalogItem>));
             services.AddScoped(typeof(IRepository<Food>), typeof(Repository<Food>));
             services.AddScoped(typeof(IRepository<Beverage>), typeof(Repository<Beverage>));
             services.AddScoped(typeof(IRepository<Audio>), typeof(Repository<Audio>));
             services.AddScoped(typeof(IRepository<Video>), typeof(Repository<Video>));
             services.AddScoped(typeof(IRepository<Order>), typeof(Repository<Order>));
+
+            //plane
+            services.AddScoped(typeof(IRepository<Plane>), typeof(Repository<Plane>));
             services.AddScoped(typeof(IRepository<CabinCrew>), typeof(Repository<CabinCrew>));
             services.AddScoped(typeof(IRepository<Passenger>), typeof(Repository<Passenger>));
+
 
 
 

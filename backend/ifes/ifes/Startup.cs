@@ -33,11 +33,12 @@ namespace ifes {
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.RegisterApp();
             services.AddRepositories();
             services.AddSwaggerDocumentation();
-         
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
