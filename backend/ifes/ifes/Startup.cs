@@ -33,6 +33,9 @@ namespace ifes {
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddCors(options => options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin()));
+
+
             services.AddControllers().AddNewtonsoftJson(options =>
                  options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.RegisterApp();
@@ -51,6 +54,7 @@ namespace ifes {
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors("AllowAllOrigins");
 
             app.UseAuthorization();
             app.UseSwaggerDocumentation();

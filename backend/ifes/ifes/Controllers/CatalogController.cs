@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ifes.lib.domain.Catalogs;
+using ifes.lib.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ifes.Controllers
 {
@@ -11,14 +14,21 @@ namespace ifes.Controllers
     [ApiController]
     public class CatalogController : ControllerBase
     {
-        // GET: api/Catalog
+        private readonly IRepository<Catalog> _catalogRepo;
+
+        public CatalogController(IRepository<Catalog> catalogRepo) {
+            _catalogRepo = catalogRepo;
+
+        }
+        // GET: api/Catalog/id
         [HttpGet]
-        public IEnumerable<string> Get()
+        public  IActionResult Get([FromQuery]Guid catalogId)
         {
-            return new string[] { "value1", "value2" };
+            var catalog = _catalogRepo.Query(x => x.Id == catalogId).Include(y => y.Items).FirstOrDefault();
+            return Ok(catalog.Items);
         }
 
-     
+
 
         // POST: api/Catalog
         [HttpPost]
