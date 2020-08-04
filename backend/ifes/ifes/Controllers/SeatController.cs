@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ifes.lib.domain.Planes;
+using ifes.lib.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ifes.Controllers
 {
@@ -11,11 +14,18 @@ namespace ifes.Controllers
     [ApiController]
     public class SeatController : ControllerBase
     {
+        private readonly IRepository<Plane> _planeRepo;
+
+        public SeatController(IRepository<Plane> planeRepo) {
+            _planeRepo = planeRepo;
+        }
         // GET: api/Seat
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult GetPlaneSeats([FromQuery] Guid planeId)
         {
-            return new string[] { "value1", "value2" };
+            var plane = _planeRepo.Query(x => x.Id == planeId).Include(x => x.Seats).FirstOrDefault();
+            var seats = plane.Seats;
+            return Ok(seats);
         }
 
 
