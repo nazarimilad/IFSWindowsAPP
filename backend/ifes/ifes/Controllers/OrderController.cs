@@ -71,10 +71,19 @@ namespace ifes.Controllers {
             return Ok(orderedItems);
     }
 
-    // PUT: api/Order/5
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value) {
-    }
+        // PUT: api/Order/5
+        [HttpPut]
+        public void DeliverOrders([FromBody] List<Guid> orders) {
+            var pendingOrders = _orderRepo.Query(x => x.Id != null).Where(x => orders.Contains(x.Id)).ToList();
+            pendingOrders.ForEach(x => {
+                x.Status = OrderStatus.Delivered;
+                _orderRepo.Update(x);
+
+            });
+            _orderRepo.SaveChanges();
+
+
+        }
 
     // DELETE: api/ApiWithActions/5
     [HttpDelete("{id}")]
