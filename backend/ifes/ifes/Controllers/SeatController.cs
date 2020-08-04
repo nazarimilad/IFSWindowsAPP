@@ -21,9 +21,9 @@ namespace ifes.Controllers
         }
         // GET: api/Seat
         [HttpGet]
-        public IActionResult GetPlaneSeats([FromQuery] Guid planeId)
+        public IActionResult GetPlaneSeatsWithPassenger([FromQuery] Guid planeId)
         {
-            var plane = _planeRepo.Query(x => x.Id == planeId).Include(x => x.Seats).FirstOrDefault();
+            var plane = _planeRepo.Query(x => x.Id == planeId).Include(x => x.Seats).ThenInclude(y => y.Passenger).FirstOrDefault();
             var seats = plane.Seats;
             return Ok(seats);
         }
