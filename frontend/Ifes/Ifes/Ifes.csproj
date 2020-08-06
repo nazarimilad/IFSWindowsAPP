@@ -121,6 +121,7 @@
     <Compile Include="Services\MessagingService.cs" />
     <Compile Include="Services\WeatherService.cs" />
     <Compile Include="ViewModels\AirPlaneInfo.cs" />
+    <Compile Include="ViewModels\AudioVideo.cs" />
     <Compile Include="ViewModels\FlightInfo.cs" />
     <Compile Include="ViewModels\LiveFlightData.cs" />
     <Compile Include="ViewModels\MealsBeverages.cs" />
@@ -162,6 +163,9 @@
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Passenger\AudioVideoContentView.xaml.cs">
+      <DependentUpon>AudioVideoContentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Passenger\Chat.xaml.cs">
       <DependentUpon>Chat.xaml</DependentUpon>
@@ -231,6 +235,10 @@
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Passenger\AudioVideoContentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Passenger\Chat.xaml">
       <SubType>Designer</SubType>

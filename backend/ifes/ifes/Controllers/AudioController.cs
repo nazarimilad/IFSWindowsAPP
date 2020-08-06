@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ifes.lib.domain.Catalogs;
 using ifes.lib.Mappers;
+using ifes.lib.Models.Catalogs.MultiMedia;
 using ifes.lib.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -40,8 +41,13 @@ namespace ifes.Controllers
 
         // POST: api/Audio
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] AddAudioModel model)
         {
+            Audio audio = new Audio(model);
+            _audiorepo.Add(audio);
+            if (_audiorepo.SaveChanges() == 0) throw new ApplicationException("failed to create Audio");
+            //var BeverageDto = _beverageMapper.MapBeverageDto(Beverage);
+            return Ok(audio);
         }
 
         // PUT: api/Audio/5

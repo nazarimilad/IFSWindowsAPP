@@ -16,14 +16,17 @@ namespace Ifes.Services {
         public IEnumerable<CatalogItem> Catalog { get; private set; }
         public IList<Food> Meals { get; set; }
         public IList<Beverage> Beverages { get; set; }
-        public IEnumerable<Media> Movies { get { return Catalog.OfType<Media>().Where(media => media.MediaType == MediaType.Movie); } }
-        public IEnumerable<Media> TvShows { get { return Catalog.OfType<Media>().Where(media => media.MediaType == MediaType.TvShow); } }
-        public IEnumerable<Media> Songs { get { return Catalog.OfType<Media>().Where(media => media.MediaType == MediaType.Song); } }
+        public IList<Media> Movies { get; set; }
+       // public IList<Media> TvShows { get; set; }
+        public IList<Media> Songs { get; set; }
 
         private CatalogService()
         {
             Meals = new List<Food>();
             Beverages = new List<Beverage>();
+            Movies = new List<Media>();
+            //TvShows = new List<Media>();
+            Songs = new List<Media>();
             GetCatalog();
         }
         private async void GetCatalog()
@@ -33,9 +36,15 @@ namespace Ifes.Services {
             var dataFood = JsonConvert.DeserializeObject<List<Food>>(jsonFood);
             var jsonBev = await client.GetStringAsync(new Uri("https://localhost:44319/api/Beverage/Get", UriKind.Absolute));
             var dataBev = JsonConvert.DeserializeObject<List<Beverage>>(jsonBev);
+            var jsonAudio = await client.GetStringAsync(new Uri("https://localhost:44319/api/Audio/Get", UriKind.Absolute));
+            var dataAudio = JsonConvert.DeserializeObject<List<Media>>(jsonAudio);
+            var jsonVideo = await client.GetStringAsync(new Uri("https://localhost:44319/api/Video/Get", UriKind.Absolute));
+            var dataVideo = JsonConvert.DeserializeObject<List<Media>>(jsonVideo);
 
             dataFood.ForEach(x => Meals.Add(x));
             dataBev.ForEach(x => Beverages.Add(x));
+            dataAudio.ForEach(x => Songs.Add(x));
+            dataVideo.ForEach(x => Movies.Add(x));
 
 
             // TODO: make http request and deserialise JSON result into corresponding view model

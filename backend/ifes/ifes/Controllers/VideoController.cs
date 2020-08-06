@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ifes.lib.domain.Catalogs;
 using ifes.lib.Mappers;
+using ifes.lib.Models.Catalogs.MultiMedia;
 using ifes.lib.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -39,8 +40,14 @@ namespace ifes.Controllers
 
         // POST: api/Video
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post ([FromBody] AddVideoModel model)
         {
+            Video video = new Video(model);
+            _videorepo.Add(video);
+            if (_videorepo.SaveChanges() == 0) throw new ApplicationException("failed to create Video");
+            //var BeverageDto = _beverageMapper.MapBeverageDto(Beverage);
+            return Ok(video);
+
         }
 
         // PUT: api/Video/5
