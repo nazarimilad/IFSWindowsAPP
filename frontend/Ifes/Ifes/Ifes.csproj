@@ -119,6 +119,7 @@
     <Compile Include="Services\CatalogService.cs" />
     <Compile Include="Services\MediaService.cs" />
     <Compile Include="Services\MessagingService.cs" />
+    <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\WeatherService.cs" />
     <Compile Include="ViewModels\AirPlaneInfo.cs" />
     <Compile Include="ViewModels\AudioVideo.cs" />
@@ -128,6 +129,8 @@
     <Compile Include="ViewModels\Media.cs" />
     <Compile Include="ViewModels\MediaType.cs" />
     <Compile Include="ViewModels\Messaging.cs" />
+    <Compile Include="ViewModels\OrderedItems.cs" />
+    <Compile Include="ViewModels\OrderWrapper.cs" />
     <Compile Include="ViewModels\Seat.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\FlightInfoService.cs" />
@@ -154,6 +157,12 @@
     </Compile>
     <Compile Include="Views\Aircrew\Messages.xaml.cs">
       <DependentUpon>Messages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Aircrew\OrdersContentView.xaml.cs">
+      <DependentUpon>OrdersContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Aircrew\OrdersView.xaml.cs">
+      <DependentUpon>OrdersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Aircrew\PassengersManagment.xaml.cs">
       <DependentUpon>PassengersManagment.xaml</DependentUpon>
@@ -225,6 +234,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Aircrew\Messages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Aircrew\OrdersContentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Aircrew\OrdersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

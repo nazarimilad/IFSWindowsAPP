@@ -29,7 +29,9 @@ namespace Ifes.Views.Aircrew
             var label = args.InvokedItem as string;
             var pageType =
                 label == "Messages" ? typeof(Views.Aircrew.Messages) :
+                label == "Orders" ? typeof(Views.Aircrew.OrdersView) :
                 label == "Passengers" ? typeof(Views.Aircrew.PassengersManagment) : null;
+
             if (pageType != null && pageType != ContentFrame.CurrentSourcePageType)
             {
                 ContentFrame.Navigate(pageType);

@@ -8,20 +8,20 @@ namespace Ifes.ViewModels
 {
     public class Seat
     {
-        public char Column { get; private set; }
+        public char Col { get; private set; }
         public int Row { get; private set; }
         public FlightClass FlightClass { get; private set; }
 
         public Seat(char column, int row, FlightClass flightClass)
         {
-            Column = column;
+            Col = column;
             Row = row;
             FlightClass = flightClass;
         }
 
         public override string ToString()
         {
-            return $"{Column}{Row}";
+            return $"{Col}{Row}";
         }
     }
 }
