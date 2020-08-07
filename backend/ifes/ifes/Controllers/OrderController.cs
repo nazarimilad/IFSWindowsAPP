@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ifes.lib.domain.Catalogs;
 using ifes.lib.domain.Planes;
 using ifes.lib.domain.Users;
+using ifes.lib.DTOs.CatalogDtos;
 using ifes.lib.Enum;
 using ifes.lib.Mappers;
 using ifes.lib.Models.Catalogs;
@@ -73,13 +74,16 @@ namespace ifes.Controllers {
 
         // PUT: api/Order/5
         [HttpPut]
-        public void DeliverOrders([FromBody] List<Guid> orders) {
-            var pendingOrders = _orderRepo.Query(x => x.Id != null).Where(x => orders.Contains(x.Id)).ToList();
-            pendingOrders.ForEach(x => {
-                x.Status = OrderStatus.Delivered;
-                _orderRepo.Update(x);
+        public void DeliverOrders([FromQuery] Guid orderId) {
+            var pendingOrder = _orderRepo.Get(x => x.Id == orderId);
+            pendingOrder.Status = OrderStatus.Delivered;
+            _orderRepo.Update(pendingOrder);
+            //var pendingOrders = _orderRepo.Query(x => x.Id != null).Where(x => orders.Contains(x.Id)).ToList();
+            //pendingOrders.ForEach(x => {
+            //    x.Status = OrderStatus.Delivered;
+            //    _orderRepo.Update(x);
 
-            });
+            //});
             _orderRepo.SaveChanges();
 
 

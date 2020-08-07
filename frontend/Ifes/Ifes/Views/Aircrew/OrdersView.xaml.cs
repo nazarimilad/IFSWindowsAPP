@@ -2,6 +2,7 @@
 using Ifes.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -31,7 +32,7 @@ namespace Ifes.Views.Aircrew {
         private void NavViewItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args) {
             var label = args.InvokedItem as string;
             string title = label;
-            IList<Order> items = null;
+            ObservableCollection<Order> items = null;
             if (label == "In Progress") {
                 items = OrderService.Instance.Orders;
             } else if (label == "Delivered") {
