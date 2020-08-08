@@ -39,7 +39,7 @@
                 </Grid>
             </DataTemplate>
         </Grid.Resources>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -86,6 +86,7 @@
         <Button x:Name="BtnOrder" Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Click="OnBtnOrderClick" IsEnabled="False" Background="{ThemeResource SystemAccentColor}">
             <StackPanel Orientation="Horizontal" Spacing="10">
                 <TextBlock Text="Order" Foreground="White"/>
+                <TextBox x:Name="OrderAmount" BeforeTextChanging="TextBox_OnBeforeTextChanging" />
                 <Border BorderThickness="1" BorderBrush="White" VerticalAlignment="Stretch" Opacity="0.5"/>
                 <FontIcon Glyph="&#xE9AC;" Foreground="White"/>
             </StackPanel>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ifes.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -37,5 +38,9 @@ namespace Ifes.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        internal void OrderCurrentItem(CatalogItem currentItem, int orderAmount) {
+            OrderService.Instance.OrderItem(currentItem, orderAmount);
+      }
     }
 }

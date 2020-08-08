@@ -36,7 +36,9 @@ namespace Ifes.Views.Aircrew {
             BtnOrder.IsEnabled = true;
         }
 
-        private void OnBtnOrderClick(object sender, RoutedEventArgs e) {
+        private void OnBtnDeliverClick(object sender, RoutedEventArgs e) {
+            OrderedItems.DeliverOrder(OrderedItems.CurrentItem);
+            this.InitializeComponent();
 
         }
     }

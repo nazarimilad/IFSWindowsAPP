@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ifes.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Ifes.ViewModels {
         public string Title { get; set; }
         public IEnumerable<Order> Items;
         private Order _currentItem;
+
         public Order CurrentItem {
             get { return _currentItem; }
             set {
@@ -24,7 +26,10 @@ namespace Ifes.ViewModels {
             Title = title;
             Items = items;
         }
+        public void DeliverOrder(Order order) {
+            OrderService.Instance.DeliverOrder(order);
 
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged(String propertyName) {

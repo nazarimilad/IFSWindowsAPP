@@ -39,9 +39,27 @@ namespace Ifes.Views.Passenger
             MealsBeverages.CurrentItem = (CatalogItem) e.ClickedItem;
             BtnOrder.IsEnabled = true;
         }
-
-        private void OnBtnOrderClick(object sender, RoutedEventArgs e)
+        private void TextBox_OnBeforeTextChanging(TextBox sender,
+                                          TextBoxBeforeTextChangingEventArgs args) {
+            args.Cancel = args.NewText.Any(c => !char.IsDigit(c));
+        }
+        private async void OnBtnOrderClick(object sender, RoutedEventArgs e)
         {
+            ContentDialog confirmOrderAmount = new ContentDialog {
+                Title = "Confirm order of : ",
+                Content = $"{OrderAmount.Text} x {MealsBeverages.CurrentItem.Name}",
+
+                PrimaryButtonText = "Confirm",
+                CloseButtonText = "Cancel"
+            };
+
+            ContentDialogResult result = await confirmOrderAmount.ShowAsync();
+
+            if (result == ContentDialogResult.Primary) {
+                MealsBeverages.OrderCurrentItem(MealsBeverages.CurrentItem, Int16.Parse(OrderAmount.Text));
+            } else {
+
+            }
 
         }
     }

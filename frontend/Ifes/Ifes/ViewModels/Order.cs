@@ -28,6 +28,12 @@ namespace Ifes.ViewModels
         {
             return $"{Item}: {Status}";
         }
+        public string HourMinutesCreated() {
+            return Created.ToString("HH:mm");
+        }
+        public string PassengerAndSeat() {
+            return $"{Passenger.UserName} : {Passenger.Seat.Col}{Passenger.Seat.Row}";
+        }
     }
     public class ItemInOrder {
         public string Name { get; private set; }
