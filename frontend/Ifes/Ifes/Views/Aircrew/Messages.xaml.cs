@@ -24,7 +24,7 @@ namespace Ifes.Views.Aircrew
 
         private void OnBtnSend(object sender, RoutedEventArgs e)
         {
-
+          
         }
 
         private string GetMessage()

@@ -1,4 +1,6 @@
-﻿using Ifes.ViewModels;
+﻿using Ifes.Services;
+using Ifes.ViewModels;
+using Microsoft.AspNet.SignalR.Client;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,7 +32,7 @@ namespace Ifes.Views.Passenger
             ChatNotification.DataContext = Messaging;
             ContentFrame.Navigate(typeof(Passenger.FlightInfo));
             NavView.SelectedItem = NavView.MenuItems.ElementAt(0);
-            this.SendSeatBeltNotification();
+            LoadChatSignalRAsync();
         }
 
         private void NavViewItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -46,6 +48,22 @@ namespace Ifes.Views.Passenger
                 ContentFrame.Navigate(pageType);
             }
         }
+
+
+        private void LoadChatSignalRAsync()
+        {
+          
+            MessagingService.Instance.HubProxy().On<Message>("newMessage", UpdateMessage);
+            MessagingService.Instance.Connection().Start();
+        }
+
+
+        private void UpdateMessage(Message message)
+        {
+            MessagingService.Instance.AddNewMessage(message);
+            SendNewMessageNotification(message);
+        }
+
 
         private async void OnClickLogOut(object sender, TappedRoutedEventArgs e)
         {            
@@ -70,9 +88,9 @@ namespace Ifes.Views.Passenger
             ContentFrame.Navigate(typeof(Views.Passenger.Orders));
         }
 
-        private async void SendSeatBeltNotification()
+        private async void SendSeatBeltNotification(Message message )
         {
-            ContentDialog seatBeltDialog = new ContentDialog()
+       /*     ContentDialog seatBeltDialog = new ContentDialog()
             {
                 Title = "Dear passenger",
                 Content = "Make sure to fasten your seat belt.",
@@ -81,16 +99,28 @@ namespace Ifes.Views.Passenger
             };
             await Task.Delay(5000);
             await seatBeltDialog.ShowAsync();
-            await Task.Delay(3000);
+            await Task.Delay(3000);  */
             object inAppNotificationWithButtonsTemplate = null;
             bool? isTemplatePresent = Resources.TryGetValue("InAppNotificationWithButtonsTemplate", out inAppNotificationWithButtonsTemplate);
-
+     
             if (isTemplatePresent == true && inAppNotificationWithButtonsTemplate is DataTemplate template)
             {
-                Messaging.ReceivedMessage = "Lisa: Hey, I'm behind you! Can you see me?";
+                Messaging.ReceivedMessage = message.Preview();
                 ChatNotification.Show(template, 10_000);
             }
         }
+        private void SendNewMessageNotification(Message message)
+        {
+            object inAppNotificationWithButtonsTemplate = null;
+            bool? isTemplatePresent = Resources.TryGetValue("InAppNotificationWithButtonsTemplate", out inAppNotificationWithButtonsTemplate);
+            if (isTemplatePresent == true && inAppNotificationWithButtonsTemplate is DataTemplate template)
+            {
+                Messaging.ReceivedMessage = message.Preview();
+                ChatNotification.Show(template, 10_000);
+            }
+        }
+
+
 
         private void OnClickBtnReply(object sender, RoutedEventArgs e)
         {

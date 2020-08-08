@@ -2,13 +2,37 @@
     x:Class="Ifes.Views.Passenger.Chat"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Ifes.Views.Passenger"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:styleSelectors="using:Ifes.Helpers" xmlns:messages="using:Ifes.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock Text="Page for chat"></TextBlock>
-    </Grid>
+
+
+
+            <StackPanel x:Name="messagePanel">
+                <ListView x:Name="messagesLV"  HorizontalAlignment="Center" ItemsSource="{x:Bind Messages }">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="messages:Message">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="47"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Assets/StoreLogo.png" Width="32" Height="32"
+                                HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <TextBlock Text="{x:Bind Content}" Foreground="Teal" FontSize="14" 
+                                Grid.Column="1" VerticalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <TextBox x:Name="message"></TextBox>
+                <Button x:Name="sendMessage" Click="sendMessage_Click">Verzend</Button>
+            </StackPanel>
+
+ 
+
+
 </Page>

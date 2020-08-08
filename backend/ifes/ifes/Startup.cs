@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ifes.Hubs;
 using ifes.lib;
 using ifes.lib.data;
 using ifes.lib.domain.Users;
@@ -41,6 +42,7 @@ namespace ifes {
             services.RegisterApp();
             services.AddRepositories();
             services.AddSwaggerDocumentation();
+            services.AddSignalR();
 
         }
 
@@ -59,7 +61,10 @@ namespace ifes {
             app.UseAuthorization();
             app.UseSwaggerDocumentation();
 
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints => { 
+                endpoints.MapControllers();
+                endpoints.MapHub<MessageHub>("messages");
+            });
             app.UseSwaggerDocumentation();
 
 
