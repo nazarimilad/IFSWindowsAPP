@@ -16,27 +16,42 @@ namespace Ifes.Services {
 
         private static readonly Lazy<OrderService> lazy = new Lazy<OrderService>(() => new OrderService());
         public static OrderService Instance { get { return lazy.Value; } }
-        public ObservableCollection<Order> Orders { get; set; }
+        public ObservableCollection<Order> OrdersInProgress { get; set; }
+        public ObservableCollection<Order> OrdersDelivered { get; set; }
 
 
         public OrderService() {
-            Orders = new ObservableCollection<Order>();
+            OrdersInProgress = new ObservableCollection<Order>();
+            OrdersDelivered = new ObservableCollection<Order>();
 
-            GetOrders();
+            GetOrdersInProgress();
+            GetDeliveredOrders();
         }
 
-        private async void GetOrders() {
+        private async void GetOrdersInProgress() {
             var client = new HttpClient();
             var jsonOrders = await client.GetStringAsync(new Uri("https://localhost:44319/api/Order/GetPlaneOrders?planeId=3A824AE9-D070-46CE-84E5-2C46B68900A5", UriKind.Absolute));
             var dataOrders = JsonConvert.DeserializeObject<List<Order>>(jsonOrders);
             dataOrders.Sort((x, y) => DateTime.Compare(x.Created, y.Created));
-            dataOrders.ForEach(x => Orders.Add(x));
+            dataOrders.ForEach(x => OrdersInProgress.Add(x));
         }
+        private async void GetDeliveredOrders() {
+            var client = new HttpClient();
+            var jsonOrders = await client.GetStringAsync(new Uri("https://localhost:44319/api/Order/GetPlaneOrdersDelivered?planeId=3A824AE9-D070-46CE-84E5-2C46B68900A5", UriKind.Absolute));
+            var dataOrders = JsonConvert.DeserializeObject<List<Order>>(jsonOrders);
+            dataOrders.Sort((x, y) => DateTime.Compare(x.Created, y.Created));
+            dataOrders.ForEach(x => OrdersDelivered.Add(x));
+        }
+
+
         public async void DeliverOrder(Order order) {
             var client = new HttpClient();
 
             var deliver = await client.PutAsync(new Uri("https://localhost:44319/api/Order/DeliverOrders?orderId=" + order.Id), null);
-            if (deliver.IsSuccessStatusCode) Orders.Remove(order);
+            if (deliver.IsSuccessStatusCode) {
+                OrdersInProgress.Remove(order);
+                OrdersDelivered.Add(order);
+            }
         }
         public async void OrderItem(CatalogItem item, int orderAmount) {
             var client = new HttpClient();
@@ -53,7 +68,7 @@ namespace Ifes.Services {
             var uri = new Uri("https://localhost:44319/api/Order/PassengerOrder");
 
             var deliver = await client.PutAsync(uri, content);
-            if (deliver.IsSuccessStatusCode) GetOrders();
+            if (deliver.IsSuccessStatusCode) GetOrdersInProgress();
 
         }
     }

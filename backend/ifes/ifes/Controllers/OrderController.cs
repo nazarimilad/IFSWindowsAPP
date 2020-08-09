@@ -50,7 +50,15 @@ namespace ifes.Controllers {
             var orderDtos = _orderMapper.MapOrdersDto(orders);
             return Ok(orderDtos);
         }
+        [HttpGet]
+        public IActionResult GetPlaneOrdersDelivered([FromQuery] Guid planeId) {
 
+            var orders = _orderRepo.Query(x => x.PlaneId == planeId && x.Status == OrderStatus.Delivered)
+                                    .Include(x => x.Item)
+                                   .Include(y => y.Passenger).ThenInclude(z => z.Seat).ToList();
+            var orderDtos = _orderMapper.MapOrdersDto(orders);
+            return Ok(orderDtos);
+        }
         [HttpPut]
     public IActionResult PassengerOrder([FromBody] CatalogItemOrder orders) {
             var plane = _planeRepo.Query(x => x.Id == orders.PlaneId).Include(y => y.Seats).ThenInclude(a => a.Passenger).FirstOrDefault();

@@ -26,7 +26,7 @@ namespace Ifes.Views.Aircrew {
         public OrdersView() {
             this.InitializeComponent();
             NavigationViewControl.SelectedItem = NavigationViewControl.MenuItems.ElementAt(0);
-            ContentFrame.Navigate(typeof(Views.Aircrew.OrdersContentView), new OrderedItems("In Progress", OrderService.Instance.Orders));
+            ContentFrame.Navigate(typeof(Views.Aircrew.OrdersContentView), new OrderedItems("In Progress", OrderService.Instance.OrdersInProgress));
         }
 
         private void NavViewItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args) {
@@ -34,9 +34,9 @@ namespace Ifes.Views.Aircrew {
             string title = label;
             ObservableCollection<Order> items = null;
             if (label == "In Progress") {
-                items = OrderService.Instance.Orders;
+                items = OrderService.Instance.OrdersInProgress;
             } else if (label == "Delivered") {
-                items = OrderService.Instance.Orders;
+                items = OrderService.Instance.OrdersDelivered;
             }
             ContentFrame.Navigate(typeof(Views.Aircrew.OrdersContentView), new OrderedItems(title, items));
         }
