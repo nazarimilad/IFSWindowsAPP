@@ -1,6 +1,6 @@
 ﻿using Ifes.Services;
 using Ifes.ViewModels;
-using Microsoft.AspNet.SignalR.Client;
+using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -52,9 +52,15 @@ namespace Ifes.Views.Passenger
 
         private void LoadChatSignalRAsync()
         {
-          
-            MessagingService.Instance.HubProxy().On<Message>("newMessage", UpdateMessage);
-            MessagingService.Instance.Connection().Start();
+
+            MessagingService.Instance.Connection().On("newMessage", new Type[] { Message}, )
+           /* MessagingService.Instance.Connection().On<Message>("newMessage",  (message) =>
+            {
+                Dispatcher.InvokeAsync(() =>
+                {
+
+                })
+            });*/
         }
 
 

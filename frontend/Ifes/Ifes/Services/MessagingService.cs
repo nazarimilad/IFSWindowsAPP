@@ -1,5 +1,5 @@
 ﻿using Ifes.ViewModels;
-using Microsoft.AspNet.SignalR.Client;
+using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,13 +17,18 @@ namespace Ifes.Services
 
         private ObservableCollection<Message> _messages = new ObservableCollection<Message>();
         private HubConnection _connection;
-        private IHubProxy _hubProxy;
 
         private MessagingService()
         {
 
-            _connection = new HubConnection("http://localhost:5001/chathub");
-            _hubProxy = _connection.CreateHubProxy("chat");
+
+
+            _connection = new HubConnectionBuilder()
+                .WithUrl("https://example.com/chathub", options =>
+                {
+                    options.AccessTokenProvider = () => Task.FromResult(_myAccessToken);
+                })
+                .WithAutomaticReconnect()
 
 
             //debug
@@ -39,7 +44,8 @@ namespace Ifes.Services
         public ObservableCollection<Message> Messages() { return _messages; }
 
 
-        public void AddNewMessage(Message message) {
+        public void AddNewMessage(Message message)
+        {
             _messages.Add(message);
         }
 
@@ -49,7 +55,7 @@ namespace Ifes.Services
             _hubProxy.Invoke("send", message);
         }
 
-        public IHubProxy HubProxy() { return _hubProxy; }
+        
         public HubConnection Connection() { return _connection; }
 
 
