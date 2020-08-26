@@ -26,6 +26,7 @@ namespace Ifes.Views.Passenger
         }
 
         private void NavViewItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args) {
+            this.InitializeComponent();
             var label = args.InvokedItem as string;
             string title = label;
             IEnumerable<CatalogItem> items = null;
