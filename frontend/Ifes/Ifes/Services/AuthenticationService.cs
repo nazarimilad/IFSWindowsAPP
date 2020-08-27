@@ -27,13 +27,32 @@ namespace Ifes.Services
         public async Task<bool> LogIn(string email, string password)
         {
 
-            //if (email.ToLower() == "admin@test.com" && password == "admintest")
-            //{
-            //    JwtToken = "3lidj9092Nlijqdzlidj092NN09883H2qlijdqz";
-            //    return true;
-            //}
-            //throw new ArgumentException("Invalid email or password.");
-            return true;
+            try {
+                using (var client = new HttpClient()) {
+
+                    var model = new LoginFlightAttendant { UserName = email, Password = password };
+                    string json = JsonConvert.SerializeObject(model);
+                    HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+                    var httpResponse = await client.PostAsync(new Uri("https://localhost:44319/api/Auth/CrewLogin", UriKind.Absolute), httpContent);
+                    if (httpResponse.IsSuccessStatusCode) {
+                        var content = await httpResponse.Content.ReadAsStringAsync();
+
+                        var flightAttendant = JsonConvert.DeserializeObject<FlightAttendant>(content);
+                        if (flightAttendant != null) {
+
+                            JwtToken = flightAttendant.Token;
+                            return true;
+                        }
+                    }
+
+                }
+
+            } catch (Exception e) {
+
+                throw new ArgumentException("Something went wrong");
+            }
+
+            throw new ArgumentException("Invalid reservation number.");
         }
 
         public async Task<bool> LogIn(string reservationNumber)

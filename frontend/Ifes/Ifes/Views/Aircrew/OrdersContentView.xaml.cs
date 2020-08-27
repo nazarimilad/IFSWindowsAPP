@@ -29,11 +29,21 @@ namespace Ifes.Views.Aircrew {
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
             OrderedItems = (OrderedItems)e.Parameter;
+            if (OrderedItems.Title.ToLower() == "delivered") {
+                BtnOrder.Visibility = Visibility.Collapsed;
+            } else {
+                BtnOrder.IsEnabled = true;
+            }
+
         }
 
         private void OnItemClick(object sender, ItemClickEventArgs e) {
             OrderedItems.CurrentItem = (Order)e.ClickedItem;
-            BtnOrder.IsEnabled = true;
+            if(OrderedItems.Title.ToLower() == "delivered") {
+                BtnOrder.Visibility = Visibility.Collapsed;
+            } else {
+                BtnOrder.IsEnabled = true;
+            }
         }
 
         private void OnBtnDeliverClick(object sender, RoutedEventArgs e) {
