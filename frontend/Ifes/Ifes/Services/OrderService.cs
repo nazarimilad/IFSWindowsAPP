@@ -18,13 +18,11 @@ namespace Ifes.Services {
         public static OrderService Instance { get { return lazy.Value; } }
         public ObservableCollection<Order> OrdersInProgress { get; set; }
         public ObservableCollection<Order> OrdersDelivered { get; set; }
-        public Passenger CurrentPassenger { get; set; }
 
 
         public OrderService() {
             OrdersInProgress = new ObservableCollection<Order>();
             OrdersDelivered = new ObservableCollection<Order>();
-            CurrentPassenger = AuthenticationService.Instance.Passenger;
 
             GetOrdersInProgress();
             GetDeliveredOrders();
@@ -47,16 +45,18 @@ namespace Ifes.Services {
 
 
         public async void DeliverOrder(Order order) {
-            var client = new HttpClient();
+            using (var client = new HttpClient()) {
 
-            var deliver = await client.PutAsync(new Uri("https://localhost:44319/api/Order/DeliverOrders?orderId=" + order.Id), null);
-            if (deliver.IsSuccessStatusCode) {
-                OrdersInProgress.Remove(order);
-                OrdersDelivered.Add(order);
+                var deliver = await client.PutAsync(new Uri("https://localhost:44319/api/Order/DeliverOrders?orderId=" + order.Id), null);
+                if (deliver.IsSuccessStatusCode) {
+                    OrdersInProgress.Remove(order);
+                    OrdersDelivered.Add(order);
+                }
             }
         }
         public async void OrderItem(CatalogItem item, int orderAmount, Passenger passenger) {
-            var client = new HttpClient();
+
+            using (var client = new HttpClient()) {
             var items = new List<OrderedItemsDto>();
             items.Add(new OrderedItemsDto() { Id = item.Id, Amount = orderAmount });
 
@@ -71,6 +71,7 @@ namespace Ifes.Services {
 
             var deliver = await client.PutAsync(uri, content);
             if (deliver.IsSuccessStatusCode) GetOrdersInProgress();
+        }
 
         }
     }

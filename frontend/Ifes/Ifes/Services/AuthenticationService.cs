@@ -15,6 +15,7 @@ namespace Ifes.Services
 
         public static AuthenticationService Instance { get { return lazy.Value; } }
 
+
         public Passenger Passenger { get; set; }
         public string JwtToken { get; private set; } = "";
 
