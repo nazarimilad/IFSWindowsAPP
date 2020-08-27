@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,14 @@ namespace Ifes.ViewModels
         //public string LastName { get; private set; }
         public string UserName { get; set; }
         public string Email { get; private set; }
-        public Seat Seat { get; private set; }
         public string ReservationNumber { get; private set; }
+        public Guid PlaneId { get; set; }
+        public string Token { get; set; }
+        [JsonProperty("seat")]
+        public Seat Seat { get; private set; }
+
         public IEnumerable<Order> Orders { get; set; }
+
 
         public Passenger(string userName, string email, Seat seat, string reservationNumber)
         {
@@ -22,6 +28,9 @@ namespace Ifes.ViewModels
             Email = email;
             Seat = seat;
             ReservationNumber = reservationNumber;
+        }
+
+        public Passenger() {
         }
 
         public override string ToString()

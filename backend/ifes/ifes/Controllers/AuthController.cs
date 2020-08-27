@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using ifes.Controllers.Helpers;
 using ifes.lib.domain.Users;
+using ifes.lib.DTOs.PlaneDtos;
 using ifes.lib.DTOs.UsersDtos;
 using ifes.lib.Models.Users;
 using ifes.lib.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ifes.Controllers {
     [Route("api/[controller]/[Action]")]
@@ -53,20 +56,23 @@ namespace ifes.Controllers {
         [HttpPost]
         public async Task<IActionResult> PassengerLogin([FromBody] PassengerLoginModel model) {
 
-            var passenger = _passengerRepo.Get(x => x.ReservationCode == model.ReservationCode);
+            var passenger = _passengerRepo.Query(x => x.ReservationCode == model.ReservationCode).Include(x => x.Seat).FirstOrDefault();
             if (null == passenger) throw new ArgumentException("incorrect reservationCode");
 
             var result = await _signInManager.PasswordSignInAsync(passenger.UserName, "Test123!", false, false);
             if (result.Succeeded) {
                 var token = TokenHelper.GetToken(passenger);
 
-                var crew = new PassengerDto {
+                var passengerDto = new PassengerDto {
                     UserName = passenger.UserName,
+                    PlaneId = passenger.Seat.PlaneId,
                     Id = passenger.Id,
-                    Token = token
+                    Token = token,
+                    Seat  = new SeatDto(passenger.Seat),
+
                 };
 
-                return Ok(crew);
+                return Ok(passengerDto);
 
 
             }

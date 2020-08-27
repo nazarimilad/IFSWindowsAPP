@@ -44,12 +44,12 @@ namespace Ifes.Views.Passenger {
             AudioVideo.CurrentItem = (CatalogItem)e.ClickedItem;
 
             BtnPlay.IsEnabled = true;
-            BtnPlay.Content = "Play";
             mediaPlayer.Source = null;
             playing = false;
         }
 
         private async void OnBtnPlayClick(object sender, RoutedEventArgs e) {
+            mediaPlayer.Source = null;
             Windows.Storage.IStorageFile file = null;
             Windows.Storage.StorageFolder folder =
                 await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets");
@@ -69,12 +69,10 @@ namespace Ifes.Views.Passenger {
             if (playing) {
                 mediaPlayer.Source = null;
                 playing = false;
-                BtnPlay.Content = "Play";
 
             } else {
                 mediaPlayer.MediaPlayer.Play();
                 playing = true;
-                BtnPlay.Content = "Pause";
 
             }
 

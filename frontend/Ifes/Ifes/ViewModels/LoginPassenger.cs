@@ -30,11 +30,11 @@ namespace Ifes.ViewModels
             return _regex.IsMatch(reservationNumber);
         }
 
-        public void LogIn(string reservationNumber)
+        public async void LogIn(string reservationNumber)
         {
             try
             {
-                bool isLoggedIn = AuthenticationService.Instance.LogIn(reservationNumber).Result;
+                bool isLoggedIn = await AuthenticationService.Instance.LogIn(reservationNumber);
             }
             catch (Exception)
             {

@@ -8,7 +8,7 @@ namespace ifes.lib.domain.Users {
     public class Passenger : ApplicationUser {
         public string ReservationCode { get; set; }
         public Guid SeatId { get; set; }
-        public Seat Seat { get; set; }
+        public virtual Seat Seat { get; set; }
         public List<Order> Orders { get; set; }
 
 

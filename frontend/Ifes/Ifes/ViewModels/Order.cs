@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Ifes.ViewModels
         public OrderStatus Status { get; private set; }
         public int Amount { get; set; }
         public ItemInOrder Item { get;  set; }
+        [JsonProperty("passenger")]
         public Passenger Passenger { get; private set; }
 
         public Order(DateTime created, OrderStatus status, ItemInOrder item, Passenger passenger)

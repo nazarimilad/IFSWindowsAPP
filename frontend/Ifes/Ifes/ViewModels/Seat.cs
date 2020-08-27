@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace Ifes.ViewModels
 {
     public class Seat
     {
+        public Guid Id { get; set; }
+        [JsonProperty("col")]
         public char Col { get; private set; }
         public int Row { get; private set; }
         public FlightClass FlightClass { get; private set; }

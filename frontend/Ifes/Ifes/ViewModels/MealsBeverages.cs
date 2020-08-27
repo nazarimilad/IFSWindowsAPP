@@ -40,7 +40,8 @@ namespace Ifes.ViewModels
         }
 
         internal void OrderCurrentItem(CatalogItem currentItem, int orderAmount) {
-            OrderService.Instance.OrderItem(currentItem, orderAmount);
+            var passenger = AuthenticationService.Instance.Passenger;
+            OrderService.Instance.OrderItem(currentItem, orderAmount, passenger);
       }
     }
 }

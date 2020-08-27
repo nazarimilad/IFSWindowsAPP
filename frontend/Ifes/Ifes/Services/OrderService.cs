@@ -18,11 +18,13 @@ namespace Ifes.Services {
         public static OrderService Instance { get { return lazy.Value; } }
         public ObservableCollection<Order> OrdersInProgress { get; set; }
         public ObservableCollection<Order> OrdersDelivered { get; set; }
+        public Passenger CurrentPassenger { get; set; }
 
 
         public OrderService() {
             OrdersInProgress = new ObservableCollection<Order>();
             OrdersDelivered = new ObservableCollection<Order>();
+            CurrentPassenger = AuthenticationService.Instance.Passenger;
 
             GetOrdersInProgress();
             GetDeliveredOrders();
@@ -53,14 +55,14 @@ namespace Ifes.Services {
                 OrdersDelivered.Add(order);
             }
         }
-        public async void OrderItem(CatalogItem item, int orderAmount) {
+        public async void OrderItem(CatalogItem item, int orderAmount, Passenger passenger) {
             var client = new HttpClient();
             var items = new List<OrderedItemsDto>();
             items.Add(new OrderedItemsDto() { Id = item.Id, Amount = orderAmount });
 
             var order = new OrderItemDto() {
-                PlaneId = new Guid("3A824AE9-D070-46CE-84E5-2C46B68900A5"),
-                SeatId = new Guid("79825DD9-DACA-49A3-8AF7-FB0481910A8E"),
+                PlaneId = passenger.PlaneId, //new Guid("3A824AE9-D070-46CE-84E5-2C46B68900A5"),
+                SeatId = passenger.Seat.Id,//new Guid("79825DD9-DACA-49A3-8AF7-FB0481910A8E"),
                 Items = items,
             };
             string output = JsonConvert.SerializeObject(order);
