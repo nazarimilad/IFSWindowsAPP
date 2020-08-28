@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Ifes.ViewModels;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,9 +15,22 @@ namespace Ifes.Services
 
         public static PassengersService Instance { get { return lazy.Value; } }
 
+        public List<Passenger> Passengers { get; set; }
+
         private PassengersService()
         {
 
+            Passengers = new List<Passenger>();
+         
+        }
+
+
+        public async Task<List<Passenger>> LoadPassengers()
+        {
+            var client = new HttpClient();
+            var pasjson = await client.GetStringAsync(new Uri("https://localhost:44319/api/Passenger/GetWithSeats", UriKind.Absolute));
+            this.Passengers = JsonConvert.DeserializeObject<List<Passenger>>(pasjson);
+            return this.Passengers;
         }
     }
 }

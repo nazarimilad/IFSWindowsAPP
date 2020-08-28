@@ -23,19 +23,50 @@
         <Grid.ColumnSpacing>50</Grid.ColumnSpacing>
         <TextBlock Text="Send a new message" Style="{StaticResource SubheaderTextBlockStyle}" Grid.Column="0" Grid.Row="0"></TextBlock>
         <StackPanel Grid.Column="0" Grid.Row="1" Spacing="10" >
-            <TextBlock Text="Message *" FontWeight="Bold"></TextBlock>
-            <TextBox x:Name="TextBoxMessage" TextWrapping="Wrap" AcceptsReturn="True" Width="Auto" Height="Auto" MinHeight="100" MaxLength="100" Background="{ThemeResource SystemControlAltHighAcrylicElementBrush }"></TextBox>
+            <StackPanel  Orientation="Horizontal" Spacing="10">
+                <Button Click="OnBtnClearSelected">
+                    <FontIcon Glyph="&#xE711;"/>
+                </Button>
+                <TextBlock VerticalAlignment="Center"  Text="To: " ></TextBlock>
+                <TextBlock VerticalAlignment="Center" x:Name="TxtTo" Text="{x:Bind Message }" FontWeight="Bold"></TextBlock>
+            </StackPanel>
+            <TextBlock Text="Message: " FontWeight="Bold"></TextBlock>
+            <TextBox x:Name="TextBoxMessage" KeyUp="TextBoxMessage_KeyUp" TextWrapping="Wrap" AcceptsReturn="True" Width="Auto" Height="Auto" MinHeight="100" MaxLength="100" Background="{ThemeResource SystemControlAltHighAcrylicElementBrush }"></TextBox>
+
+            <StackPanel Orientation="Horizontal" Spacing="50">
+
+                <Button x:Name="BtnSendMessageSingle" Click="OnBtnSendSingle" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" IsEnabled="False">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Send to selected sender"/>
+                        <Border BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Stretch" Opacity="0.5"/>
+                        <FontIcon Glyph="&#xE724;"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="BtnSendMessageToAll"  Click="OnBtnSendAll" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" IsEnabled="False">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Send to everyone"/>
+                        <Border BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Stretch" Opacity="0.5"/>
+                        <FontIcon Glyph="&#xE724;"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+           
+
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1" Spacing="10">
-            <TextBlock Text="Passenger seats *" FontWeight="Bold"></TextBlock>
-            <ListView x:Name="ListViewPassengers"></ListView>
+            <TextBlock Text="Passenger" FontWeight="Bold"></TextBlock>
+            <TextBox KeyUp="SearchPassenger_KeyUp" x:Name="SearchPassenger"></TextBox>
+            <ListView IsItemClickEnabled="True" ItemClick="ListViewPassengers_ItemClick" x:Name="ListViewPassengers" ScrollViewer.VerticalScrollBarVisibility="Auto"  Height="500" SelectionMode="Single">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBlock Text="{Binding UserName}"/>
+                            <TextBlock Text="{Binding ReservationNumber}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
-        <Button x:Name="BtnSendMessage" Click="OnBtnSend" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" IsEnabled="False">
-            <StackPanel Orientation="Horizontal" Spacing="10">
-                <TextBlock Text="Send"/>
-                <Border BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Stretch" Opacity="0.5"/>
-                <FontIcon Glyph="&#xE724;"/>
-            </StackPanel>
-        </Button>
+      
     </Grid>
 </Page>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace Ifes.ViewModels
 {
@@ -13,7 +14,8 @@ namespace Ifes.ViewModels
         //public string LastName { get; private set; }
         public string UserName { get; set; }
         public string Email { get; private set; }
-        public string ReservationNumber { get; private set; }
+        public string ReservationNumber { get;set; }
+                
         public Guid PlaneId { get; set; }
         public string Token { get; set; }
         [JsonProperty("seat")]
@@ -33,9 +35,23 @@ namespace Ifes.ViewModels
         public Passenger() {
         }
 
+        public bool MatchesSearch(string querry)
+        {
+            if(UserName.StartsWith(querry) || ReservationNumber.StartsWith(querry))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public override string ToString()
         {
             return $"{UserName}";
+        }
+
+        public static implicit operator Passenger(ItemClickEventArgs v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

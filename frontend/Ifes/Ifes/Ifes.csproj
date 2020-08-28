@@ -116,7 +116,9 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Helpers\MarginSetter.cs" />
     <Compile Include="Helpers\MessageContainerStyleSelector.cs" />
+    <Compile Include="Helpers\UIPropertyMetadata.cs" />
     <Compile Include="Services\CatalogService.cs" />
     <Compile Include="Services\MediaService.cs" />
     <Compile Include="Services\MessagingService.cs" />

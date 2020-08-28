@@ -53,6 +53,7 @@ namespace ifes.lib.domain.Planes {
                 throw new ArgumentException("seat not found");
             }
             seat.Passenger = passenger;
+            passenger.Seat = seat;
         }
 
         public void PutCrewManToWork(CabinCrew cabinCrew) {

@@ -14,7 +14,10 @@ namespace ifes.lib.DTOs.PlaneDtos {
             this.Col = seat.Col;
             this.Row = seat.Row;
             this.FlightClass = seat.FlightClass;
-            Passenger = new PassengerSmallDto(seat.Passenger);
+            if (seat.Passenger != null)
+            {
+                Passenger = new PassengerSmallDto(seat.Passenger);
+            }
         }
         public SeatDto() {
 

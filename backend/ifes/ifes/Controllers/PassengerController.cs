@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ifes.lib.data;
+using ifes.lib.DTOs.UsersDtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ifes.Controllers
 {
@@ -11,11 +14,21 @@ namespace ifes.Controllers
     [ApiController]
     public class PassengerController : ControllerBase
     {
+
+
+        private readonly ApplicationDbContext _context;
+
+        public PassengerController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         // GET: api/Passenger
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<PassengerDto> GetWithSeats()
         {
-            return new string[] { "value1", "value2" };
+            Guid guid = _context.Plane.FirstOrDefault().Id;
+            return _context.Passenger.Include(p=> p.Seat).Select(p => new PassengerDto(p, guid));
         }
 
     

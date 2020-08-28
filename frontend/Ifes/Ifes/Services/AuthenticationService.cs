@@ -52,7 +52,7 @@ namespace Ifes.Services
                 throw new ArgumentException("Something went wrong");
             }
 
-            throw new ArgumentException("Invalid reservation number.");
+            throw new ArgumentException("Wrong password.");
         }
 
         public async Task<bool> LogIn(string reservationNumber)
