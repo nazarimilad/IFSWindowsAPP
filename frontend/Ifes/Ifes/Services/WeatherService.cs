@@ -22,6 +22,8 @@ namespace Ifes.Services
 
         private async Task<Weather> GetWeather()
         {
+
+            //api key:<bd981360a960a8b2629b76c91b912a2d>
             // TODO: make http request and deserialise JSON result into corresponding view model
             return new Weather(FlightInfoService.Instance.FlightInfo.Destination, DateTime.Now, 25, 0.12, 3.8);
         }

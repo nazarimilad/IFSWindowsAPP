@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Data.Json;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -50,6 +51,13 @@ namespace Ifes.Views.Aircrew
         }
 
 
+        private void RenderDropDowns()
+        {
+            var seats = PlaneService.Instance.Seats;
+            DropDownFirst.ItemsSource = seats;
+            DropDwnSecond.ItemsSource = seats;
+        }
+
         private void RenderVisual()
         {
             var seats = PlaneService.Instance.Seats;
@@ -60,10 +68,12 @@ namespace Ifes.Views.Aircrew
                 seatsForGrid.Add(seat);
                 if (seat.Col == "C")
                 {
-                    seatsForGrid.Add(new Seat { Row = seat.Row,Col = "" });
+                    seatsForGrid.Add(new Seat { Row = seat.Row, Col = "" });
                 }
             }
             FlatGround.ItemsSource = seatsForGrid;
+            RenderDropDowns();
+
         }
 
         private async void FlatGround_ItemClick(object sender, ItemClickEventArgs e)
@@ -81,8 +91,8 @@ namespace Ifes.Views.Aircrew
                 await contentDialog.ShowAsync();
                 return;
             }
-            
-            this.SelectedSeat =(Seat) e.ClickedItem;
+
+            this.SelectedSeat = (Seat)e.ClickedItem;
             RenderSelectedPerson();
         }
 
@@ -91,7 +101,41 @@ namespace Ifes.Views.Aircrew
             TxtClass.Text = $"Row number: {SelectedSeat.Row} Place: {SelectedSeat.Col} ";
             TxtName.Text = SelectedSeat.Passenger.UserName;
             TxtSelectedSeat.Text = SelectedSeat.ToString();
-            
+
+        }
+
+        private async Task Button_Click(object sender, RoutedEventArgs e)
+        {
+            var firstOption = (Seat)DropDownFirst.SelectedItem;
+            var secondOption = (Seat)DropDwnSecond.SelectedItem;
+
+            if (firstOption == null || secondOption == null)
+            {
+                ContentDialog contentDialog = new ContentDialog()
+                {
+                    Title = "Selection invalid",
+                    Content = "Please select a value ",
+                    CloseButtonText = "Ok"
+                };
+
+                await contentDialog.ShowAsync();
+                return;
+            }
+            if (firstOption.Id == secondOption.Id)
+            {
+                ContentDialog contentDialog = new ContentDialog()
+                {
+                    Title = "Selection invalid",
+                    Content = "What purpose does it serve to switch the same seats?",
+                    CloseButtonText = "Ok"
+                };
+
+                await contentDialog.ShowAsync();
+                return;
+            }
+            await PlaneService.Instance.Switchseat(firstOption,secondOption);
+            await PlaneService.Instance.LoadPassengers();
+            await PassengersService.Instance.LoadPassengers();
         }
     }
 }

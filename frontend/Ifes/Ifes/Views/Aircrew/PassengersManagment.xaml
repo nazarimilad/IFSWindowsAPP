@@ -41,6 +41,7 @@
             </GridView>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1" Spacing="10">
+            <TextBlock FontSize="22" FontWeight="Bold" Text="Information about the selected seat"></TextBlock>
             <StackPanel Orientation="Horizontal" Spacing="10">
                 <TextBlock FontWeight="Bold" Text="Selected Seat: "></TextBlock>
                 <TextBlock x:Name="TxtSelectedSeat"  Text="No passenger selected"></TextBlock>
@@ -53,10 +54,23 @@
                 <TextBlock FontWeight="Bold" Text="Name passenger: "></TextBlock>
                 <TextBlock x:Name="TxtName"  Text="No passenger selected"></TextBlock>
             </StackPanel>
-           
-        </StackPanel>
+            <Border Height="2" Background="Black" />
+            <TextBlock FontSize="22" FontWeight="Bold" Text="Manage the plane"></TextBlock>
 
-    </Grid>
+            <TextBlock FontWeight="Bold" Text="Switch passengers "></TextBlock>
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <ComboBox x:Name="DropDownFirst" Header="First passenger" PlaceholderText="Pick a color" Width="200">
+                   
+                </ComboBox>
+                <ComboBox x:Name="DropDwnSecond" Header="Second passenger" PlaceholderText="Pick a color" Width="200">
+                  
+                </ComboBox>
+                <Button Click="Button_Click" VerticalAlignment="Bottom">
+                    <TextBlock Text="Switch places of user"></TextBlock>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+          </Grid>
    
 
 </Page>
