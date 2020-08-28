@@ -98,7 +98,7 @@ namespace ifes.lib.data
                 {
                     var passenger = new Passenger()
                     {
-                        ReservationCode = "LKFJDKJDF" + i,
+                        ReservationCode = "resvcode" + i + c,
                         UserName = "Passenger" + i + c
                     };
                     plane.AssingPassengerToSeat(passenger, c, i);
