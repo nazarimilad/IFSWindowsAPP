@@ -7,6 +7,16 @@ namespace ifes.lib.data {
             var beverages = new List<Beverage>();
 
 
+            beverages.Add(new Beverage
+            {
+
+                BeverageType = Enum.BeverageType.Alcoholic,
+                Name = "whisky",
+                Price = 5.0,
+                PaymentOption = Enum.PaymentOption.Card
+
+            });
+
 
             return beverages;
         }

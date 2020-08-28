@@ -43,7 +43,7 @@ namespace ifes.Controllers {
 
                 var crew = new CabinCrewDto {
                     UserName = crewmem.UserName,
-                    Id = crewmem.Id,
+                    Id = crewmem.Id.ToString(),
                     Token = token
                 };
 
@@ -65,8 +65,8 @@ namespace ifes.Controllers {
 
                 var passengerDto = new PassengerDto {
                     UserName = passenger.UserName,
-                    PlaneId = passenger.Seat.PlaneId,
-                    Id = passenger.Id,
+                    //PlaneId = passenger.Seat.PlaneId,
+                    Id = passenger.Id.ToString(),
                     Token = token,
                     Seat  = new SeatDto(passenger.Seat),
 

@@ -25,19 +25,26 @@ namespace ifes.lib.domain.Planes {
             var seat1 = FindSeatOfPassenger(firstUser);
             var seat2 = FindSeatOfPassenger(secondUser);
             if (seat1 == null || seat2 == null) throw new ArgumentException("One of the users was not found");
+            var temp = seat1.Passenger;
             seat1.Passenger = secondUser;
-            seat2.Passenger = firstUser;
+            seat2.Passenger = temp;
         }
 
-        public void AddSeat(char col, int row, FlightClass flightClass) {
+        public void SwitchUserSeats(string firstUserId, string secondUserId)
+        {
+            SwitchUserSeats(FindPassenger(firstUserId), FindPassenger(secondUserId));
+        }
+
+
+        public void AddSeat(string col, int row, FlightClass flightClass) {
             if (Seats == null) {
                 Seats = new List<Seat>();
             }
 
-            Seats.Append(new Seat(col, row, flightClass));
+            Seats.Add(new Seat(col, row, flightClass));
         }
 
-        public void AssingPassengerToSeat(Passenger passenger, char column, int row) {
+        public void AssingPassengerToSeat(Passenger passenger, string column, int row) {
             var seat = Seats.FirstOrDefault(p => p.Col == column && p.Row == row);
             if (seat == null) {
                 throw new ArgumentException("seat not found");
@@ -55,6 +62,7 @@ namespace ifes.lib.domain.Planes {
 
         public IEnumerable<Order> GetOrdersInProgress() => GetOrdersOfStatus(OrderStatus.InProgress);
         private Seat FindSeatOfPassenger(Passenger user) => Seats.FirstOrDefault(p => p.Passenger.Id == user.Id);
+        private Passenger FindPassenger(string userId) => Seats.FirstOrDefault(p => p.Passenger.Id == userId).Passenger;
         private IEnumerable<Order> GetOrdersOfStatus(OrderStatus status) {
             List<Order> orders = new List<Order>();
             Seats.ForEach(x => orders.AddRange(x.Passenger.Orders.Where(y => y.Status == status)));
