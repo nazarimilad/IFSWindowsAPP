@@ -38,11 +38,11 @@ public class PassengerSmallDto
 
     public PassengerSmallDto(Passenger passenger)
     {
-        Name = passenger?.UserName;
+        UserName = passenger?.UserName;
         Id = passenger?.Id;
     }
 
-    public string Name { get; set; }
+    public string UserName { get; set; }
     public string Id { get; set; }
 
    

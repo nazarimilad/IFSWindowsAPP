@@ -11,15 +11,46 @@ namespace Ifes.ViewModels
     {
         public Guid Id { get; set; }
         [JsonProperty("col")]
-        public char Col { get; private set; }
-        public int Row { get; private set; }
-        public FlightClass FlightClass { get; private set; }
-
-        public Seat(char column, int row, FlightClass flightClass)
+        public string Col { get; set; }
+        public int Row { get; set; }
+        public FlightClass FlightClass { get; set; }
+        [JsonProperty("passenger")]
+        public Passenger Passenger { get; set; }
+        public Seat(string column, int row, FlightClass flightClass)
         {
             Col = column;
             Row = row;
             FlightClass = flightClass;
+        }
+
+        public Seat()
+        {
+
+        }
+
+        public string RenderText
+        {
+            get
+            {
+                if (this.Col !="" )
+                {
+                    return $"{Col}{Row}";
+                }
+                return "";
+            }
+        }
+
+
+        public string RenderBackground
+        {
+            get
+            {
+                if (this.Col != "")
+                {
+                    return $"#4295f5";
+                }
+                return "#fff";
+            }
         }
 
         public override string ToString()

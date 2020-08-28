@@ -2,6 +2,7 @@
 using Ifes.ViewModels;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -24,25 +25,73 @@ namespace Ifes.Views.Aircrew
     {
         public PassengersManagment()
         {
+            this.SelectedSeat = null;
             this.InitializeComponent();
         }
 
-        public async System.Threading.Tasks.Task<List<ViewModels.Passenger>> LoadDataAsync()
+        public Seat SelectedSeat { get; set; }
+
+
+        public async System.Threading.Tasks.Task LoadDataAsync()
         {
-            if (PassengersService.Instance.Passengers.Count == 0)
+            if (PlaneService.Instance.Seats.Count == 0)
             {
-                await PassengersService.Instance.LoadPassengers();
+                await PlaneService.Instance.LoadPassengers();
             }
 
-            return PassengersService.Instance.Passengers;
 
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var passengers = await LoadDataAsync();
+            await LoadDataAsync();
+            RenderVisual();
+        }
 
+
+        private void RenderVisual()
+        {
+            var seats = PlaneService.Instance.Seats;
+            var seatsForGrid = new ArrayList();
+
+            foreach (var seat in seats)
+            {
+                seatsForGrid.Add(seat);
+                if (seat.Col == "C")
+                {
+                    seatsForGrid.Add(new Seat { Row = seat.Row,Col = "" });
+                }
+            }
+            FlatGround.ItemsSource = seatsForGrid;
+        }
+
+        private async void FlatGround_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            if (((Seat)e.ClickedItem).Col == "")
+            {
+                ContentDialog contentDialog = new ContentDialog()
+                {
+                    Title = "Invalid seat",
+                    Content = "The aisle is not a  valid seat",
+                    CloseButtonText = "Ok"
+                };
+
+                await contentDialog.ShowAsync();
+                return;
+            }
+            
+            this.SelectedSeat =(Seat) e.ClickedItem;
+            RenderSelectedPerson();
+        }
+
+        private void RenderSelectedPerson()
+        {
+            TxtClass.Text = $"Row number: {SelectedSeat.Row} Place: {SelectedSeat.Col} ";
+            TxtName.Text = SelectedSeat.Passenger.UserName;
+            TxtSelectedSeat.Text = SelectedSeat.ToString();
+            
         }
     }
 }

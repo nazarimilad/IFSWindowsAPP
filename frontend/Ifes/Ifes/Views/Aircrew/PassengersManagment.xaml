@@ -4,11 +4,59 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Ifes.Views.Aircrew"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local1="using:Ifes.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock Text="Page for passengers management"></TextBlock>
+
+    <Grid Margin="0 -10 0 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.Padding>30</Grid.Padding>
+        <Grid.RowSpacing>50</Grid.RowSpacing>
+        <Grid.ColumnSpacing>50</Grid.ColumnSpacing>
+        <TextBlock Text="Select passenger " Style="{StaticResource SubheaderTextBlockStyle}" Grid.Column="0" Grid.Row="0"></TextBlock>
+        <StackPanel   Grid.Column="0" Grid.Row="1" Spacing="10" >
+            <TextBlock Text="Layout of plane" HorizontalAlignment="Left"  Grid.Column="0" Grid.Row="0"></TextBlock>
+            <GridView  IsItemClickEnabled="True" ItemClick="FlatGround_ItemClick" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" Height="800"   x:Name="FlatGround">
+                
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate >
+                        <ItemsWrapGrid   MaximumRowsOrColumns="7"  Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+                <GridView.ItemTemplate  >
+                    <DataTemplate x:Name="IconTextTemplate"  x:DataType="local1:Seat">
+                        <StackPanel   VerticalAlignment="Stretch"   Orientation="Horizontal" AutomationProperties.Name="{x:Bind Id }">
+                            <TextBlock  Text="{x:Bind RenderText }"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" Spacing="10">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <TextBlock FontWeight="Bold" Text="Selected Seat: "></TextBlock>
+                <TextBlock x:Name="TxtSelectedSeat"  Text="No passenger selected"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <TextBlock FontWeight="Bold" Text="Class: "></TextBlock>
+                <TextBlock x:Name="TxtClass"  Text="No passenger selected"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <TextBlock FontWeight="Bold" Text="Name passenger: "></TextBlock>
+                <TextBlock x:Name="TxtName"  Text="No passenger selected"></TextBlock>
+            </StackPanel>
+           
+        </StackPanel>
+
     </Grid>
+   
+
 </Page>
