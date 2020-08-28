@@ -35,6 +35,7 @@ namespace ifes.Controllers
         public IActionResult SwitchSeats([FromQuery] Guid planeId, string firstPassengerId, string secondPassengerId)
         {
             var plane = _planeRepo.Query(x => true).Include(x => x.Seats).ThenInclude(y => y.Passenger).FirstOrDefault();
+
             plane.SwitchUserSeats(firstPassengerId, secondPassengerId);
             _planeRepo.SaveChanges();
             return Ok();

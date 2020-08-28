@@ -25,9 +25,12 @@ namespace ifes.lib.domain.Planes {
             var seat1 = FindSeatOfPassenger(firstUser);
             var seat2 = FindSeatOfPassenger(secondUser);
             if (seat1 == null || seat2 == null) throw new ArgumentException("One of the users was not found");
-            var temp = seat1.Passenger;
-            seat1.Passenger = secondUser;
-            seat2.Passenger = temp;
+            //   var seatTmp = firstUser.Seat;
+            //   firstUser.Seat = secondUser.Seat;
+            //   secondUser.Seat = seatTmp;
+            firstUser.Seat = null;
+            secondUser.Seat = null;
+
         }
 
         public void SwitchUserSeats(string firstUserId, string secondUserId)
@@ -61,8 +64,9 @@ namespace ifes.lib.domain.Planes {
 
 
         public IEnumerable<Order> GetOrdersInProgress() => GetOrdersOfStatus(OrderStatus.InProgress);
-        private Seat FindSeatOfPassenger(Passenger user) => Seats.FirstOrDefault(p => p.Passenger.Id == user.Id);
-        private Passenger FindPassenger(string userId) => Seats.FirstOrDefault(p => p.Passenger.Id == userId).Passenger;
+        public Seat FindSeatOfPassenger(Passenger user) => Seats.FirstOrDefault(p => p.Passenger.Id == user.Id);
+        public Seat FindSeatOfPassenger(string userID) => Seats.FirstOrDefault(p => p.Passenger.Id == userID);
+        private Passenger FindPassenger(string userId) => Seats.FirstOrDefault(p => p.Passenger?.Id == userId)?.Passenger;
         private IEnumerable<Order> GetOrdersOfStatus(OrderStatus status) {
             List<Order> orders = new List<Order>();
             Seats.ForEach(x => orders.AddRange(x.Passenger.Orders.Where(y => y.Status == status)));

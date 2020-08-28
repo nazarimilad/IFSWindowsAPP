@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ifes.lib.domain.Users;
 using ifes.lib.Enum;
 
@@ -10,7 +11,6 @@ namespace ifes.lib.domain.Planes {
         public Plane Plane{ get; set; }
         public FlightClass FlightClass { get; set; }
         public  Passenger Passenger { get; set; }
-
 
         public Seat(string col, int row, FlightClass flightClass) {
             Col = col;

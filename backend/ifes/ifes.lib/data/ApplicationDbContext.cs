@@ -13,7 +13,16 @@ namespace ifes.lib.data {
         }
         protected override void OnModelCreating(ModelBuilder builder) {
             base.OnModelCreating(builder);
-         
+
+
+            var seatEtb = builder.Entity<Seat>();
+            var passengerEtb = builder.Entity<Passenger>();
+
+            seatEtb.HasOne(c => c.Passenger).WithMany();
+            seatEtb.HasIndex(c => c.Id).IsUnique();
+
+            passengerEtb.HasOne(d => d.Seat).WithMany();
+            passengerEtb.HasIndex(c => c.Id).IsUnique();
 
             builder.Entity<IdentityUser>(entity => entity.Property(m => m.Id).HasMaxLength(85));
             builder.Entity<IdentityUser>(entity => entity.Property(m => m.NormalizedEmail).HasMaxLength(85));
