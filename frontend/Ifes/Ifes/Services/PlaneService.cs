@@ -38,7 +38,6 @@ namespace Ifes.Services
         {
             var client = new HttpClient();
             await client.PutAsync(new Uri("https://localhost:44319/api/Seat/GetPlaneSeatsWithPassenger", UriKind.Absolute),null);
-
         }
 
 

@@ -25,7 +25,7 @@
         <StackPanel   Grid.Column="0" Grid.Row="1" Spacing="10" >
             <TextBlock Text="Layout of plane" HorizontalAlignment="Left"  Grid.Column="0" Grid.Row="0"></TextBlock>
             <GridView  IsItemClickEnabled="True" ItemClick="FlatGround_ItemClick" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" Height="800"   x:Name="FlatGround">
-                
+
                 <GridView.ItemsPanel>
                     <ItemsPanelTemplate >
                         <ItemsWrapGrid   MaximumRowsOrColumns="7"  Orientation="Horizontal" />
@@ -59,18 +59,16 @@
 
             <TextBlock FontWeight="Bold" Text="Switch passengers "></TextBlock>
             <StackPanel Orientation="Horizontal" Spacing="10">
-                <ComboBox x:Name="DropDownFirst" Header="First passenger" PlaceholderText="Pick a color" Width="200">
-                   
+                <ComboBox x:Name="DropDownFirst" Header="First passenger" PlaceholderText="Pick a seat" Width="200">
+
                 </ComboBox>
-                <ComboBox x:Name="DropDwnSecond" Header="Second passenger" PlaceholderText="Pick a color" Width="200">
-                  
+                <ComboBox x:Name="DropDwnSecond" Header="Second passenger" PlaceholderText="Pick a seat" Width="200">
+
                 </ComboBox>
                 <Button Click="Button_Click" VerticalAlignment="Bottom">
                     <TextBlock Text="Switch places of user"></TextBlock>
                 </Button>
             </StackPanel>
         </StackPanel>
-          </Grid>
-   
-
+    </Grid>
 </Page>

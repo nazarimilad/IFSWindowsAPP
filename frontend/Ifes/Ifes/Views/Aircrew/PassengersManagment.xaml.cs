@@ -98,13 +98,13 @@ namespace Ifes.Views.Aircrew
 
         private void RenderSelectedPerson()
         {
-            TxtClass.Text = $"Row number: {SelectedSeat.Row} Place: {SelectedSeat.Col} ";
+            TxtSelectedSeat.Text= $"Row number: {SelectedSeat.Row} Place: {SelectedSeat.Col} ";
             TxtName.Text = SelectedSeat.Passenger.UserName;
-            TxtSelectedSeat.Text = SelectedSeat.ToString();
+            TxtClass.Text = SelectedSeat.FlightClass.ToString();
 
         }
 
-        private async Task Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var firstOption = (Seat)DropDownFirst.SelectedItem;
             var secondOption = (Seat)DropDwnSecond.SelectedItem;

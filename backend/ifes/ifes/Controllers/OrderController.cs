@@ -61,7 +61,7 @@ namespace ifes.Controllers {
         }
         [HttpPut]
     public IActionResult PassengerOrder([FromBody] CatalogItemOrder orders) {
-            var plane = _planeRepo.Query(x => x.Id == orders.PlaneId).Include(y => y.Seats).ThenInclude(a => a.Passenger).FirstOrDefault();
+            var plane = _planeRepo.Query(x => true).Include(y => y.Seats).ThenInclude(a => a.Passenger).FirstOrDefault();
             var passenger = plane.Seats.Where(x => x.Id == orders.SeatId).FirstOrDefault().Passenger;
             List<Order> newOrders = new List<Order>();
             orders.Items.ForEach(x => {
