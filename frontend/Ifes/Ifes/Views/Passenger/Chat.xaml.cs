@@ -1,5 +1,6 @@
 ﻿using Ifes.Services;
 using Ifes.ViewModels;
+using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,7 +21,7 @@ namespace Ifes.Views.Passenger
 {
     public sealed partial class Chat : Page
     {
-        private ObservableCollection<Message> _messages= new ObservableCollection<Message>();
+        private ObservableCollection<Message> _messages = new ObservableCollection<Message>();
 
 
         public Chat()
@@ -43,9 +44,9 @@ namespace Ifes.Views.Passenger
 
         }
 
-        private void sendMessage_Click(object sender, RoutedEventArgs e)
+        private async void sendMessage_Click(object sender, RoutedEventArgs e)
         {
-
+            await MessagingService.Instance.Connection().InvokeAsync("SendMessage","qsdfqsdf" ,"hallo dit is een test");
 
         }
     }

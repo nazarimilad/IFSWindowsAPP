@@ -53,14 +53,13 @@ namespace Ifes.Views.Passenger
         private void LoadChatSignalRAsync()
         {
 
-            MessagingService.Instance.Connection().On("newMessage", new Type[] { Message}, )
-           /* MessagingService.Instance.Connection().On<Message>("newMessage",  (message) =>
+            MessagingService.Instance.Connection().On<string, Message>("newMessage", async (user, message) =>
             {
-                Dispatcher.InvokeAsync(() =>
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
-
-                })
-            });*/
+                    UpdateMessage(message);
+                });
+            });
         }
 
 

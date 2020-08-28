@@ -23,14 +23,7 @@ namespace Ifes.Services
 
 
 
-            _connection = new HubConnectionBuilder()
-                .WithUrl("https://example.com/chathub", options =>
-                {
-                    options.AccessTokenProvider = () => Task.FromResult(_myAccessToken);
-                })
-                .WithAutomaticReconnect()
-
-
+            SetupSignalR();
             //debug
             _messages.Add(new Message { Content = "qlskdfjqsmldfkj" });
             _messages.Add(new Message { Content = "qlskdfjqsmldfkj" });
@@ -43,19 +36,20 @@ namespace Ifes.Services
 
         public ObservableCollection<Message> Messages() { return _messages; }
 
+        private async Task SetupSignalR()
+        {
+            _connection = new HubConnectionBuilder().WithUrl("https://localhost:44319/messages").Build();
+
+            await _connection.StartAsync();
+
+        }
+
 
         public void AddNewMessage(Message message)
         {
             _messages.Add(message);
         }
 
-
-        public void SendMessage(string message)
-        {
-            _hubProxy.Invoke("send", message);
-        }
-
-        
         public HubConnection Connection() { return _connection; }
 
 
