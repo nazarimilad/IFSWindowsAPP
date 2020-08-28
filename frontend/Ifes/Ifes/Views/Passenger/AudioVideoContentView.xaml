@@ -14,7 +14,6 @@
                 <StackPanel Orientation="Horizontal" Height="64" AutomationProperties.Name="{x:Bind Name}">
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="12,0,0,0">
                         <TextBlock Text="{x:Bind Name}"  Style="{ThemeResource BaseTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}" />
-                        <TextBlock Text="{x:Bind Price}" Style="{ThemeResource BodyTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                     </StackPanel>
                 </StackPanel>
             </DataTemplate>
@@ -81,12 +80,14 @@
             <Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Opacity="0.5"/>
             <TextBlock Text="{x:Bind AudioVideo.CurrentItem.Description, Mode=OneWay, TargetNullValue='Please select an item for details'}" x:Name="TextBlockDescription" Grid.Column="0" Grid.Row="2" Style="{ThemeResource BaseTextBlockStyle}" />
         </Grid>
-        <Button x:Name="BtnOrder" Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Click="OnBtnOrderClick" IsEnabled="False" Background="{ThemeResource SystemAccentColor}">
+        <Button x:Name="BtnPlay" Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Click="OnBtnPlayClick" IsEnabled="False" Background="{ThemeResource SystemAccentColor}">
             <StackPanel Orientation="Horizontal" Spacing="10">
-                <TextBlock Text="Order" Foreground="White"/>
+                <TextBlock Text="Play" Foreground="White"/>
                 <Border BorderThickness="1" BorderBrush="White" VerticalAlignment="Stretch" Opacity="0.5"/>
                 <FontIcon Glyph="&#xE9AC;" Foreground="White"/>
             </StackPanel>
         </Button>
+        <MediaPlayerElement x:Name="mediaPlayer" Grid.Column="2" Grid.Row="3"></MediaPlayerElement>
+
     </Grid>
 </Page>

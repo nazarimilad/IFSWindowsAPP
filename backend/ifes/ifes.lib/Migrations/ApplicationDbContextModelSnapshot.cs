@@ -386,7 +386,7 @@ namespace ifes.lib.Migrations
                     b.Property<int>("FlightClass")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("PlaneId")
+                    b.Property<Guid>("PlaneId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Row")
@@ -596,7 +596,9 @@ namespace ifes.lib.Migrations
                 {
                     b.HasOne("ifes.lib.domain.Planes.Plane", null)
                         .WithMany("Seats")
-                        .HasForeignKey("PlaneId");
+                        .HasForeignKey("PlaneId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ifes.lib.domain.Users.CabinCrew", b =>

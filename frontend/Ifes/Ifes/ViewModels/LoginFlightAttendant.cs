@@ -14,6 +14,8 @@ namespace Ifes.ViewModels
         private string _email;
         private string _password;
         private const int MIN_LENGTH_PASSWORD = 6;
+        public string UserName { get; set; }
+
 
         public string Email
         {
@@ -59,8 +61,8 @@ namespace Ifes.ViewModels
         {
             try
             {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
+                //var addr = new System.Net.Mail.MailAddress(email);
+                return true; //addr.Address == email;
             }
             catch
             {
@@ -73,11 +75,11 @@ namespace Ifes.ViewModels
             return password.Length >= MIN_LENGTH_PASSWORD;
         }
 
-        public void LogIn(string email, string password)
+        public async void LogIn(string email, string password)
         {
             try
             {
-                bool isLoggedIn = AuthenticationService.Instance.LogIn(email, password).Result;
+                bool isLoggedIn = await AuthenticationService.Instance.LogIn(email, password);
             }
             catch (Exception) {
                 throw;

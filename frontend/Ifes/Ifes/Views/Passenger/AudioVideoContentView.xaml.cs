@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Media.Playback;
+using Windows.Media.Core;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,9 +25,14 @@ namespace Ifes.Views.Passenger {
     public sealed partial class AudioVideoContentView : Page {
         public AudioVideo AudioVideo { get; set; }
 
+        bool playing;
+
+
         public AudioVideoContentView() {
             this.InitializeComponent();
             TextBlockDescription.Text = "Please select an item for more details.";
+            playing = false;
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -35,10 +42,39 @@ namespace Ifes.Views.Passenger {
 
         private void OnItemClick(object sender, ItemClickEventArgs e) {
             AudioVideo.CurrentItem = (CatalogItem)e.ClickedItem;
-            BtnOrder.IsEnabled = true;
+
+            BtnPlay.IsEnabled = true;
+            mediaPlayer.Source = null;
+            playing = false;
         }
 
-        private void OnBtnOrderClick(object sender, RoutedEventArgs e) {
+        private async void OnBtnPlayClick(object sender, RoutedEventArgs e) {
+            mediaPlayer.Source = null;
+            Windows.Storage.IStorageFile file = null;
+            Windows.Storage.StorageFolder folder =
+                await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets");
+            if(AudioVideo.Title.ToLower() == "audio") {
+              file = await folder.GetFileAsync($"{AudioVideo.CurrentItem.Name.ToLower()}.mp3");
+            }
+            else {
+             file = await folder.GetFileAsync($"{AudioVideo.CurrentItem.Name.ToLower()}.mp4");
+            }
+
+
+            mediaPlayer.AutoPlay = false;
+            mediaPlayer.AreTransportControlsEnabled = true;
+
+            mediaPlayer.Source = MediaSource.CreateFromStorageFile(file);
+
+            if (playing) {
+                mediaPlayer.Source = null;
+                playing = false;
+
+            } else {
+                mediaPlayer.MediaPlayer.Play();
+                playing = true;
+
+            }
 
         }
     }

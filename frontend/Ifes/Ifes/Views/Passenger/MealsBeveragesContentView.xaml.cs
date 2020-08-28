@@ -56,7 +56,9 @@ namespace Ifes.Views.Passenger
             ContentDialogResult result = await confirmOrderAmount.ShowAsync();
 
             if (result == ContentDialogResult.Primary) {
-                MealsBeverages.OrderCurrentItem(MealsBeverages.CurrentItem, Int16.Parse(OrderAmount.Text));
+                if (OrderAmount.Text != null) {
+                    MealsBeverages.OrderCurrentItem(MealsBeverages.CurrentItem, Int16.Parse(OrderAmount.Text));
+                }
             } else {
 
             }
