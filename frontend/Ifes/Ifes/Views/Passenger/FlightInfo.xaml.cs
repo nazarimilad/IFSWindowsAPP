@@ -47,7 +47,6 @@ namespace Ifes.Views.Passenger
         public FlightInfo()
         {
             this.InitializeComponent();
-            StartUpdatingLiveFlightDataAsync();
         }
 
         private async Task StartUpdatingLiveFlightDataAsync()
@@ -68,5 +67,12 @@ namespace Ifes.Views.Passenger
              });
         }
 
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            await WeatherService.Instance.GetWeather();
+             await  StartUpdatingLiveFlightDataAsync();
+
+        }
     }
 }

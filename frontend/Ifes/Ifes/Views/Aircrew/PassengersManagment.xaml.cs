@@ -91,7 +91,7 @@ namespace Ifes.Views.Aircrew
                 await contentDialog.ShowAsync();
                 return;
             }
-
+            DropDownFirst.SelectedItem = (Seat)e.ClickedItem;
             this.SelectedSeat = (Seat)e.ClickedItem;
             RenderSelectedPerson();
         }
