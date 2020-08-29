@@ -48,7 +48,7 @@ namespace ifes.lib.data {
             builder.Entity<IdentityRoleClaim<string>>(entity => entity.Property(m => m.RoleId).HasMaxLength(85));
 
 
-
+            builder.Entity<Passenger>().HasOne(p => p.ReservationGroup).WithMany(prop => prop.Passengers).IsRequired(false);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -78,6 +78,7 @@ namespace ifes.lib.data {
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public  DbSet<CabinCrew> CabinCrew { get; set; }
         public  DbSet<Passenger> Passenger { get; set; }
+        public DbSet<ReservationGroup> ReservationGroups{ get; set; }
 
     }
 }

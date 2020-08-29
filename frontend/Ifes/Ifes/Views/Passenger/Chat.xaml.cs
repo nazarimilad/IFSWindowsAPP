@@ -37,16 +37,17 @@ namespace Ifes.Views.Passenger
 
 
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            _messages = MessagingService.Instance.Messages();
-
+            // _messages = MessagingService.Instance.Messages();
+            await PassengersService.Instance.LoadReservationGroup();
+            PeopleInGroup.ItemsSource = PassengersService.Instance.PassengersInReservationGroup;
         }
 
         private async void sendMessage_Click(object sender, RoutedEventArgs e)
         {
-            await MessagingService.Instance.Connection().InvokeAsync("SendMessage","qsdfqsdf" ,"hallo dit is een test");
+            await MessagingService.Instance.Connection().InvokeAsync("SendMessage", "qsdfqsdf", "hallo dit is een test");
 
         }
     }

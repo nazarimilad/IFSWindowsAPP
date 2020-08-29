@@ -130,9 +130,26 @@ namespace ifes.lib.data
             plane.Catalog.Items.AddRange((FoodInit.getFoods()));
             plane.Catalog.Items.AddRange((InitBeverage.GetBeverages()));
             //    plane.Catalog.Items.Add(new);
+            var passengrs = plane.Seats.Select(p => p.Passenger).OrderBy(p=> p.Id).ToList();
 
+            var groups = SplitList<Passenger>(passengrs);
+            foreach (var item in groups)
+            {
+                var group = new ReservationGroup();
+                group.Passengers = new List<Passenger>();
+                group.Passengers.AddRange(item);
+                _context.ReservationGroups.Add(group);
 
+            }
             _context.SaveChanges();
         }
+        public static IEnumerable<List<T>> SplitList<T>(List<T> locations, int nSize = 15)
+        {
+            for (int i = 0; i < locations.Count; i += nSize)
+            {
+                yield return locations.GetRange(i, Math.Min(nSize, locations.Count - i));
+            }
+        }
     }
+
 }

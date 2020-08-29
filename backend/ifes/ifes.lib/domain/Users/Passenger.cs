@@ -10,6 +10,7 @@ namespace ifes.lib.domain.Users {
         public  Seat Seat { get; set; }
         public List<Order> Orders { get; set; }
 
+        public ReservationGroup ReservationGroup { get; set; }
 
 
         public Passenger() {

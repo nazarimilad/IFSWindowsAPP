@@ -39,7 +39,6 @@ namespace Ifes.Services
         private async Task SetupSignalR()
         {
             _connection = new HubConnectionBuilder().WithUrl("https://localhost:44319/messages").Build();
-
             await _connection.StartAsync();
 
         }

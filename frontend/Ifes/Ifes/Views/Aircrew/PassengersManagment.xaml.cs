@@ -159,8 +159,6 @@ namespace Ifes.Views.Aircrew
                 await contentDialog.ShowAsync();
 
             }
-
-
             RenderVisual();
         }
     }

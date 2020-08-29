@@ -32,10 +32,9 @@ namespace Ifes.Views.Passenger
             ChatNotification.DataContext = Messaging;
             ContentFrame.Navigate(typeof(Passenger.FlightInfo));
             NavView.SelectedItem = NavView.MenuItems.ElementAt(0);
-            LoadChatSignalRAsync();
         }
 
-        private void NavViewItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        private async void NavViewItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             var label = args.InvokedItem as string;
             var pageType =
@@ -47,6 +46,8 @@ namespace Ifes.Views.Passenger
             {
                 ContentFrame.Navigate(pageType);
             }
+            LoadChatSignalRAsync();
+            await PassengersService.Instance.LoadPassengers();
         }
 
 
