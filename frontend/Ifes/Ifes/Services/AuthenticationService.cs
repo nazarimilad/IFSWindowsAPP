@@ -68,7 +68,7 @@ namespace Ifes.Services
                         return true;
                     }
                 }
-                throw new ArgumentException("invalid reservation number");
+                return false;
 
             }
 

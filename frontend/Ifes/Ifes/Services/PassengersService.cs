@@ -1,4 +1,5 @@
-﻿using Ifes.ViewModels;
+﻿using Ifes.Helpers;
+using Ifes.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -26,10 +27,11 @@ namespace Ifes.Services
 
         public async Task<List<Passenger>> LoadPassengers()
         {
-            var client = new HttpClient();
-            var pasjson = await client.GetStringAsync(new Uri("https://localhost:44319/api/Passenger/GetWithSeats", UriKind.Absolute));
-            this.Passengers = JsonConvert.DeserializeObject<List<Passenger>>(pasjson);
-            return this.Passengers;
+            using (var client = HttpClientWithToken.GetClient()) {
+                var pasjson = await client.GetStringAsync(new Uri("https://localhost:44319/api/Passenger/GetWithSeats", UriKind.Absolute));
+                this.Passengers = JsonConvert.DeserializeObject<List<Passenger>>(pasjson);
+                return this.Passengers;
+            }
         }
 
         public async Task LoadReservationGroup()
@@ -37,9 +39,10 @@ namespace Ifes.Services
             var currentPassenger = AuthenticationService.Instance.Passenger;
             if (currentPassenger != null)
             {
-                var client = new HttpClient();
-                var pasjson = await client.GetStringAsync(new Uri($"https://localhost:44319/api/Passenger/GetPassengersOfGroup?passengerId={currentPassenger.Id}", UriKind.Absolute));
-                this.PassengersInReservationGroup = JsonConvert.DeserializeObject<List<Passenger>>(pasjson);
+                using (var client = HttpClientWithToken.GetClient()) {
+                    var pasjson = await client.GetStringAsync(new Uri($"https://localhost:44319/api/Passenger/GetPassengersOfGroup?passengerId={currentPassenger.Id}", UriKind.Absolute));
+                    this.PassengersInReservationGroup = JsonConvert.DeserializeObject<List<Passenger>>(pasjson);
+                }
             }
         }
 

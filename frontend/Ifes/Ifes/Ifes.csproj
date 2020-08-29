@@ -117,6 +117,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Dto\ExternWeather.cs" />
+    <Compile Include="Helpers\HttpClientWithToken.cs" />
     <Compile Include="Helpers\MarginSetter.cs" />
     <Compile Include="Helpers\MessageContainerStyleSelector.cs" />
     <Compile Include="Helpers\UIPropertyMetadata.cs" />

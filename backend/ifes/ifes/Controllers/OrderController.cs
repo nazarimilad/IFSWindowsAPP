@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using ifes.lib.domain.Catalogs;
 using ifes.lib.domain.Planes;
@@ -10,11 +11,14 @@ using ifes.lib.Enum;
 using ifes.lib.Mappers;
 using ifes.lib.Models.Catalogs;
 using ifes.lib.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ifes.Controllers {
+    [Authorize(AuthenticationSchemes = "Bearer")]
+
     [Route("api/[controller]/[Action]")]
     [ApiController]
     public class OrderController : ControllerBase {
@@ -55,6 +59,7 @@ namespace ifes.Controllers {
             //var orderDtos = _orderMapper.MapOrdersDto(orders);
             return Ok(orders);
         }
+
         [HttpGet]
         public IActionResult GetPassengerOrders([FromQuery] string passengerId) {
             var orders = _orderRepo.Query(x => x.Passenger.Id == passengerId).Include(x => x.Item).ToList();

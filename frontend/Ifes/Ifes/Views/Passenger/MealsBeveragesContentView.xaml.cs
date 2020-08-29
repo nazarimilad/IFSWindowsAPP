@@ -57,7 +57,9 @@ namespace Ifes.Views.Passenger
 
             if (result == ContentDialogResult.Primary) {
                 if (OrderAmount.Text != null) {
+
                     MealsBeverages.OrderCurrentItem(MealsBeverages.CurrentItem, Int16.Parse(OrderAmount.Text));
+                    OrderAmount.Text = "";
                 }
             } else {
 

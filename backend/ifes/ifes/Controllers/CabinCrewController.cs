@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ifes.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
+
     [Route("api/[controller]/[Action]")]
     [ApiController]
     public class CabinCrewController : ControllerBase
@@ -18,7 +22,7 @@ namespace ifes.Controllers
             return new string[] { "value1", "value2" };
         }
 
-    
+
 
         // POST: api/CabinCrew
         [HttpPost]

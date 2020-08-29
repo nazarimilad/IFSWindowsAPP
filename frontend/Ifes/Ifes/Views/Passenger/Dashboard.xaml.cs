@@ -48,7 +48,7 @@ namespace Ifes.Views.Passenger
             {
                 ContentFrame.Navigate(pageType);
             }
-          
+
         }
 
 
@@ -62,7 +62,7 @@ namespace Ifes.Views.Passenger
                 {
                     var before =MessagingService.Instance.Messages.Count();
                     MessagingService.Instance.HandleIncomingMessage(message);
-                    if (MessagingService.Instance.AllowedToDoAction(message, before)) { 
+                    if (MessagingService.Instance.AllowedToDoAction(message, before)) {
                         SendNewMessageNotification(message);
                     }
                 });
@@ -70,7 +70,7 @@ namespace Ifes.Views.Passenger
         }
 
 
-       
+
 
 
         private async void OnClickLogOut(object sender, TappedRoutedEventArgs e)
@@ -140,7 +140,7 @@ namespace Ifes.Views.Passenger
         {
             base.OnNavigatedTo(e);
             LoadChatSignalRAsync();
-            await PassengersService.Instance.LoadPassengers();
+            //await PassengersService.Instance.LoadPassengers();
         }
     }
 }
