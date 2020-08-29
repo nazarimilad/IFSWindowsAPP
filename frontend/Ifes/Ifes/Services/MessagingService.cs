@@ -56,25 +56,35 @@ namespace Ifes.Services
             var psgr = AuthenticationService.Instance.Passenger;
             if (psgr != null)
             {
-                if (message.UserFromId ==  psgr.Id || PassengersService.Instance.isUserMemberOfGroup(psgr.Id) )
+                if (message.UserFromId == psgr.Id || PassengersService.Instance.isUserMemberOfGroup(psgr.Id))
                 {
                     Messages.Add(message);
                 }
             }
         }
 
-        public bool AllowedToDoAction(Message message, int ctr)
+        public bool AllowedToDoActionMessage(Message message, int ctr)
         {
             var psgr = AuthenticationService.Instance.Passenger;
-            if (ctr ==  Messages.Count())
+            if (ctr == Messages.Count())
             {
                 return false;
             }
-            if (psgr.Id ==  message.UserFromId)
+            if (psgr.Id == message.UserFromId)
             {
                 return true;
             }
             return true;
+        }
+
+        public bool ShowAlert(Message message)
+        {
+            var psgr = AuthenticationService.Instance.Passenger;
+            if (message.UserFromId == psgr.Id)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

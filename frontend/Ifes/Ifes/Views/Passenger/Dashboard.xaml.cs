@@ -62,11 +62,32 @@ namespace Ifes.Views.Passenger
                 {
                     var before =MessagingService.Instance.Messages.Count();
                     MessagingService.Instance.HandleIncomingMessage(message);
-                    if (MessagingService.Instance.AllowedToDoAction(message, before)) { 
+                    if (MessagingService.Instance.AllowedToDoActionMessage(message, before)) { 
                         SendNewMessageNotification(message);
                     }
                 });
             });
+
+            MessagingService.Instance.Connection().On<string, Message>("newMessageCrew", async (user, message) =>
+            {
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    SendCrewNotification(message);
+                });
+            });
+
+
+            MessagingService.Instance.Connection().On<string, Message>("newMessageCrewPersonal", async (user, message) =>
+            {
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    if (MessagingService.Instance.ShowAlert(message))
+                    {
+                        SendCrewNotification(message);
+                    }
+                });
+            });
+
         }
 
 
@@ -96,26 +117,16 @@ namespace Ifes.Views.Passenger
             ContentFrame.Navigate(typeof(Views.Passenger.Orders));
         }
 
-        private async void SendSeatBeltNotification(Message message )
+        private async void SendCrewNotification(Message message )
         {
-       /*     ContentDialog seatBeltDialog = new ContentDialog()
+         ContentDialog seatBeltDialog = new ContentDialog()
             {
                 Title = "Dear passenger",
-                Content = "Make sure to fasten your seat belt.",
+                Content = message.Content,
                 PrimaryButtonText = "Ok",
                 DefaultButton = ContentDialogButton.Primary
             };
-            await Task.Delay(5000);
             await seatBeltDialog.ShowAsync();
-            await Task.Delay(3000);  */
-            object inAppNotificationWithButtonsTemplate = null;
-            bool? isTemplatePresent = Resources.TryGetValue("InAppNotificationWithButtonsTemplate", out inAppNotificationWithButtonsTemplate);
-
-            if (isTemplatePresent == true && inAppNotificationWithButtonsTemplate is DataTemplate template)
-            {
-                Messaging.ReceivedMessage = message.Preview();
-                ChatNotification.Show(template, 10_000);
-            }
         }
         private void SendNewMessageNotification(Message message)
         {
