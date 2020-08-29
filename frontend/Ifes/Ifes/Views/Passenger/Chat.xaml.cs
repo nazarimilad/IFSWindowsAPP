@@ -37,7 +37,7 @@ namespace Ifes.Views.Passenger
 
         private async void sendMessage_Click(object sender, RoutedEventArgs e)
         {
-            await MessagingService.Instance.SendMessageToGroup("qlksdfjqsmldfkj");
+            await MessagingService.Instance.SendMessageToGroup(message.Text);
 
         }
     }

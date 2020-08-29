@@ -72,14 +72,9 @@ namespace Ifes.Services
             }
             if (psgr.Id ==  message.UserFromId)
             {
-                return false;
+                return true;
             }
             return true;
         }
-
-
-
-
-
     }
 }
