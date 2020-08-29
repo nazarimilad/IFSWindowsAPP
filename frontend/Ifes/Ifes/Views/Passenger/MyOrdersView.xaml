@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="Ifes.Views.Passenger.MyOrdersView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Ifes.Views.Passenger"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="using:Ifes.ViewModels"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnSpacing>20</Grid.ColumnSpacing>
+    <Grid.RowSpacing>20</Grid.RowSpacing>
+    <Grid.Padding>20</Grid.Padding>
+
+    <TextBlock Text="{x:Bind OrderedItems.Title}" Grid.Column="0" Grid.Row="0" Style="{StaticResource SubheaderTextBlockStyle}"></TextBlock>
+
+    <ListView ItemsSource="{x:Bind OrderedItems.Items}" Grid.Column="0" Grid.Row="1" ItemClick="OnItemClick" IsItemClickEnabled="True" Margin="0 30 0 0">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="viewmodels:Order">
+                <StackPanel Orientation="Horizontal" Height="88" AutomationProperties.Name="{x:Bind Item.ToString()}">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="12,0,0,0">
+                        <TextBlock Text="{x:Bind Item.Name}"  Style="{ThemeResource BaseTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}" />
+                        <TextBlock Text="{x:Bind Amount}"  Style="{ThemeResource BaseTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}" />
+                    </StackPanel>
+                </StackPanel>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+
+    </Grid>
+</Page>

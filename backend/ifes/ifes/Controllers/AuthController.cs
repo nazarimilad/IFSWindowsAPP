@@ -56,7 +56,7 @@ namespace ifes.Controllers {
         [HttpPost]
         public async Task<IActionResult> PassengerLogin([FromBody] PassengerLoginModel model) {
 
-            var passenger = _passengerRepo.Query(x => x.ReservationCode == model.ReservationCode).Include(x => x.Seat).FirstOrDefault();
+            var passenger = _passengerRepo.Query(x => x.ReservationCode == model.ReservationCode).Include(x => x.Seat).ThenInclude(y => y.Plane).FirstOrDefault();
             if (null == passenger) throw new ArgumentException("incorrect reservationCode");
 
             var result = await _signInManager.PasswordSignInAsync(passenger.UserName, "Test123!", false, false);
@@ -65,7 +65,7 @@ namespace ifes.Controllers {
 
                 var passengerDto = new PassengerDto {
                     UserName = passenger.UserName,
-                    //PlaneId = passenger.Seat.PlaneId,
+                    PlaneId = passenger.Seat.Plane.Id,
                     Id = passenger.Id.ToString(),
                     Token = token,
                     Seat  = new SeatDto(passenger.Seat),

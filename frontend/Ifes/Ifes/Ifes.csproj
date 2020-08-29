@@ -206,6 +206,9 @@
     <Compile Include="Views\Passenger\Media.xaml.cs">
       <DependentUpon>Media.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Passenger\MyOrdersView.xaml.cs">
+      <DependentUpon>MyOrdersView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Passenger\Orders.xaml.cs">
       <DependentUpon>Orders.xaml</DependentUpon>
     </Compile>
@@ -293,6 +296,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Passenger\Media.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Passenger\MyOrdersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

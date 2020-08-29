@@ -36,19 +36,15 @@ namespace ifes.Controllers {
 
         }
 
-    // GET: api/Order
-    [HttpGet]
-    public IEnumerable<string> Get() {
-        return new string[] { "value1", "value2" };
-    }
+
         [HttpGet]
         public IActionResult GetPlaneOrders([FromQuery] Guid planeId) {
 
             var orders = _orderRepo.Query(x => x.PlaneId == planeId && x.Status == OrderStatus.InProgress)
                                     .Include(x => x.Item)
                                    .Include(y => y.Passenger).ThenInclude(z => z.Seat).ToList();
-            var orderDtos = _orderMapper.MapOrdersDto(orders);
-            return Ok(orderDtos);
+            //var orderDtos = _orderMapper.MapOrdersDto(orders);
+            return Ok(orders);
         }
         [HttpGet]
         public IActionResult GetPlaneOrdersDelivered([FromQuery] Guid planeId) {
@@ -56,8 +52,15 @@ namespace ifes.Controllers {
             var orders = _orderRepo.Query(x => x.PlaneId == planeId && x.Status == OrderStatus.Delivered)
                                     .Include(x => x.Item)
                                    .Include(y => y.Passenger).ThenInclude(z => z.Seat).ToList();
-            var orderDtos = _orderMapper.MapOrdersDto(orders);
-            return Ok(orderDtos);
+            //var orderDtos = _orderMapper.MapOrdersDto(orders);
+            return Ok(orders);
+        }
+        [HttpGet]
+        public IActionResult GetPassengerOrders([FromQuery] string passengerId) {
+            var orders = _orderRepo.Query(x => x.Passenger.Id == passengerId).Include(x => x.Item).ToList();
+            //var orderDtos = _orderMapper.MapOrdersDto(orders);
+            return Ok(orders);
+
         }
         [HttpPut]
     public IActionResult PassengerOrder([FromBody] CatalogItemOrder orders) {
@@ -76,8 +79,8 @@ namespace ifes.Controllers {
 
             _passengerRepo.Update(passenger);
             _passengerRepo.SaveChanges();
-            var orderedItems = _orderMapper.MapOrdersDto(passenger.Orders);
-            return Ok(orderedItems);
+           // var orderedItems = _orderMapper.MapOrdersDto(passenger.Orders);
+            return Ok(passenger.Orders);
     }
 
         // PUT: api/Order/5
