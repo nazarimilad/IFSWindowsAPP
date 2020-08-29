@@ -32,10 +32,9 @@ namespace Ifes.Views.Passenger
             ChatNotification.DataContext = Messaging;
             ContentFrame.Navigate(typeof(Passenger.FlightInfo));
             NavView.SelectedItem = NavView.MenuItems.ElementAt(0);
-            LoadChatSignalRAsync();
         }
 
-        private void NavViewItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        private async void NavViewItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             var label = args.InvokedItem as string;
             var pageType =
@@ -49,27 +48,29 @@ namespace Ifes.Views.Passenger
             {
                 ContentFrame.Navigate(pageType);
             }
+          
         }
 
 
-        private void LoadChatSignalRAsync()
+        private async void LoadChatSignalRAsync()
         {
-
+            MessagingService.Instance.Messages = new List<Message>();
+            await  MessagingService.Instance.SetupSignalR();
             MessagingService.Instance.Connection().On<string, Message>("newMessage", async (user, message) =>
             {
                 await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
-                    UpdateMessage(message);
+                    var before =MessagingService.Instance.Messages.Count();
+                    MessagingService.Instance.HandleIncomingMessage(message);
+                    if (MessagingService.Instance.AllowedToDoAction(message, before)) { 
+                        SendNewMessageNotification(message);
+                    }
                 });
             });
         }
 
 
-        private void UpdateMessage(Message message)
-        {
-            MessagingService.Instance.AddNewMessage(message);
-            SendNewMessageNotification(message);
-        }
+       
 
 
         private async void OnClickLogOut(object sender, TappedRoutedEventArgs e)
@@ -133,6 +134,13 @@ namespace Ifes.Views.Passenger
         {
             ContentFrame.Navigate(typeof(Views.Passenger.Chat));
             NavView.SelectedItem = NavView.MenuItems.ElementAt(3);
+        }
+
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            LoadChatSignalRAsync();
+            await PassengersService.Instance.LoadPassengers();
         }
     }
 }

@@ -6,33 +6,54 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:styleSelectors="using:Ifes.Helpers" xmlns:messages="using:Ifes.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-
-
-
-            <StackPanel x:Name="messagePanel">
-                <ListView x:Name="messagesLV"  HorizontalAlignment="Center" ItemsSource="{x:Bind Messages }">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="messages:Message">
+    <Grid x:Name="messagePanel">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.Padding>30</Grid.Padding>
+        <Grid.RowSpacing>50</Grid.RowSpacing>
+        <Grid.ColumnSpacing>50</Grid.ColumnSpacing>
+        <StackPanel  Grid.Column="0" Grid.Row="1" Spacing="10" HorizontalAlignment="Stretch">
+            <TextBlock Text="People in your group" Style="{StaticResource SubheaderTextBlockStyle}" Grid.Column="0" Grid.Row="0"></TextBlock>
+            <ListView  x:Name="PeopleInGroup"  HorizontalAlignment="Stretch">
+                <ListView.ItemTemplate >
+                    <DataTemplate x:DataType="messages:Passenger">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{x:Bind UserName}" Foreground="Teal" FontSize="14" 
+                                Grid.Column="1" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" Spacing="10">
+            <TextBlock Text="Connect with your group" Style="{StaticResource SubheaderTextBlockStyle}" Grid.Column="0" Grid.Row="0"></TextBlock>
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
+                <ListView  x:Name="Messages" VerticalAlignment="Stretch" Background="Red" Height="500" HorizontalAlignment="Stretch">
+                    <ListView.ItemTemplate >
+                        <DataTemplate x:DataType="messages:Passenger">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="47"/>
+                                    <ColumnDefinition />
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Image Source="Assets/StoreLogo.png" Width="32" Height="32"
-                                HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                <TextBlock Text="{x:Bind Content}" Foreground="Teal" FontSize="14" 
-                                Grid.Column="1" VerticalAlignment="Center"/>
+                                <TextBlock Text="{x:Bind UserName}" Foreground="Teal" FontSize="14" 
+                                Grid.Column="1" />
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
                 <TextBox x:Name="message"></TextBox>
-                <Button x:Name="sendMessage" Click="sendMessage_Click">Verzend</Button>
+                <Button x:Name="sendMessage" Click="sendMessage_Click">Send</Button>
             </StackPanel>
-
- 
-
-
+        </StackPanel>
+    </Grid>
 </Page>

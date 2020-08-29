@@ -28,10 +28,22 @@ namespace ifes.Controllers
         public IEnumerable<PassengerDto> GetWithSeats()
         {
             Guid guid = _context.Plane.FirstOrDefault().Id;
-            return _context.Passenger.Include(p=> p.Seat).Select(p => new PassengerDto(p, guid));
+            return _context.Passenger.Include(p => p.Seat).Select(p => new PassengerDto(p, guid));
         }
 
-    
+        [HttpGet]
+        public IEnumerable<PassengerDto> GetPassengersOfGroup(string passengerId)
+        {
+            Guid guid = _context.Plane.FirstOrDefault().Id;
+
+            var group = _context.Passenger.Include(p => p.ReservationGroup).FirstOrDefault(p => p.Id == passengerId).ReservationGroup;
+            var passengers = _context.ReservationGroups.Include(p => p.Passengers)
+                .FirstOrDefault(predicate => predicate.Id == group.Id)
+                .Passengers.Select(p => new PassengerDto(p, guid))
+               .Where(p => p.Id != passengerId);
+            return passengers;
+        }
+
 
         // POST: api/Passenger
         [HttpPost]
