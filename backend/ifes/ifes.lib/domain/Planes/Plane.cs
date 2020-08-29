@@ -25,11 +25,11 @@ namespace ifes.lib.domain.Planes {
             var seat1 = FindSeatOfPassenger(firstUser);
             var seat2 = FindSeatOfPassenger(secondUser);
             if (seat1 == null || seat2 == null) throw new ArgumentException("One of the users was not found");
-            //   var seatTmp = firstUser.Seat;
-            //   firstUser.Seat = secondUser.Seat;
-            //   secondUser.Seat = seatTmp;
-            firstUser.Seat = null;
-            secondUser.Seat = null;
+            var seatTmp = firstUser.Seat;
+            firstUser.Seat = secondUser.Seat;
+            secondUser.Seat = seatTmp;
+            seat1.Passenger = secondUser;
+            seat2.Passenger = firstUser;
 
         }
 
