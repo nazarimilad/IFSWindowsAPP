@@ -43,6 +43,11 @@ namespace Ifes.Services
             }
         }
 
+        public bool isUserMemberOfGroup(Guid id)
+        {
+            return PassengersInReservationGroup.FirstOrDefault(predicate => predicate.Id == id) != null;
+        }
+
 
     }
 }

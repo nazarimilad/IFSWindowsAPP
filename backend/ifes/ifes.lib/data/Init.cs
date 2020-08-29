@@ -135,8 +135,10 @@ namespace ifes.lib.data
             var groups = SplitList<Passenger>(passengrs);
             foreach (var item in groups)
             {
-                var group = new ReservationGroup();
-                group.Passengers = new List<Passenger>();
+                var group = new ReservationGroup
+                {
+                    Passengers = new List<Passenger>()
+                };
                 group.Passengers.AddRange(item);
                 _context.ReservationGroups.Add(group);
 

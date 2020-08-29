@@ -21,22 +21,12 @@ namespace Ifes.Views.Passenger
 {
     public sealed partial class Chat : Page
     {
-        private ObservableCollection<Message> _messages = new ObservableCollection<Message>();
 
 
         public Chat()
         {
             this.InitializeComponent();
         }
-
-        public ObservableCollection<Message> Messages
-        {
-            get { return this._messages; }
-        }
-
-
-
-
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -47,7 +37,7 @@ namespace Ifes.Views.Passenger
 
         private async void sendMessage_Click(object sender, RoutedEventArgs e)
         {
-            await MessagingService.Instance.Connection().InvokeAsync("SendMessage", "qsdfqsdf", "hallo dit is een test");
+            await MessagingService.Instance.SendMessageToGroup("qlksdfjqsmldfkj");
 
         }
     }

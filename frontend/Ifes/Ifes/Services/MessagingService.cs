@@ -15,41 +15,70 @@ namespace Ifes.Services
 
         public static MessagingService Instance { get { return lazy.Value; } }
 
-        private ObservableCollection<Message> _messages = new ObservableCollection<Message>();
         private HubConnection _connection;
 
         private MessagingService()
         {
-
-
-
-            SetupSignalR();
-            //debug
-            _messages.Add(new Message { Content = "qlskdfjqsmldfkj" });
-            _messages.Add(new Message { Content = "qlskdfjqsmldfkj" });
-            _messages.Add(new Message { Content = "qlskdfjqsmldfkj" });
-            _messages.Add(new Message { Content = "qlskdfjqsmldfkj" });
-            _messages.Add(new Message { Content = "qlskdfjqsmldfkj" });
-            _messages.Add(new Message { Content = "qlskdfjqsmldfkj" });
-
+            Messages = new List<Message>();
         }
 
-        public ObservableCollection<Message> Messages() { return _messages; }
-
-        private async Task SetupSignalR()
+        public List<Message> Messages { get; set; }
+        public async Task SetupSignalR()
         {
+            Messages = new List<Message>();
             _connection = new HubConnectionBuilder().WithUrl("https://localhost:44319/messages").Build();
             await _connection.StartAsync();
 
         }
 
 
-        public void AddNewMessage(Message message)
+        public HubConnection Connection() { return _connection; }
+
+        public async Task SendMessageToGroup(string content)
         {
-            _messages.Add(message);
+            var psgr = AuthenticationService.Instance.Passenger;
+            if (psgr != null)
+            {
+                await _connection.InvokeAsync("SendMessage", psgr.Id.ToString(), content);
+            }
+        }
+        public async Task SendMessageToSeat(string content, string seat)
+        {
+            await _connection.InvokeAsync("SendMessageToSeat", seat, content);
+        }
+        public async Task SendMessageToAll(string content)
+        {
+            await _connection.InvokeAsync("SendMessageToSeatAll", content);
         }
 
-        public HubConnection Connection() { return _connection; }
+        public void HandleIncomingMessage(Message message)
+        {
+            var psgr = AuthenticationService.Instance.Passenger;
+            if (psgr != null)
+            {
+                if (new Guid( message.UserFromId) ==  psgr.Id || PassengersService.Instance.isUserMemberOfGroup(psgr.Id) )
+                {
+                    Messages.Add(message);
+                }
+            }
+        }
+
+        public bool AllowedToDoAction(Message message, int ctr)
+        {
+            var psgr = AuthenticationService.Instance.Passenger;
+            if (ctr ==  Messages.Count())
+            {
+                return false;
+            }
+            if (psgr.Id == new Guid( message.UserFromId))
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+
 
 
     }
