@@ -56,7 +56,7 @@ namespace Ifes.Services
             var psgr = AuthenticationService.Instance.Passenger;
             if (psgr != null)
             {
-                if (new Guid( message.UserFromId) ==  psgr.Id || PassengersService.Instance.isUserMemberOfGroup(psgr.Id) )
+                if (message.UserFromId ==  psgr.Id || PassengersService.Instance.isUserMemberOfGroup(psgr.Id) )
                 {
                     Messages.Add(message);
                 }
@@ -70,7 +70,7 @@ namespace Ifes.Services
             {
                 return false;
             }
-            if (psgr.Id == new Guid( message.UserFromId))
+            if (psgr.Id ==  message.UserFromId)
             {
                 return false;
             }
