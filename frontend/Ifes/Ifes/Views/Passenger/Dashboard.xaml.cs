@@ -23,7 +23,7 @@ namespace Ifes.Views.Passenger
 {
     public sealed partial class Dashboard : Page
     {
-        public Messaging Messaging; 
+        public Messaging Messaging;
 
         public Dashboard()
         {
@@ -41,7 +41,9 @@ namespace Ifes.Views.Passenger
                 label == "Flight Info" ? typeof(Views.Passenger.FlightInfo) :
                 label == "Meals & Beverages" ? typeof(Views.Passenger.MealsBeveragesView) :
                 label == "Media" ? typeof(Views.Passenger.Media):
-                label == "Chat" ? typeof(Views.Passenger.Chat): null;
+                label == "Chat" ? typeof(Views.Passenger.Chat):
+                label == "My Orders" ? typeof(Views.Passenger.Orders):
+                null;
             if (pageType != null && pageType != ContentFrame.CurrentSourcePageType)
             {
                 ContentFrame.Navigate(pageType);
@@ -72,7 +74,7 @@ namespace Ifes.Views.Passenger
 
 
         private async void OnClickLogOut(object sender, TappedRoutedEventArgs e)
-        {            
+        {
             ContentDialog confirmationDialog = new ContentDialog()
             {
                 Title = "Log out",
@@ -86,7 +88,7 @@ namespace Ifes.Views.Passenger
             {
                 // TODO: let viewmodel of logged user call LogOut() method of AuthenticationService
                 this.Frame.Navigate(typeof(Views.Passenger.Login), null);
-            }   
+            }
         }
 
         private void OnClickMyOrders(object sender, TappedRoutedEventArgs e)
@@ -108,7 +110,7 @@ namespace Ifes.Views.Passenger
             await Task.Delay(3000);  */
             object inAppNotificationWithButtonsTemplate = null;
             bool? isTemplatePresent = Resources.TryGetValue("InAppNotificationWithButtonsTemplate", out inAppNotificationWithButtonsTemplate);
-     
+
             if (isTemplatePresent == true && inAppNotificationWithButtonsTemplate is DataTemplate template)
             {
                 Messaging.ReceivedMessage = message.Preview();

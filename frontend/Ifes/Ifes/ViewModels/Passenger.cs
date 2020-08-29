@@ -15,7 +15,7 @@ namespace Ifes.ViewModels
         public string UserName { get; set; }
         public string Email { get; private set; }
         public string ReservationNumber { get;set; }
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public Guid PlaneId { get; set; }
         public string Token { get; set; }
         [JsonProperty("seat")]

@@ -29,7 +29,8 @@ namespace ifes {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
             services.AddDbContext<ApplicationDbContext>(options =>
-           options.UseMySQL(Configuration.GetConnectionString("IfesConnectionLocalMysql")));
+            options.UseSqlServer(Configuration.GetConnectionString("IfesConnectionLocal")));
+           //options.UseMySQL(Configuration.GetConnectionString("IfesConnectionLocalMysql")));
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -62,7 +63,7 @@ namespace ifes {
             app.UseAuthorization();
             app.UseSwaggerDocumentation();
 
-            app.UseEndpoints(endpoints => { 
+            app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
                 endpoints.MapHub<MessageHub>("messages");
             });

@@ -18,14 +18,18 @@ namespace Ifes.Services {
         public static OrderService Instance { get { return lazy.Value; } }
         public ObservableCollection<Order> OrdersInProgress { get; set; }
         public ObservableCollection<Order> OrdersDelivered { get; set; }
+        public ObservableCollection<Order> PassengerOrders { get; set; }
 
 
         public OrderService() {
             OrdersInProgress = new ObservableCollection<Order>();
             OrdersDelivered = new ObservableCollection<Order>();
+            PassengerOrders = new ObservableCollection<Order>();
+
 
             GetOrdersInProgress();
             GetDeliveredOrders();
+            GetPassengerOrders();
         }
 
         private async void GetOrdersInProgress() {
@@ -42,6 +46,17 @@ namespace Ifes.Services {
             dataOrders.Sort((x, y) => DateTime.Compare(x.Created, y.Created));
             dataOrders.ForEach(x => OrdersDelivered.Add(x));
         }
+        public async void GetPassengerOrders() {
+            var passengerId = AuthenticationService.Instance.Passenger.Id;
+            if (passengerId == null) return ;
+            var client = new HttpClient();
+            var jsonOrders = await client.GetStringAsync(new Uri("https://localhost:44319/api/Order/GetPassengerOrders?passengerId=" + $"{passengerId}", UriKind.Absolute));
+            var dataOrders = JsonConvert.DeserializeObject<List<Order>>(jsonOrders);
+            dataOrders.Sort((x, y) => DateTime.Compare(x.Created, y.Created));
+            dataOrders.ForEach(x => PassengerOrders.Add(x));
+
+        }
+
 
 
         public async void DeliverOrder(Order order) {
@@ -51,6 +66,7 @@ namespace Ifes.Services {
                 if (deliver.IsSuccessStatusCode) {
                     OrdersInProgress.Remove(order);
                     OrdersDelivered.Add(order);
+
                 }
             }
         }
@@ -70,9 +86,13 @@ namespace Ifes.Services {
             var uri = new Uri("https://localhost:44319/api/Order/PassengerOrder");
 
             var deliver = await client.PutAsync(uri, content);
-            if (deliver.IsSuccessStatusCode) GetOrdersInProgress();
+                if (deliver.IsSuccessStatusCode) {
+                    GetOrdersInProgress();
+                    GetPassengerOrders();
+                }
         }
 
         }
+
     }
 }
