@@ -98,7 +98,7 @@ namespace Ifes.Views.Aircrew
 
         private void RenderSelectedPerson()
         {
-            TxtSelectedSeat.Text= $"Row number: {SelectedSeat.Row} Place: {SelectedSeat.Col} ";
+            TxtSelectedSeat.Text = $"Row number: {SelectedSeat.Row} Place: {SelectedSeat.Col} ";
             TxtName.Text = SelectedSeat.Passenger.UserName;
             TxtClass.Text = SelectedSeat.FlightClass.ToString();
 
@@ -133,9 +133,35 @@ namespace Ifes.Views.Aircrew
                 await contentDialog.ShowAsync();
                 return;
             }
-            await PlaneService.Instance.Switchseat(firstOption,secondOption);
-            await PlaneService.Instance.LoadPassengers();
-            await PassengersService.Instance.LoadPassengers();
+            try
+            {
+                await PlaneService.Instance.Switchseat(firstOption, secondOption);
+                await PlaneService.Instance.LoadPassengers();
+                await PassengersService.Instance.LoadPassengers();
+
+                ContentDialog contentDialog = new ContentDialog()
+                {
+                    Title = "Switch complete",
+                    Content = $"person {firstOption.Passenger.UserName} switched seats with {secondOption.Passenger.UserName}",
+                    CloseButtonText = "Ok"
+                };
+                await contentDialog.ShowAsync();
+
+            }
+            catch (Exception)
+            {
+                ContentDialog contentDialog = new ContentDialog()
+                {
+                    Title = "Error",
+                    Content = "Something went wrong while switching the seats",
+                    CloseButtonText = "Ok"
+                };
+                await contentDialog.ShowAsync();
+
+            }
+
+
+            RenderVisual();
         }
     }
 }

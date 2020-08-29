@@ -37,7 +37,7 @@ namespace Ifes.Services
         public async Task Switchseat(Seat  firstSeat, Seat secondSeat)
         {
             var client = new HttpClient();
-            await client.PutAsync(new Uri("https://localhost:44319/api/Seat/GetPlaneSeatsWithPassenger", UriKind.Absolute),null);
+            await client.PutAsync(new Uri($"https://localhost:44319/api/Seat/SwitchSeats?firstPassengerId={firstSeat.Passenger.Id.ToString()}&secondPassengerId={secondSeat.Passenger.Id.ToString()}", UriKind.Absolute),null);
         }
 
 
