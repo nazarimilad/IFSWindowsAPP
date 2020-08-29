@@ -18,6 +18,7 @@ namespace ifes.lib.DTOs.PlaneDtos {
             {
                 Passenger = new PassengerSmallDto(seat.Passenger);
             }
+            this.PlaneId = seat.Plane.Id;
         }
         public SeatDto() {
 
@@ -27,6 +28,7 @@ namespace ifes.lib.DTOs.PlaneDtos {
         public string Col { get; set; }
         public int Row { get; set; }
         public FlightClass FlightClass { get; set; }
+        public Guid PlaneId { get; set; }
 
         public PassengerSmallDto Passenger { get; set; }
     }
@@ -45,6 +47,6 @@ public class PassengerSmallDto
     public string UserName { get; set; }
     public string Id { get; set; }
 
-   
+
 
 }

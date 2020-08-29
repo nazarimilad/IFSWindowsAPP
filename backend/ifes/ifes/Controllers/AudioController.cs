@@ -26,7 +26,7 @@ namespace ifes.Controllers
         // GET: api/Audio
         [HttpGet]
         public IActionResult Get() {
-            var allAudios = _audiorepo.GetList(x => x.Id != null);
+            var allAudios = _audiorepo.GetList(x => x.Id != null).OrderBy(x => x.Name);
             var allAudiosDtos = _audioMapper.MapAudiosDto(allAudios);
             return Ok(allAudiosDtos);
         }
@@ -34,6 +34,7 @@ namespace ifes.Controllers
         [HttpGet]
         public IActionResult GetById([FromQuery] Guid id) {
             var audio = _audiorepo.Get(x => x.Id == id);
+
             var audioDto = _audioMapper.MapAudioDto(audio);
             return Ok(audioDto);
         }

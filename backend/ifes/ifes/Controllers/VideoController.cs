@@ -26,7 +26,7 @@ namespace ifes.Controllers
         // GET: api/Video
         [HttpGet]
         public IActionResult Get() {
-            var allVideos = _videorepo.GetList(x => x.Id != null);
+            var allVideos = _videorepo.GetList(x => x.Id != null).OrderBy(x => x.Name);
             var allVideosDtos = _videoMapper.MapVideosDto(allVideos);
             return Ok(allVideosDtos);
         }

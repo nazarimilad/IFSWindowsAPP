@@ -27,7 +27,6 @@ namespace Ifes.Services
         public async Task<bool> LogIn(string email, string password)
         {
 
-            try {
                 using (var client = new HttpClient()) {
 
                     var model = new LoginFlightAttendant { UserName = email, Password = password };
@@ -38,51 +37,41 @@ namespace Ifes.Services
                         var content = await httpResponse.Content.ReadAsStringAsync();
 
                         var flightAttendant = JsonConvert.DeserializeObject<FlightAttendant>(content);
-                        if (flightAttendant != null) {
+                    if (flightAttendant != null) {
 
-                            JwtToken = flightAttendant.Token;
-                            return true;
-                        }
+                        JwtToken = flightAttendant.Token;
+                        return true;
                     }
+                    }
+                return false;
 
                 }
 
-            } catch (Exception e) {
 
-                throw new ArgumentException("Something went wrong");
-            }
-
-            throw new ArgumentException("Wrong password.");
         }
 
-        public async Task<bool> LogIn(string reservationNumber)
-        {
-            try {
-                using (var client = new HttpClient()) {
+        public async Task<bool> LogIn(string reservationNumber) {
 
-                    var model = new PassengerLoginModel { ReservationCode = reservationNumber };
-                    string json = JsonConvert.SerializeObject(model);
-                    HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-                    var httpResponse = await client.PostAsync(new Uri("https://localhost:44319/api/Auth/PassengerLogin", UriKind.Absolute), httpContent);
-                    if (httpResponse.IsSuccessStatusCode) {
-                        var content = await httpResponse.Content.ReadAsStringAsync();
+            using (var client = new HttpClient()) {
 
-                        var passenger = JsonConvert.DeserializeObject<Passenger>(content);
-                        if (passenger != null) {
-                            Passenger = passenger;
-                            JwtToken = passenger.Token;
-                            return true;
-                        }
+                var model = new PassengerLoginModel { ReservationCode = reservationNumber };
+                string json = JsonConvert.SerializeObject(model);
+                HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+                var httpResponse = await client.PostAsync(new Uri("https://localhost:44319/api/Auth/PassengerLogin", UriKind.Absolute), httpContent);
+                if (httpResponse.IsSuccessStatusCode) {
+                    var content = await httpResponse.Content.ReadAsStringAsync();
+
+                    var passenger = JsonConvert.DeserializeObject<Passenger>(content);
+                    if (passenger != null) {
+                        Passenger = passenger;
+                        JwtToken = passenger.Token;
+                        return true;
                     }
-
                 }
+                throw new ArgumentException("invalid reservation number");
 
-            } catch (Exception e) {
-
-                throw new ArgumentException("Something went wrong");
             }
 
-            throw new ArgumentException("Invalid reservation number.");
         }
 
         public void LogOut()

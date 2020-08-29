@@ -139,6 +139,7 @@
     <Compile Include="ViewModels\OrderedItems.cs" />
     <Compile Include="ViewModels\OrderWrapper.cs" />
     <Compile Include="ViewModels\PassengerLoginModel.cs" />
+    <Compile Include="ViewModels\Plane.cs" />
     <Compile Include="ViewModels\Seat.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\FlightInfoService.cs" />
