@@ -42,7 +42,7 @@ namespace ifes.Hubs
                 Id = new Guid()
             };
 
-            await Clients.All.SendAsync("newMessage", user, message);
+            await Clients.All.SendAsync("newMessage", user, msg);
         }
 
         public async Task SendMessageFromCrewToPassenger(string user, string message)

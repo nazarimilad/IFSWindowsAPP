@@ -23,8 +23,15 @@ namespace Ifes.ViewModels
 
 
 
-        public string Preview() => string.Format("{0} send:  {1}... ", UserFrom, Content.Substring(0, 160));
+        public string Preview()
+        {
+            if (Content.Length > 160) 
+            {
+                return string.Format("{0} send:  {1}... ", UserFrom, Content.Substring(0, 160));
+            }
+            return string.Format("{0} send:  {1}... ", UserFrom, Content);
 
+        }
     }
 
 
