@@ -23,12 +23,13 @@ Groep: GENT__J9
 ### Installatie 
 
 1. Clone het project 
-2. Start de backend (correcte database connection string gebruiken)
+2.1 Start de backend (correcte database connection string gebruiken), dit kan enkele minuten duren bij het initialiseren van de databank.
 3. Start de front end
 4. Gebruik de volgende demo-credentials:
 
     - Crew member: gebuikersnaam: `CrewMem1`, wachtwoord: `Test123!`
     - Passagier: code: `resvcode13B`
+5. Bij het Afspelen van een Film is enkel Shrek mogelijk, en bij het afspelen van muziek enkel All Star - Smash Mouth. Dit omdat het lokale bestanden zijn om de grootte van het project te beperken.
 
 ## Klassendiagram
 

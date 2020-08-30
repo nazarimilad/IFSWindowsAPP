@@ -58,7 +58,7 @@ namespace ifes {
                 app.UseDeveloperExceptionPage();
             }
 
-          // new Init(context, manager).Run();
+           new Init(context, manager).Run();
 
             app.UseHttpsRedirection();
 
