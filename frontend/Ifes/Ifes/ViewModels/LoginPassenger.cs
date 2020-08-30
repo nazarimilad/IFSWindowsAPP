@@ -36,6 +36,10 @@ namespace Ifes.ViewModels
             try
             {
                 bool isLoggedIn = await AuthenticationService.Instance.LogIn(reservationNumber);
+                if (!isLoggedIn)
+                {
+                    throw new ArgumentException("Wrong credentials");
+                }
             }
             catch (Exception)
             {

@@ -113,7 +113,7 @@ namespace Ifes.Views.Passenger
             }
             catch (Exception ex)
             {
-                TextBlockError.Text = ex.InnerException.Message;
+                TextBlockError.Text = ex.Message;
                 TextBoxReservationNumber.Focus(FocusState.Keyboard);
             }
         }
