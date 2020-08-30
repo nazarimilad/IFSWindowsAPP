@@ -147,19 +147,40 @@ namespace Ifes.Views.Passenger
         private async void OnClickDownLoadExcel(object sender, RoutedEventArgs e)
         {
 
-            using (var client = HttpClientWithToken.GetClient())
+            try
             {
-                var response = await client.GetAsync(new Uri("https://localhost:44319/api/Order/GetPassengerOrders?passengerId=" + $"{AuthenticationService.Instance.Passenger.Id}", UriKind.Absolute));
-                Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-                Windows.Storage.StorageFile file = await storageFolder.CreateFileAsync($"{AuthenticationService.Instance.Passenger.Id}.xlsx",
-                        Windows.Storage.CreationCollisionOption.GenerateUniqueName);
-                var data =  await response.Content.ReadAsByteArrayAsync();
-                await Windows.Storage.FileIO.WriteBytesAsync(file, data );
+                using (var client = HttpClientWithToken.GetClient())
+                {
+                    var response = await client.GetAsync(new Uri("https://localhost:44319/api/Order/GetPassengerOrdersSpreadsheet?passengerId=" + $"{AuthenticationService.Instance.Passenger.Id}&formatType=xls", UriKind.Absolute));
+                    Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                    Windows.Storage.StorageFile file = await DownloadsFolder.CreateFileAsync($"{AuthenticationService.Instance.Passenger.Id}.xlsx",
+                            Windows.Storage.CreationCollisionOption.GenerateUniqueName);
+                    var data = await response.Content.ReadAsByteArrayAsync();
+                    await Windows.Storage.FileIO.WriteBytesAsync(file, data);
+                }
+                ContentDialog seatBeltDialog = new ContentDialog()
+                {
+                    Title = "Dear passenger",
+                    Content = $"Your receipt has been downloaded in the downloads folder under the name of {AuthenticationService.Instance.Passenger.Id}.xlsx",
+                    PrimaryButtonText = "Ok",
+                    DefaultButton = ContentDialogButton.Primary
+                };
+                await seatBeltDialog.ShowAsync();
+            }
+            catch (Exception)
+            {
 
+                ContentDialog seatBeltDialog = new ContentDialog()
+                {
+                    Title = "Dear passenger",
+                    Content = $"Your receipt couldnt be printed",
+                    PrimaryButtonText = "Ok",
+                    DefaultButton = ContentDialogButton.Primary
+                };
+                await seatBeltDialog.ShowAsync();
             }
 
-
-
+          
         }
         private void OnClickBtnReply(object sender, RoutedEventArgs e)
         {

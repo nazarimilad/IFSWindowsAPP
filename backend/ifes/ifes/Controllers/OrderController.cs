@@ -70,21 +70,31 @@ namespace ifes.Controllers
             //var orderDtos = _orderMapper.MapOrdersDto(orders);
             return Ok(orders);
         }
-        
+
         [HttpGet]
         public IActionResult GetPassengerOrdersSpreadsheet([FromQuery] string passengerId, [FromQuery] string formatType)
         {
-            if (formatType == "xls")
+            try
             {
-                var orders = getPassengerOrders(passengerId);
-                var workbook = SpreadsheetHelper.GenerateSpreadSheet(orders);
-                string fileName = "orders_" + DateTime.Now.ToString("yyyy’-‘MM’-‘dd’T’HH’:’mm’:’ss.xls");
-                using var fileStream = new FileStream(fileName, FileMode.Create);
-                workbook.Write(fileStream);
-
-                return File(fileStream, "application/octet-stream", fileName);
+                if (formatType == "xls")
+                {
+                    var orders = getPassengerOrders(passengerId);
+                    var workbook = SpreadsheetHelper.GenerateSpreadSheet(orders);
+                    string fileName = "orders_" + Guid.NewGuid().ToString() + ".xlsx";
+                    var fileStream = new MemoryStream();
+                    workbook.Write(fileStream);
+                    fileStream.Position = 0;
+                    return File(fileStream, "application/octet-stream", fileName);
+                }
+                return BadRequest();
             }
-            return BadRequest();
+            catch (Exception e)
+            {
+
+                return BadRequest();
+
+            }
+
         }
 
         [HttpPut]
