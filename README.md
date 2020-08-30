@@ -10,6 +10,8 @@ Voor het vak "Native Apps II" werd een In-flight Entertainment System ontworpen 
 * Milad Nazari
 * Vincent Vandewyer
 
+Groep: GENT__J9
+
 ## Installatie en gebruik
 
 ### Prerequisites
