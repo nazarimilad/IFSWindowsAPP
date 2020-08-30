@@ -77,13 +77,14 @@ namespace Ifes.ViewModels
 
         public async Task LogIn(string email, string password)
         {
-            try
-            {
+
                 bool isLoggedIn = await AuthenticationService.Instance.LogIn(email, password);
-            }
-            catch (Exception) {
-                throw;
-            }
+                if (!isLoggedIn)
+                {
+                    throw new ArgumentException("Bad credentials");
+                }
+         
+           
         }
 
         public void LogOut()

@@ -95,13 +95,13 @@ namespace Ifes.Views.Aircrew
             try
             {
                 TextBlockError.Text = "";
-                //  this._viewModel.LogIn(GetEmail(), GetPassword());
-                await this._viewModel.LogIn("CrewMem1", "Test123!");
+                await this._viewModel.LogIn(GetEmail(), GetPassword());
+                //await this._viewModel.LogIn("CrewMem1", "Test123!");
                 this.Frame.Navigate(typeof(Aircrew.Dashboard), null);
             }
             catch (Exception ex)
             {
-                TextBlockError.Text = ex.InnerException.Message;
+                TextBlockError.Text = ex.Message;
                 TextBoxEmail.Focus(FocusState.Keyboard);
             }
         }

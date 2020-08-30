@@ -50,7 +50,12 @@ namespace Ifes.Services {
             }
         }
         public async void GetPassengerOrders() {
+            if (AuthenticationService.Instance.Passenger == null)
+            {
+                return;
+            }
             var passengerId = AuthenticationService.Instance.Passenger.Id;
+
             if (passengerId == null) return ;
             using (var client = HttpClientWithToken.GetClient()) {
                 var jsonOrders = await client.GetStringAsync(new Uri("https://localhost:44319/api/Order/GetPassengerOrders?passengerId=" + $"{passengerId}", UriKind.Absolute));
