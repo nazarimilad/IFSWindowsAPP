@@ -1,4 +1,5 @@
-﻿using Ifes.Services;
+﻿using Ifes.Helpers;
+using Ifes.Services;
 using Ifes.ViewModels;
 using Microsoft.AspNetCore.SignalR.Client;
 using System;
@@ -42,35 +43,36 @@ namespace Ifes.Views.Passenger
             var pageType =
                 label == "Flight Info" ? typeof(Views.Passenger.FlightInfo) :
                 label == "Meals & Beverages" ? typeof(Views.Passenger.MealsBeveragesView) :
-                label == "Media" ? typeof(Views.Passenger.Media):
-                label == "Chat" ? typeof(Views.Passenger.Chat):
-                label == "My Orders" ? typeof(Views.Passenger.Orders):
+                label == "Media" ? typeof(Views.Passenger.Media) :
+                label == "Chat" ? typeof(Views.Passenger.Chat) :
+                label == "My Orders" ? typeof(Views.Passenger.Orders) :
                 null;
             if (pageType != null && pageType != ContentFrame.CurrentSourcePageType)
             {
                 ContentFrame.Navigate(pageType);
             }
-          
+
         }
 
 
         private async void LoadChatSignalRAsync()
         {
             MessagingService.Instance.Messages = new List<Message>();
-            await  MessagingService.Instance.SetupSignalR();
+            await MessagingService.Instance.SetupSignalR();
             MessagingService.Instance.Connection().On<string, Message>("newMessage", async (user, message) =>
             {
                 await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
-                    var before =MessagingService.Instance.Messages.Count();
+                    var before = MessagingService.Instance.Messages.Count();
                     MessagingService.Instance.HandleIncomingMessage(message);
-                    if (MessagingService.Instance.AllowedToDoActionMessage(message, before)) { 
+                    if (MessagingService.Instance.AllowedToDoActionMessage(message, before))
+                    {
                         SendNewMessageNotification(message);
                     }
                 });
             });
 
-            MessagingService.Instance.Connection().On<string>("CrewMessageAll", async ( message) =>
+            MessagingService.Instance.Connection().On<string>("CrewMessageAll", async (message) =>
             {
                 await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
@@ -93,7 +95,7 @@ namespace Ifes.Views.Passenger
         }
 
 
-       
+
 
 
         private async void OnClickLogOut(object sender, TappedRoutedEventArgs e)
@@ -119,9 +121,9 @@ namespace Ifes.Views.Passenger
             ContentFrame.Navigate(typeof(Views.Passenger.Orders));
         }
 
-        private async void SendCrewNotification(string message )
+        private async void SendCrewNotification(string message)
         {
-         ContentDialog seatBeltDialog = new ContentDialog()
+            ContentDialog seatBeltDialog = new ContentDialog()
             {
                 Title = "Dear passenger",
                 Content = message,
@@ -144,7 +146,20 @@ namespace Ifes.Views.Passenger
 
         private async void OnClickDownLoadExcel(object sender, RoutedEventArgs e)
         {
-        
+
+            using (var client = HttpClientWithToken.GetClient())
+            {
+                var response = await client.GetAsync(new Uri("https://localhost:44319/api/Order/GetPassengerOrders?passengerId=" + $"{AuthenticationService.Instance.Passenger.Id}", UriKind.Absolute));
+                Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                Windows.Storage.StorageFile file = await storageFolder.CreateFileAsync($"{AuthenticationService.Instance.Passenger.Id}.xlsx",
+                        Windows.Storage.CreationCollisionOption.GenerateUniqueName);
+                var data =  await response.Content.ReadAsByteArrayAsync();
+                await Windows.Storage.FileIO.WriteBytesAsync(file, data );
+
+            }
+
+
+
         }
         private void OnClickBtnReply(object sender, RoutedEventArgs e)
         {
