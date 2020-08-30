@@ -45,6 +45,8 @@ namespace Ifes.Services
 
         public bool isUserMemberOfGroup(string id)
         {
+
+
             return PassengersInReservationGroup.FirstOrDefault(predicate => predicate.Id == id) != null;
         }
 

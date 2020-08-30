@@ -42,6 +42,14 @@ namespace Ifes.Services
                 await _connection.InvokeAsync("SendMessage", psgr.Id.ToString(), content);
             }
         }
+
+        public async Task SendMessageToGroup(string content, string user)
+        {
+        
+                await _connection.InvokeAsync("SendMessage", user, content);
+            
+        }
+
         public async Task SendMessageToSeat(string content, string seat)
         {
             await _connection.InvokeAsync("SendMessageToSeat", seat, content);
@@ -56,11 +64,12 @@ namespace Ifes.Services
             var psgr = AuthenticationService.Instance.Passenger;
             if (psgr != null)
             {
-                if (message.UserFromId == psgr.Id || PassengersService.Instance.isUserMemberOfGroup(psgr.Id))
+                if (message.UserFromId == psgr.Id || PassengersService.Instance.isUserMemberOfGroup(message.UserFromId))
                 {
                     Messages.Add(message);
                 }
             }
+            Messages = Messages.Distinct(new DistinctItemComparer()).ToList();
         }
 
         public bool AllowedToDoActionMessage(Message message, int ctr)
@@ -72,7 +81,7 @@ namespace Ifes.Services
             }
             if (psgr.Id == message.UserFromId)
             {
-                return true;
+                return false;
             }
             return true;
         }
@@ -85,6 +94,19 @@ namespace Ifes.Services
                 return true;
             }
             return false;
+        }
+    }
+    class DistinctItemComparer : IEqualityComparer<Message>
+    {
+
+        public bool Equals(Message x, Message y)
+        {
+            return x.Id == y.Id;
+        }
+
+        public int GetHashCode(Message obj)
+        {
+            return obj.Id.GetHashCode();
         }
     }
 }

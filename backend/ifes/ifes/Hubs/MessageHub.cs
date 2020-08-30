@@ -39,7 +39,7 @@ namespace ifes.Hubs
                 UserFrom = passenger.UserName,
                 SentDate = DateTime.Now,
                 UserFromId = passenger.Id,
-                Id = new Guid()
+                Id = Guid.NewGuid()
             };
 
             await Clients.All.SendAsync("newMessage", user, msg);

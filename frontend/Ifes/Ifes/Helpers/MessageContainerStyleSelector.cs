@@ -23,7 +23,7 @@ namespace Ifes.Helpers
             var message = item as Message;
             if (message != null)
             {
-                return message.UserFrom.Equals(this.Sender, StringComparison.CurrentCultureIgnoreCase)
+                return message.UserFromId.Equals(this.Sender, StringComparison.CurrentCultureIgnoreCase)
                            ? this.SentStyle
                            : this.ReceivedStyle;
             }
