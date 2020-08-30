@@ -1,5 +1,35 @@
 # Native Apps II In-flight system project
 
+## Inleiding
+
+Voor het vak "Native Apps II" werd een In-flight Entertainment System ontworpen en ontwikkeld. De client side applicatie werd als een UWP geïmplementeerd, voor de backend werd gebruik gemaakt van .NET Core.
+
+## Auteurs
+
+* Guust Ysebie
+* Milad Nazari
+* Vincent Vandewyer
+
+Groep: GENT__J9
+
+## Installatie en gebruik
+
+### Prerequisites
+
+* .Net Core 3.1 SDK
+* MySQL of SQL Server
+* Visual Studio 2017 of nieuwer
+
+### Installatie 
+
+1. Clone het project 
+2. Start de backend (correcte database connection string gebruiken)
+3. Start de front end
+4. Gebruik de volgende demo-credentials:
+
+    - Crew member: gebuikersnaam: `CrewMem1`, wachtwoord: `Test123!`
+    - Passagier: code: `resvcode13B`
+
 ## Klassendiagram
 
 ![klassendiagram](docs/klassendiagram.png)
