@@ -42,18 +42,18 @@ namespace ifes.Controllers {
 
 
         [HttpGet]
-        public IActionResult GetPlaneOrders([FromQuery] Guid planeId) {
+        public IActionResult GetPlaneOrders() {
 
-            var orders = _orderRepo.Query(x => x.PlaneId == planeId && x.Status == OrderStatus.InProgress)
+            var orders = _orderRepo.Query(x =>  x.Status == OrderStatus.InProgress)
                                     .Include(x => x.Item)
                                    .Include(y => y.Passenger).ThenInclude(z => z.Seat).ToList();
             //var orderDtos = _orderMapper.MapOrdersDto(orders);
             return Ok(orders);
         }
         [HttpGet]
-        public IActionResult GetPlaneOrdersDelivered([FromQuery] Guid planeId) {
+        public IActionResult GetPlaneOrdersDelivered() {
 
-            var orders = _orderRepo.Query(x => x.PlaneId == planeId && x.Status == OrderStatus.Delivered)
+            var orders = _orderRepo.Query(x => x.Status == OrderStatus.Delivered)
                                     .Include(x => x.Item)
                                    .Include(y => y.Passenger).ThenInclude(z => z.Seat).ToList();
             //var orderDtos = _orderMapper.MapOrdersDto(orders);

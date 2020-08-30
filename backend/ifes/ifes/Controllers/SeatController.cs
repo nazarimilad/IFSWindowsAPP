@@ -28,7 +28,7 @@ namespace ifes.Controllers
         }
         // GET: api/Seat
         [HttpGet]
-        public IActionResult GetPlaneSeatsWithPassenger([FromQuery] Guid planeId)
+        public IActionResult GetPlaneSeatsWithPassenger()
         {
             var plane = _planeRepo.Query(x => true).Include(x => x.Seats).ThenInclude(y => y.Passenger).FirstOrDefault();
             var seats = plane.Seats.Select(p => new SeatDto(p)).OrderBy(p => p.Row).ThenBy(p => p.Col);
@@ -36,7 +36,7 @@ namespace ifes.Controllers
         }
 
         [HttpPut]
-        public IActionResult SwitchSeats([FromQuery] Guid planeId, string firstPassengerId, string secondPassengerId)
+        public IActionResult SwitchSeats( string firstPassengerId, string secondPassengerId)
         {
             var plane = _planeRepo.Query(x => true).Include(x => x.Seats).ThenInclude(y => y.Passenger).FirstOrDefault();
 
