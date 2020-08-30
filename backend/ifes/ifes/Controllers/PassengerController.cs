@@ -4,12 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using ifes.lib.data;
 using ifes.lib.DTOs.UsersDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ifes.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
+
     [Route("api/[controller]/[Action]")]
     [ApiController]
     public class PassengerController : ControllerBase

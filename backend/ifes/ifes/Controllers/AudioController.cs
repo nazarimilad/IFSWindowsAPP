@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using ifes.lib.domain.Catalogs;
 using ifes.lib.Mappers;
 using ifes.lib.Models.Catalogs.MultiMedia;
 using ifes.lib.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ifes.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
+
     [Route("api/[controller]/[Action]")]
     [ApiController]
     public class AudioController : ControllerBase
@@ -26,7 +30,7 @@ namespace ifes.Controllers
         // GET: api/Audio
         [HttpGet]
         public IActionResult Get() {
-            var allAudios = _audiorepo.GetList(x => x.Id != null);
+            var allAudios = _audiorepo.GetList(x => x.Id != null).OrderBy(x => x.Name);
             var allAudiosDtos = _audioMapper.MapAudiosDto(allAudios);
             return Ok(allAudiosDtos);
         }
@@ -34,6 +38,7 @@ namespace ifes.Controllers
         [HttpGet]
         public IActionResult GetById([FromQuery] Guid id) {
             var audio = _audiorepo.Get(x => x.Id == id);
+
             var audioDto = _audioMapper.MapAudioDto(audio);
             return Ok(audioDto);
         }

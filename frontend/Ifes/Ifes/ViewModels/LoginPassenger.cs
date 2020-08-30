@@ -32,6 +32,7 @@ namespace Ifes.ViewModels
 
         public async void LogIn(string reservationNumber)
         {
+
             try
             {
                 bool isLoggedIn = await AuthenticationService.Instance.LogIn(reservationNumber);

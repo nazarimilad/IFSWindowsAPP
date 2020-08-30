@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.Text;
 using ifes.lib.domain.Users;
 using ifes.lib.domain.Planes;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using IdentityServer4.Stores;
 
 namespace ifes {
     public static class StartupExtensions {
@@ -75,8 +78,39 @@ namespace ifes {
             });
         }
 
+        public static void RegisterIdentityServer4(this IServiceCollection services) {
+            services.AddIdentityServer()
+                .AddInMemoryCaching()
+    .AddClientStore<InMemoryClientStore>()
+    .AddResourceStore<InMemoryResourcesStore>();
+
+
+
         }
+        public static void RegisterAuthentication(this IServiceCollection services) {
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("0123456789123456789"));
+            services.AddAuthentication(options => {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(config => {
+                config.RequireHttpsMetadata = false;
+                config.SaveToken = true;
+                config.TokenValidationParameters = new TokenValidationParameters() {
+                    IssuerSigningKey = signingKey,
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+
+                    RequireExpirationTime = false,
+                    ValidateIssuerSigningKey = true
+                };
+               // config.Authority = "https://localhost:44319/";
+                //config.Audience = "ApiOne";
+
+            });
+        }
+
     }
+}
 
 
 

@@ -16,8 +16,10 @@ namespace Ifes.ViewModels
         public string Email { get; private set; }
         public string ReservationNumber { get;set; }
         public string Id { get; set; }
-        public Guid PlaneId { get; set; }
+
         public string Token { get; set; }
+        [JsonProperty("planeId")]
+        public Guid PlaneId { get; set; }
         [JsonProperty("seat")]
         public Seat Seat { get; private set; }
 

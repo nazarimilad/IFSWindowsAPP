@@ -15,15 +15,16 @@ namespace ifes.Controllers.Helpers {
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("0123456789123456789"));
             var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
 
+
+
             var jwt = new JwtSecurityToken(
                 signingCredentials: signingCredentials,
-                // claims: claims,
+
                 notBefore: utcNow,
+
                 expires: utcNow.AddSeconds(3600)
-                //audience: this.configuration.GetValue<String>("Tokens:Audience"),
-                //issuer: this.configuration.GetValue<String>("Tokens:Issuer")
                 );
-            jwt.Payload.Add("userId",user.Id);
+
 
             return new JwtSecurityTokenHandler().WriteToken(jwt);
 

@@ -31,9 +31,11 @@ namespace ifes {
             services.AddDbContext<ApplicationDbContext>(options =>
            // options.UseSqlServer(Configuration.GetConnectionString("IfesConnectionLocal")));
            options.UseMySQL(Configuration.GetConnectionString("IfesConnectionLocalMysql")));
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
 
             services.AddCors(options => options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin()));
 
@@ -43,6 +45,9 @@ namespace ifes {
             services.RegisterApp();
             services.AddRepositories();
             services.AddSwaggerDocumentation();
+
+            services.RegisterIdentityServer4();
+            services.RegisterAuthentication();
             services.AddSignalR();
 
         }
@@ -53,7 +58,7 @@ namespace ifes {
                 app.UseDeveloperExceptionPage();
             }
 
-           // new Init(context, manager).Run();
+            //new Init(context, manager).Run();
 
             app.UseHttpsRedirection();
 
@@ -61,6 +66,7 @@ namespace ifes {
             app.UseCors("AllowAllOrigins");
 
             app.UseAuthorization();
+            app.UseAuthentication();
             app.UseSwaggerDocumentation();
 
             app.UseEndpoints(endpoints => {

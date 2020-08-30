@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,8 @@ namespace Ifes.ViewModels
         public FlightClass FlightClass { get; set; }
         [JsonProperty("passenger")]
         public Passenger Passenger { get; set; }
+        public Guid PlaneId { get; set; }
+
         public Seat(string column, int row, FlightClass flightClass)
         {
             Col = column;

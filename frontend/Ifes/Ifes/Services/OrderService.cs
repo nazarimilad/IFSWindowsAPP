@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
+using Ifes.Helpers;
 
 namespace Ifes.Services {
     public class OrderService {
@@ -33,34 +34,38 @@ namespace Ifes.Services {
         }
 
         private async void GetOrdersInProgress() {
-            var client = new HttpClient();
-            var jsonOrders = await client.GetStringAsync(new Uri("https://localhost:44319/api/Order/GetPlaneOrders?planeId=3A824AE9-D070-46CE-84E5-2C46B68900A5", UriKind.Absolute));
-            var dataOrders = JsonConvert.DeserializeObject<List<Order>>(jsonOrders);
-            dataOrders.Sort((x, y) => DateTime.Compare(x.Created, y.Created));
-            dataOrders.ForEach(x => OrdersInProgress.Add(x));
+            using (var client = HttpClientWithToken.GetClient()) {
+                var jsonOrders = await client.GetStringAsync(new Uri("https://localhost:44319/api/Order/GetPlaneOrders?planeId=26A6CE9B-D178-4C87-1CAA-08D84C339A85", UriKind.Absolute));
+                var dataOrders = JsonConvert.DeserializeObject<List<Order>>(jsonOrders);
+                dataOrders.Sort((x, y) => DateTime.Compare(x.Created, y.Created));
+                dataOrders.ForEach(x => OrdersInProgress.Add(x));
+            }
         }
         private async void GetDeliveredOrders() {
-            var client = new HttpClient();
-            var jsonOrders = await client.GetStringAsync(new Uri("https://localhost:44319/api/Order/GetPlaneOrdersDelivered?planeId=3A824AE9-D070-46CE-84E5-2C46B68900A5", UriKind.Absolute));
-            var dataOrders = JsonConvert.DeserializeObject<List<Order>>(jsonOrders);
-            dataOrders.Sort((x, y) => DateTime.Compare(x.Created, y.Created));
-            dataOrders.ForEach(x => OrdersDelivered.Add(x));
+            using (var client = HttpClientWithToken.GetClient()) {
+                var jsonOrders = await client.GetStringAsync(new Uri("https://localhost:44319/api/Order/GetPlaneOrdersDelivered?planeId=26A6CE9B-D178-4C87-1CAA-08D84C339A85", UriKind.Absolute));
+                var dataOrders = JsonConvert.DeserializeObject<List<Order>>(jsonOrders);
+                dataOrders.Sort((x, y) => DateTime.Compare(x.Created, y.Created));
+                dataOrders.ForEach(x => OrdersDelivered.Add(x));
+            }
         }
         public async void GetPassengerOrders() {
             var passengerId = AuthenticationService.Instance.Passenger.Id;
             if (passengerId == null) return ;
-            var client = new HttpClient();
-            var jsonOrders = await client.GetStringAsync(new Uri("https://localhost:44319/api/Order/GetPassengerOrders?passengerId=" + $"{passengerId}", UriKind.Absolute));
-            var dataOrders = JsonConvert.DeserializeObject<List<Order>>(jsonOrders);
-            dataOrders.Sort((x, y) => DateTime.Compare(x.Created, y.Created));
-            dataOrders.ForEach(x => PassengerOrders.Add(x));
+            using (var client = HttpClientWithToken.GetClient()) {
+                var jsonOrders = await client.GetStringAsync(new Uri("https://localhost:44319/api/Order/GetPassengerOrders?passengerId=" + $"{passengerId}", UriKind.Absolute));
+                var dataOrders = JsonConvert.DeserializeObject<List<Order>>(jsonOrders);
+                dataOrders.Sort((x, y) => DateTime.Compare(y.Created, x.Created));
+                PassengerOrders.Clear();
+                dataOrders.ForEach(x => PassengerOrders.Add(x));
+            }
 
         }
 
 
 
         public async void DeliverOrder(Order order) {
-            using (var client = new HttpClient()) {
+            using (var client = HttpClientWithToken.GetClient()) {
 
                 var deliver = await client.PutAsync(new Uri("https://localhost:44319/api/Order/DeliverOrders?orderId=" + order.Id), null);
                 if (deliver.IsSuccessStatusCode) {
@@ -72,12 +77,12 @@ namespace Ifes.Services {
         }
         public async void OrderItem(CatalogItem item, int orderAmount, Passenger passenger) {
 
-            using (var client = new HttpClient()) {
-            var items = new List<OrderedItemsDto>();
+            using (var client = HttpClientWithToken.GetClient()) {
+                var items = new List<OrderedItemsDto>();
             items.Add(new OrderedItemsDto() { Id = item.Id, Amount = orderAmount });
 
             var order = new OrderItemDto() {
-                PlaneId = passenger.PlaneId, //new Guid("3A824AE9-D070-46CE-84E5-2C46B68900A5"),
+                PlaneId = passenger.PlaneId,//new Guid("3A824AE9-D070-46CE-84E5-2C46B68900A5"),
                 SeatId = passenger.Seat.Id,//new Guid("79825DD9-DACA-49A3-8AF7-FB0481910A8E"),
                 Items = items,
             };
