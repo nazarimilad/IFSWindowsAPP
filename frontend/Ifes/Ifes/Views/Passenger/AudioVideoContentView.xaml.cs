@@ -33,11 +33,13 @@ namespace Ifes.Views.Passenger {
             TextBlockDescription.Text = "Please select an item for more details.";
             playing = false;
 
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
             AudioVideo = (AudioVideo)e.Parameter;
+
         }
 
         private void OnItemClick(object sender, ItemClickEventArgs e) {

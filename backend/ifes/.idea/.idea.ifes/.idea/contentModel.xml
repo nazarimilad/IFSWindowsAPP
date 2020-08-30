@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_ifes.-1901289353.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.2/resharper-host/local/Transient/Rider/v202/SolutionCaches/_ifes.565831715.00" t="ExcludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="ifes" t="IncludeRecursive">
         <e p="Controllers" t="Include">
           <e p="AudioController.cs" t="Include" />
+          <e p="AuthController.cs" t="Include" />
           <e p="BeverageController.cs" t="Include" />
           <e p="CabinCrewController.cs" t="Include" />
           <e p="CatalogController.cs" t="Include" />
           <e p="FoodController.cs" t="Include" />
+          <e p="Helpers" t="Include">
+            <e p="SpreadsheetHelper.cs" t="Include" />
+            <e p="TokenHelper.cs" t="Include" />
+          </e>
           <e p="OrderController.cs" t="Include" />
           <e p="PassengerController.cs" t="Include" />
           <e p="SeatController.cs" t="Include" />
           <e p="VideoController.cs" t="Include" />
           <e p="WeatherForecastController.cs" t="Include" />
+        </e>
+        <e p="Hubs" t="Include">
+          <e p="MessageHub.cs" t="Include" />
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
@@ -35,6 +46,7 @@
             </e>
           </e>
         </e>
+        <e p="tempkey.jwk" t="Include" />
       </e>
       <e p="ifes.lib" t="IncludeRecursive">
         <e p="DTOs" t="Include">
@@ -47,6 +59,9 @@
             <e p="MultimediaDto.cs" t="Include" />
             <e p="OrderDto.cs" t="Include" />
             <e p="VideoDto.cs" t="Include" />
+          </e>
+          <e p="Messages" t="Include">
+            <e p="Message.cs" t="Include" />
           </e>
           <e p="PlaneDtos" t="Include">
             <e p="AirportDto.cs" t="Include" />
@@ -64,6 +79,7 @@
           <e p="AudioMapper.cs" t="Include" />
           <e p="BeverageMapper.cs" t="Include" />
           <e p="FoodMapper.cs" t="Include" />
+          <e p="OrderMapper.cs" t="Include" />
           <e p="VideoMapper.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
@@ -71,19 +87,31 @@
           <e p="20200730211832_yeet.cs" t="Include" />
           <e p="20200731104112_Audio.Designer.cs" t="Include" />
           <e p="20200731104112_Audio.cs" t="Include" />
+          <e p="20200803182849_kkmsd.Designer.cs" t="Include" />
+          <e p="20200803182849_kkmsd.cs" t="Include" />
+          <e p="20200827102130_remove_planeIdFromPassenger.Designer.cs" t="Include" />
+          <e p="20200827102130_remove_planeIdFromPassenger.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="Catalogs" t="Include">
             <e p="CatalogItemModel.cs" t="Include" />
+            <e p="CatalogItemOrder.cs" t="Include" />
             <e p="FoodAndBeverage" t="Include">
               <e p="AddBeverageModel.cs" t="Include" />
               <e p="AddFoodModel.cs" t="Include" />
             </e>
-            <e p="MultiMedia" t="Include" />
+            <e p="MultiMedia" t="Include">
+              <e p="AddAudioModel.cs" t="Include" />
+              <e p="AddVideoModel.cs" t="Include" />
+              <e p="MultiMediaModel.cs" t="Include" />
+            </e>
           </e>
           <e p="PLanes" t="Include" />
-          <e p="Users" t="Include" />
+          <e p="Users" t="Include">
+            <e p="LoginModel.cs" t="Include" />
+            <e p="PassengerLoginModel.cs" t="Include" />
+          </e>
         </e>
         <e p="RegisterApplication.cs" t="Include" />
         <e p="Repositories" t="Include">
@@ -120,6 +148,7 @@
             <e p="ApplicationUser.cs" t="Include" />
             <e p="CabinCrew.cs" t="Include" />
             <e p="Passenger.cs" t="Include" />
+            <e p="ReservationGroup.cs" t="Include" />
           </e>
         </e>
         <e p="enum" t="Include">
