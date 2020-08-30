@@ -39,7 +39,7 @@ namespace Ifes.ViewModels
 
         public bool MatchesSearch(string querry)
         {
-            if(UserName.ToLower().StartsWith(querry.ToLower()) || ReservationNumber.StartsWith(querry.ToLower()))
+            if(UserName.ToLower().Contains(querry.ToLower()) || ReservationNumber.Contains(querry.ToLower()))
             {
                 return true;
             }
