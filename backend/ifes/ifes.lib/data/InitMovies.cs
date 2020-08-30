@@ -10,12 +10,12 @@ namespace ifes.lib.data {
             {
                 new Video()
                 {
-                    Description = "Zack and Miri Make a Porno",
+                    Description = "Best Movie Ever",
                     Rating = 70,
                     Discount = 0,
                     Duration = 90,
                     FileExtension = ".mkv",
-                    Name = "Zack and Miri Make a Porno",
+                    Name = "Shrek",
                     Price = 4.99,
                     ObjectStorageId = "ZackandMiriMakeaPorno_strg_id",
                     FileSize = 42069,
