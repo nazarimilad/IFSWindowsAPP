@@ -39,8 +39,6 @@ namespace Ifes.Views.Aircrew
             {
                 await PlaneService.Instance.LoadPassengers();
             }
-
-
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)

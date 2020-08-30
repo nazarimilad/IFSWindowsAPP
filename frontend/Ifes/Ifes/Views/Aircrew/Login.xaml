@@ -28,8 +28,8 @@
                        HorizontalAlignment="Center"></TextBlock>
             <StackPanel Grid.Column="0" Grid.Row="1" Spacing="20" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Spacing="10">
-                    <TextBlock Text="Email Address *" FontWeight="Bold"></TextBlock>
-                    <TextBox x:Name="TextBoxEmail" TextChanged="OnChangeTextEmail" KeyUp="OnKeyUp" InputScope="EmailSmtpAddress" Width="400" HorizontalAlignment="Left" MaxLength="254" PlaceholderText="email@example.com" Background="{ThemeResource SystemControlAltHighAcrylicElementBrush}"></TextBox>
+                    <TextBlock Text="Username *" FontWeight="Bold"></TextBlock>
+                    <TextBox x:Name="TextBoxEmail" TextChanged="OnChangeTextEmail" KeyUp="OnKeyUp" InputScope="EmailSmtpAddress" Width="400" HorizontalAlignment="Left" MaxLength="254" PlaceholderText="CrewMem1" Background="{ThemeResource SystemControlAltHighAcrylicElementBrush}"></TextBox>
                 </StackPanel>
                 <StackPanel Spacing="10">
                     <TextBlock Text="Password *" FontWeight="Bold"></TextBlock>
