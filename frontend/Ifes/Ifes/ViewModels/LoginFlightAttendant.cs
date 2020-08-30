@@ -75,7 +75,7 @@ namespace Ifes.ViewModels
             return password.Length >= MIN_LENGTH_PASSWORD;
         }
 
-        public async void LogIn(string email, string password)
+        public async Task LogIn(string email, string password)
         {
             try
             {

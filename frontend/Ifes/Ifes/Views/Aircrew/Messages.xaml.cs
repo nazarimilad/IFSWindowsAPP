@@ -37,14 +37,35 @@ namespace Ifes.Views.Aircrew
         }
 
 
-        private void OnBtnSendSingle(object sender, RoutedEventArgs e)
+        private async void OnBtnSendSingle(object sender, RoutedEventArgs e)
         {
-            AlertMessageSend();
+
+            try
+            {
+                await MessagingService.Instance.SendMessageToSeat(GetMessage(), SelectedPassenger.Id);
+                AlertMessageSend();
+            }
+            catch (Exception a)
+            {
+                AlertMessageSendFailed();
+            }
+            SelectedPassenger = null;
+            RecalculateState();
 
         }
-        private void OnBtnSendAll(object sender, RoutedEventArgs e)
+        private async void OnBtnSendAll(object sender, RoutedEventArgs e)
         {
-            AlertMessageSend();
+
+            try
+            {
+                await MessagingService.Instance.SendMessageToAll(GetMessage());
+                AlertMessageSend();
+            }
+            catch (Exception)
+            {
+                AlertMessageSendFailed();
+            }
+
         }
 
         private void OnBtnClearSelected(object sender, RoutedEventArgs e)
@@ -60,10 +81,18 @@ namespace Ifes.Views.Aircrew
 
         public async System.Threading.Tasks.Task<List<ViewModels.Passenger>> LoadDataAsync()
         {
-            if (PassengersService.Instance.Passengers.Count == 0)
+            try
             {
-                await PassengersService.Instance.LoadPassengers();
+                if (PassengersService.Instance.Passengers.Count == 0)
+                {
+                    await PassengersService.Instance.LoadPassengers();
+                }
             }
+            catch (Exception)
+            {
+                AlertMessageFailed("Couldn't load passenger data");
+            }
+
             return PassengersService.Instance.Passengers;
 
         }
@@ -102,7 +131,7 @@ namespace Ifes.Views.Aircrew
 
         private async void AlertMessageSend()
         {
-            ContentDialog contentDialog= new ContentDialog()
+            ContentDialog contentDialog = new ContentDialog()
             {
                 Title = "Message send",
                 Content = "Message send succesfully.",
@@ -113,7 +142,35 @@ namespace Ifes.Views.Aircrew
             ClearScreen();
         }
 
-       private void ClearScreen()
+        private async void AlertMessageSendFailed()
+        {
+            ContentDialog contentDialog = new ContentDialog()
+            {
+                Title = "Message send",
+                Content = "Message send Failed.",
+                CloseButtonText = "Ok"
+            };
+
+            await contentDialog.ShowAsync();
+            ClearScreen();
+        }
+
+
+        private async void AlertMessageFailed( string message)
+        {
+            ContentDialog contentDialog = new ContentDialog()
+            {
+                Title = "Somthing went wrong",
+                Content = message,
+                CloseButtonText = "Ok"
+            };
+
+            await contentDialog.ShowAsync();
+            ClearScreen();
+        }
+
+
+        private void ClearScreen()
         {
             TextBoxMessage.Text = "";
             this.SelectedPassenger = null;

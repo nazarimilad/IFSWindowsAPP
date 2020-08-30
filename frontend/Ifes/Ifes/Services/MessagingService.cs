@@ -50,9 +50,9 @@ namespace Ifes.Services
             
         }
 
-        public async Task SendMessageToSeat(string content, string seat)
+        public async Task SendMessageToSeat(string message, string seat)
         {
-            await _connection.InvokeAsync("SendMessageToSeat", seat, content);
+            await _connection.InvokeAsync("SendMessageToSeat", message, seat);
         }
         public async Task SendMessageToAll(string content)
         {
@@ -86,10 +86,10 @@ namespace Ifes.Services
             return true;
         }
 
-        public bool ShowAlert(Message message)
+        public bool ShowAlert(string passengerId)
         {
             var psgr = AuthenticationService.Instance.Passenger;
-            if (message.UserFromId == psgr.Id)
+            if (passengerId== psgr.Id)
             {
                 return true;
             }

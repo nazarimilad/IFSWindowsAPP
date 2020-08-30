@@ -75,18 +75,25 @@
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA69;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-
                 <NavigationViewItem Content="Chat" x:Name="Chat">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F2;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                
             </NavigationView.MenuItems>
             <NavigationView.PaneFooter>
                 <StackPanel Orientation="Horizontal" >
+                    <NavigationViewItem Content="Simulate crew message" Padding="0 0 10 0" Tapped="OnclickSimulateMessageCrew">
+                    </NavigationViewItem>
                     <NavigationViewItem Content="My orders" Padding="0 0 10 0" Tapped="OnClickMyOrders">
                         <NavigationViewItem.Icon>
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEF40;"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                    <NavigationViewItem Content="Download reciept" Padding="0 0 10 0" Tapped="OnClickDownLoadExcel">
+                        <NavigationViewItem.Icon>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE749;"/>
                         </NavigationViewItem.Icon>
                     </NavigationViewItem>
                     <NavigationViewItem Content="Log out" Padding="0 0 10 0" Tapped="OnClickLogOut">

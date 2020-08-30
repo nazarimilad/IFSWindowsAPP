@@ -10,6 +10,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.BackgroundTransfer;
+using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -68,7 +70,7 @@ namespace Ifes.Views.Passenger
                 });
             });
 
-            MessagingService.Instance.Connection().On<string, Message>("newMessageCrew", async (user, message) =>
+            MessagingService.Instance.Connection().On<string>("CrewMessageAll", async ( message) =>
             {
                 await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
@@ -77,11 +79,11 @@ namespace Ifes.Views.Passenger
             });
 
 
-            MessagingService.Instance.Connection().On<string, Message>("newMessageCrewPersonal", async (user, message) =>
+            MessagingService.Instance.Connection().On<string, string>("CrewMessageSingle", async (message, passengerId) =>
             {
                 await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
-                    if (MessagingService.Instance.ShowAlert(message))
+                    if (MessagingService.Instance.ShowAlert(passengerId))
                     {
                         SendCrewNotification(message);
                     }
@@ -117,12 +119,12 @@ namespace Ifes.Views.Passenger
             ContentFrame.Navigate(typeof(Views.Passenger.Orders));
         }
 
-        private async void SendCrewNotification(Message message )
+        private async void SendCrewNotification(string message )
         {
          ContentDialog seatBeltDialog = new ContentDialog()
             {
                 Title = "Dear passenger",
-                Content = message.Content,
+                Content = message,
                 PrimaryButtonText = "Ok",
                 DefaultButton = ContentDialogButton.Primary
             };
@@ -140,7 +142,10 @@ namespace Ifes.Views.Passenger
         }
 
 
-
+        private async void OnClickDownLoadExcel(object sender, RoutedEventArgs e)
+        {
+        
+        }
         private void OnClickBtnReply(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(Views.Passenger.Chat));
@@ -152,6 +157,11 @@ namespace Ifes.Views.Passenger
             base.OnNavigatedTo(e);
             LoadChatSignalRAsync();
             await PassengersService.Instance.LoadPassengers();
+        }
+
+        private async void OnclickSimulateMessageCrew(object sender, TappedRoutedEventArgs e)
+        {
+            await MessagingService.Instance.SendMessageToAll("Simulated message from crew");
         }
     }
 }

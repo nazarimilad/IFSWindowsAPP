@@ -45,14 +45,14 @@ namespace ifes.Hubs
             await Clients.All.SendAsync("newMessage", user, msg);
         }
 
-        public async Task SendMessageFromCrewToPassenger(string user, string message)
+        public async Task SendMessageToSeat( string message, string seat)
         {
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+            await Clients.All.SendAsync("CrewMessageSingle", message, seat);
         }
 
-        public async Task SendMessageFromCrewToAllPassengers(string user, string message)
+        public async Task SendMessageToSeatAll( string message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+            await Clients.All.SendAsync("CrewMessageAll", message);
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ifes.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,12 @@ namespace Ifes.Views.Aircrew
             this.InitializeComponent();
             ContentFrame.Navigate(typeof(Views.Aircrew.Messages));
             NavView.SelectedItem = NavView.MenuItems.ElementAt(0);
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+           await MessagingService.Instance.SetupSignalR();
         }
 
         private void NavViewItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)

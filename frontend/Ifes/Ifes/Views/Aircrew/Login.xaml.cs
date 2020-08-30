@@ -90,13 +90,13 @@ namespace Ifes.Views.Aircrew
             }
         }
 
-        private void LoginUser()
+        private async void LoginUser()
         {
             try
             {
                 TextBlockError.Text = "";
-              //  this._viewModel.LogIn(GetEmail(), GetPassword());
-                this._viewModel.LogIn("CrewMem1", "Test123!");
+                //  this._viewModel.LogIn(GetEmail(), GetPassword());
+                await this._viewModel.LogIn("CrewMem1", "Test123!");
                 this.Frame.Navigate(typeof(Aircrew.Dashboard), null);
             }
             catch (Exception ex)
