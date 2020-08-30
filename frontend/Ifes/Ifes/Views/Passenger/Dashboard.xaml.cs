@@ -153,7 +153,7 @@ namespace Ifes.Views.Passenger
                 {
                     var response = await client.GetAsync(new Uri("https://localhost:44319/api/Order/GetPassengerOrdersSpreadsheet?passengerId=" + $"{AuthenticationService.Instance.Passenger.Id}&formatType=xls", UriKind.Absolute));
                     Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-                    Windows.Storage.StorageFile file = await DownloadsFolder.CreateFileAsync($"{AuthenticationService.Instance.Passenger.Id}.xlsx",
+                    Windows.Storage.StorageFile file = await DownloadsFolder.CreateFileAsync($"{AuthenticationService.Instance.Passenger.Id}.xls",
                             Windows.Storage.CreationCollisionOption.GenerateUniqueName);
                     var data = await response.Content.ReadAsByteArrayAsync();
                     await Windows.Storage.FileIO.WriteBytesAsync(file, data);
