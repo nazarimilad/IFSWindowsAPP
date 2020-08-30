@@ -30,7 +30,7 @@ namespace Ifes.ViewModels
             return _regex.IsMatch(reservationNumber);
         }
 
-        public async void LogIn(string reservationNumber)
+        public async Task LogIn(string reservationNumber)
         {
 
             try

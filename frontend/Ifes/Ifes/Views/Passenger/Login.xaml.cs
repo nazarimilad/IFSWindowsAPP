@@ -103,12 +103,12 @@ namespace Ifes.Views.Passenger
             }
         }
 
-        private void LoginUser()
+        private async void LoginUser()
         {
             try
             {
                 TextBlockError.Text = "";
-                this._viewModel.LogIn(GetReservationNumber());
+                await this._viewModel.LogIn(GetReservationNumber());
                 this.Frame.Navigate(typeof(Passenger.Dashboard), null);
             }
             catch (Exception ex)
