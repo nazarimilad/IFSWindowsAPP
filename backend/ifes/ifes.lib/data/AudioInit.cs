@@ -8,8 +8,8 @@ namespace ifes.lib.data {
             var songs = new List<Audio>();
 
             songs.Add(new Audio() {
-                Description = "Caught Up in You", Discount = 0, Duration = 90, FileExtension = ".mkv",
-                Name = "Caught Up in You",
+                Description = "Best Song Ever", Discount = 0, Duration = 90, FileExtension = ".mkv",
+                Name = "All Star - Smash Mouth",
                 Price = 0.99,
                 ObjectStorageId = "CaughtUpinYou_strg_id",
                 FileSize = 42069,
@@ -83,7 +83,7 @@ namespace ifes.lib.data {
                 FileSize = 42069,
                 PaymentOption = PaymentOption.Card
             });
-           
+
             songs.Add(new Audio() {
                 Description = "Back In Black", Discount = 0, Duration = 90, FileExtension = ".mkv",
                 Name = "Back In Black",
@@ -323,7 +323,7 @@ namespace ifes.lib.data {
                 FileSize = 42069,
                 PaymentOption = PaymentOption.Card
             });
-           
+
             songs.Add(new Audio() {
                 Description = "Back in the Saddle", Discount = 0, Duration = 90, FileExtension = ".mkv",
                 Name = "Back in the Saddle",
@@ -1069,7 +1069,7 @@ namespace ifes.lib.data {
                 FileSize = 42069,
                 PaymentOption = PaymentOption.Card
             });
-           
+
             songs.Add(new Audio() {
                 Description = "When I See You Smile", Discount = 0, Duration = 90, FileExtension = ".mkv",
                 Name = "When I See You Smile",
@@ -1479,7 +1479,7 @@ namespace ifes.lib.data {
                 FileSize = 42069,
                 PaymentOption = PaymentOption.Card
             });
-            
+
             songs.Add(new Audio() {
                 Description = "Can't Find My Way Home", Discount = 0, Duration = 90, FileExtension = ".mkv",
                 Name = "Can't Find My Way Home",
@@ -1658,7 +1658,7 @@ namespace ifes.lib.data {
                 FileSize = 42069,
                 PaymentOption = PaymentOption.Card
             });
-          
+
             songs.Add(new Audio() {
                 Description = "One Love", Discount = 0, Duration = 90, FileExtension = ".mkv", Name = "One Love",
                 Price = 0.99,
@@ -3752,8 +3752,8 @@ namespace ifes.lib.data {
                 FileSize = 42069,
                 PaymentOption = PaymentOption.Card
             });
-          
-   
+
+
             songs.Add(new Audio() {
                 Description = "Rio", Discount = 0, Duration = 90, FileExtension = ".mkv", Name = "Rio",
                 Price = 0.99,
@@ -4337,7 +4337,7 @@ namespace ifes.lib.data {
                 FileSize = 42069,
                 PaymentOption = PaymentOption.Card
             });
-           
+
             songs.Add(new Audio() {
                 Description = "Forever Man", Discount = 0, Duration = 90, FileExtension = ".mkv", Name = "Forever Man",
                 Price = 0.99,
@@ -4867,7 +4867,7 @@ namespace ifes.lib.data {
                 FileSize = 42069,
                 PaymentOption = PaymentOption.Card
             });
-            
+
             songs.Add(new Audio() {
                 Description = "Cold As Ice", Discount = 0, Duration = 90, FileExtension = ".mkv", Name = "Cold As Ice",
                 Price = 0.99,
@@ -4929,7 +4929,7 @@ namespace ifes.lib.data {
                 FileSize = 42069,
                 PaymentOption = PaymentOption.Card
             });
-        
+
             songs.Add(new Audio() {
                 Description = "Love Has Taken Its Toll", Discount = 0, Duration = 90, FileExtension = ".mkv",
                 Name = "Love Has Taken Its Toll",
